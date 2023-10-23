@@ -17,7 +17,7 @@ private:
 	const String name_ = U"Temp Name";
 	const String message_ = U"こんにちは。\nようこそ<<死の淵>>へ。";
 
-	void open_message_window(const Font& font, const String& name, const String& message);
+	void open_message_window(const String& name, const String& message) const;
 
 
 public:
