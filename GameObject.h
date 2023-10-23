@@ -3,6 +3,6 @@
 class GameObject
 {
 public:
-	virtual void UpdateLogic() = 0;
-	virtual void UpdateRender() = 0;
+	virtual void update_logic() = 0;
+	virtual void update_render() = 0;
 };
