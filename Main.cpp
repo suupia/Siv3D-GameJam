@@ -25,7 +25,7 @@ void Main()
 	set_up_window();
 
 
-	MessageWindow message_window(gm);
+	MessageWindow message_window(gm,font);
 
 
 	const String name = U"Temp Name";
@@ -34,7 +34,9 @@ void Main()
 
 	while (System::Update())
 	{
-		message_window.open_message_window(font, name, message);
+		// message_window.open_message_window(font, name, message);
+		message_window.update_logic();
+		message_window.update_render();
 	}
 }
 

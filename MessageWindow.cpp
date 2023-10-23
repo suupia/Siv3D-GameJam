@@ -23,6 +23,7 @@ void  MessageWindow::open_message_window(const Font& font , const String& name, 
 
 void MessageWindow::update_logic()
 {
+	open_message_window(font_,name_, message_);
 }
 
 void MessageWindow::update_render()
