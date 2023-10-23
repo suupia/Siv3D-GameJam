@@ -25,15 +25,30 @@ Vec2 calc_center_pos(const RectF& rect)
 	return Vec2{ rect.x + rect.w / 2.0, rect.y + rect.h / 2.0 };
 }
 
-void open_message_window(const Font& font)
+// Transform coordinates to be centered horizontally
+RectF to_horizontal_center(const RectF& rect)
 {
+	const auto h_margin = Scene::Width() - rect.w;
+	return RectF{ h_margin /2.0 , rect.y, rect.w, rect.h };
+}
+
+
+void open_message_window(const Font& font , const String& name, const String& message)
+{
+	// back ground box
+	const auto back_ground_rect = calc_relative_rect(0, 3.0/5.0, 1, 2.0/5.0).draw(Palette::Lightslategray);
+
 	// message box
-	(void)calc_relative_rect(0, 3.0/5.0, 1, 2.0/5.0).draw(Palette::Lightslategray);
+	const auto message_rect= to_horizontal_center( RectF{back_ground_rect.x, back_ground_rect.y, back_ground_rect.w * 0.8, back_ground_rect.h} );
+	(void)message_rect.draw(Palette::Lightblue);
+	font(message).drawAt(calc_center_pos(message_rect), Palette::Black);
 
 	// name box
 	const auto rect = calc_relative_rect(1.0/30.0,21.0/40.0,1.0/4.0,1.0/8.0);
 	(void)rect.draw(Palette::Teal);
-	font(U"Name").drawAt(calc_center_pos(rect), Palette::White);
+	font(name).drawAt(calc_center_pos(rect), Palette::White);
+
+
 
 }
 
@@ -42,9 +57,15 @@ void Main()
 	const Font font{ FontMethod::MSDF, 48 };
 
 	set_up_window();
+
+
+	String name = U"Temp Name";
+	String message = U"こんにちは。\nようこそ<<死の淵>>へ。";
+
+
 	while (System::Update())
 	{
-		open_message_window(font);
+		open_message_window(font, name, message);
 	}
 }
 
