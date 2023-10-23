@@ -23,9 +23,14 @@ void  MessageWindow::open_message_window(const String& name, const String& messa
 
 void MessageWindow::update_logic()
 {
-	if(KeySpace.down())
+	if(timer <= interval_second_)
 	{
-		current_message_index_++;
+		timer +=  Scene::DeltaTime();
+		if(timer >= interval_second_)
+		{
+			current_message_index_++;
+			timer = 0;
+		}
 	}
 }
 

@@ -16,6 +16,8 @@ private:
 
 	bool  is_displayed_full_text_ = false;
 	int current_message_index_ = 0;
+	float interval_second_ = 0.07f;
+	double timer = 0.0f;
 
 
 	void open_message_window(const String& name, const String& message) const;
