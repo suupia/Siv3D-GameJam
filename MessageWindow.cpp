@@ -20,3 +20,11 @@ void  MessageWindow::open_message_window(const Font& font , const String& name, 
 	font(name).drawAt(RectFUtility::calc_center_pos(rect), Palette::White);
 
 }
+
+void MessageWindow::update_logic()
+{
+}
+
+void MessageWindow::update_render()
+{
+}

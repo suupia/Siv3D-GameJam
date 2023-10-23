@@ -20,19 +20,21 @@ void set_up_window()
 void Main()
 {
 	const Font font{ FontMethod::MSDF, 48 };
+	GameManager gm;
 
 	set_up_window();
 
-	MessageWindow messageWindow;
+
+	MessageWindow message_window(gm);
 
 
-	String name = U"Temp Name";
-	String message = U"こんにちは。\nようこそ<<死の淵>>へ。";
+	const String name = U"Temp Name";
+	const String message = U"こんにちは。\nようこそ<<死の淵>>へ。";
 
 
 	while (System::Update())
 	{
-		messageWindow.open_message_window(font, name, message);
+		message_window.open_message_window(font, name, message);
 	}
 }
 
