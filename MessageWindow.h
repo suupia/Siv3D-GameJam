@@ -10,12 +10,13 @@ private:
 	int render_id_;
 	const Font& font_;
 
-	bool  is_displayed_full_text_ = false;
-
-
     // temp
 	const String name_ = U"Temp Name";
 	const String message_ = U"こんにちは。\nようこそ<<死の淵>>へ。";
+
+	bool  is_displayed_full_text_ = false;
+	int current_message_index_ = 0;
+
 
 	void open_message_window(const String& name, const String& message) const;
 

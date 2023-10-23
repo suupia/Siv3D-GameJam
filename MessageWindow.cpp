@@ -23,9 +23,20 @@ void  MessageWindow::open_message_window(const String& name, const String& messa
 
 void MessageWindow::update_logic()
 {
-	open_message_window(name_, message_);
+	if(KeySpace.down())
+	{
+		current_message_index_++;
+	}
 }
 
 void MessageWindow::update_render()
 {
+	// open_message_window(name_, message_);
+	if(not is_displayed_full_text_)
+	{
+		String current_message = message_.substr(0, current_message_index_);
+		open_message_window(name_, current_message);
+
+	}
+
 }
