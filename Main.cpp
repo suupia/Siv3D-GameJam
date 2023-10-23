@@ -26,7 +26,7 @@ void open_message_window()
 	get_relative_rect(0, 3.0/5.0, 1, 2.0/5.0).draw(Palette::Lightslategray);
 
 	// name box
-	get_relative_rect(1.0/10.0,4.0/10.0,1.0/2.0,2.0/5.0).draw(Palette::Teal);
+	get_relative_rect(1.0/30.0,21.0/40.0,1.0/4.0,1.0/8.0).draw(Palette::Teal);
 
 }
 
