@@ -14,8 +14,10 @@ private:
 	const String name_ = U"Temp Name";
 	const String message_ = U"こんにちは。\nようこそ<<死の淵>>へ。~私はあなたのガイドです。~ここには何かしらの後悔や不満を抱えたまま瀕死の状態となった人が訪れます。";
 
-	int current_message_index_ = 0;
+	int message_char_index_ = 0;
+	int current_split_message_index_ = 0;
 	String current_message_;
+	Array<String> split_messages_;
 	float interval_second_ = 0.07f;
 	double timer = 0.0f;
 
@@ -30,7 +32,8 @@ public:
 		logic_id_ = gm_.register_logic([&]() { this->update_logic();});
 		render_id_ = gm_.register_render([&]() { this->update_render();});
 
-		current_message_ = message_;
+		split_messages_ = message_.split(U'~');
+		current_message_ = split_messages_[0];
 	}
 
 	~MessageWindow()
