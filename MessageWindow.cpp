@@ -34,7 +34,6 @@ void MessageWindow::update_logic()
 			current_message_ = split_messages_[current_split_message_index_];
 			message_char_index_ = 0;
 			is_waiting_for_input_ = false;
-			Print << current_message_;
 		}else
 		{
 			// skip the current message feeding
@@ -57,12 +56,6 @@ void MessageWindow::update_logic()
 	}
 
 	if(message_char_index_ == current_message_.size() - 1) is_waiting_for_input_ = true;
-
-	// ~ is keyword to wait for input
-	// if(current_message_[message_char_index_] =='~')
-	// {
-	// 	is_waiting_for_input_ = true;
-	// }
 
 
 }
