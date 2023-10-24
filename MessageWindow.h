@@ -14,12 +14,12 @@ private:
 	const String name_ = U"Temp Name";
 	const String message_ = U"こんにちは。\nようこそ<<死の淵>>へ。~私はあなたのガイドです。~ここには何かしらの後悔や不満を抱えたまま瀕死の状態となった人が訪れます。";
 
-	bool  is_displayed_full_text_ = false;  // 今は使っていない
 	int current_message_index_ = 0;
 	String current_message_;
 	float interval_second_ = 0.07f;
 	double timer = 0.0f;
 
+	bool is_waiting_for_input_ = false;
 
 	void open_message_window(const String& name, const String& message) const;
 

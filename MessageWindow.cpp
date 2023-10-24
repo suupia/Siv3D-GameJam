@@ -23,6 +23,21 @@ void  MessageWindow::open_message_window(const String& name, const String& messa
 
 void MessageWindow::update_logic()
 {
+	// input
+	if(KeySpace.down())
+	{
+		if(is_waiting_for_input_)
+		{
+			// feed next message
+			current_message_ = current_message_.substr(current_message_index_ + 1);
+			current_message_index_ = 0;
+			is_waiting_for_input_ = false;
+		}
+	}
+
+	// update logic
+	if(is_waiting_for_input_) return;
+
 	if(timer <= interval_second_)
 	{
 		timer +=  Scene::DeltaTime();
@@ -33,21 +48,17 @@ void MessageWindow::update_logic()
 			timer = 0;
 		}
 	}
+
+	if(current_message_[current_message_index_] =='~')
+	{
+		is_waiting_for_input_ = true;
+	}
+
+
 }
 
 void MessageWindow::update_render()
 {
-	// open_message_window(name_, message_);
-	if(not is_displayed_full_text_)
-	{
-		if(current_message_[current_message_index_] =='~')
-		{
-			current_message_ = current_message_.substr(current_message_index_ + 1);
-			current_message_index_ = 0;
-		}
-		const auto message = current_message_.substr(0, current_message_index_);
-		open_message_window(name_, message);
-
-	}
-
+	const auto message = current_message_.substr(0, current_message_index_);
+	open_message_window(name_, message);
 }
