@@ -28,10 +28,16 @@ void MessageWindow::update_logic()
 	{
 		if(is_waiting_for_input_)
 		{
-			// feed next message
+			// start feeding the next message
 			current_message_ = current_message_.substr(current_message_index_ + 1);
 			current_message_index_ = 0;
 			is_waiting_for_input_ = false;
+		}else
+		{
+			// skip the current message feeding
+			// const auto index_before_tilde = current_message_.narrow().find('~');
+			// Print << index_before_tilde;
+			// current_message_index_ = static_cast<int>(index_before_tilde) - 1;
 		}
 	}
 
@@ -49,6 +55,7 @@ void MessageWindow::update_logic()
 		}
 	}
 
+	// ~ is keyword to wait for input
 	if(current_message_[current_message_index_] =='~')
 	{
 		is_waiting_for_input_ = true;
