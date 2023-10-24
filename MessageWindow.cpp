@@ -30,6 +30,7 @@ void MessageWindow::update_logic()
 		{
 			// start feeding the next message
 			current_split_message_index_++;
+			if(current_split_message_index_ >= split_messages_.size()) current_split_message_index_ = split_messages_.size() - 1;
 			current_message_ = split_messages_[current_split_message_index_];
 			message_char_index_ = 0;
 			is_waiting_for_input_ = false;
@@ -37,9 +38,7 @@ void MessageWindow::update_logic()
 		}else
 		{
 			// skip the current message feeding
-			// const auto index_before_tilde = current_message_.narrow().find('~');
-			// Print << index_before_tilde;
-			// current_message_index_ = static_cast<int>(index_before_tilde) - 1;
+			message_char_index_= static_cast<int>(current_message_.size()) - 1;
 		}
 	}
 
