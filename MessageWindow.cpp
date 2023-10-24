@@ -29,6 +29,7 @@ void MessageWindow::update_logic()
 		if(timer >= interval_second_)
 		{
 			current_message_index_++;
+			if(current_message_.size() <= current_message_index_) current_message_index_ =  static_cast<int>(current_message_.size()) - 1;
 			timer = 0;
 		}
 	}
@@ -39,8 +40,13 @@ void MessageWindow::update_render()
 	// open_message_window(name_, message_);
 	if(not is_displayed_full_text_)
 	{
-		String current_message = message_.substr(0, current_message_index_);
-		open_message_window(name_, current_message);
+		if(current_message_[current_message_index_] =='~')
+		{
+			current_message_ = current_message_.substr(current_message_index_ + 1);
+			current_message_index_ = 0;
+		}
+		const auto message = current_message_.substr(0, current_message_index_);
+		open_message_window(name_, message);
 
 	}
 
