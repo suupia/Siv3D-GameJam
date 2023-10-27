@@ -38,15 +38,14 @@ void Main()
 
 	while (System::Update())
 	{
-		TextureAsset(U"PhotoStudio").resized(1920,1080).draw(0, 0);
-		// message_window.open_message_window(font, name, message);
+		// draw background
+		(void)TextureAsset(U"PhotoStudio").resized(1920,1080).draw(0, 0);
+
+
 		if(KeySpace.down()) message_window.open_message_window();
 
 		message_window.update_logic();
 		message_window.update_render();
-		//
-	 // 	TextureAsset(U"Takeshi").draw(40, 40);
-		// TextureAsset(U"Founder").draw(120,  40);
 	}
 }
 
