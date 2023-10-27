@@ -11,7 +11,8 @@ private:
 	int render_id_;
 	const Font& font_;
 
-	Array<MessageWindowStruct> message_window_structs_;
+	Array<MessageWindow> message_windows_;
+	int current_message_window_index_ = 0;
 
 public:
 	MessageWindowContainer(GameManager& gm, const Font& font,
@@ -31,6 +32,6 @@ public:
 	void update_logic() override;
 	void update_render() override;
 
-	void add_message_window(const MessageWindowStruct& message_window_struct);
-
+	void add_message_window(const MessageWindow& message_window_struct);
+	void go_to_next_message();
 };

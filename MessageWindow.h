@@ -56,5 +56,5 @@ public:
 	void update_logic() override;
 	void update_render() override;
 
-	void open_message_window();
+	void go_to_next_message();
 };

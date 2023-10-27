@@ -38,6 +38,7 @@ void Main()
 	MessageWindow message_window(gm,font,founder);
 
 	MessageWindowContainer message_window_container(gm, font, founder);
+	message_window_container.add_message_window(message_window);
 
 	while (System::Update())
 	{
@@ -45,10 +46,12 @@ void Main()
 		(void)TextureAsset(U"PhotoStudio").resized(1920,1080).draw(0, 0);
 
 
-		if(KeySpace.down()) message_window.open_message_window();
+		if(KeySpace.down()) message_window_container.go_to_next_message();
 
-		message_window.update_logic();
-		message_window.update_render();
+		// message_window.update_logic();
+		// message_window.update_render();
+		message_window_container.update_logic();
+		message_window_container.update_render();
 	}
 }
 

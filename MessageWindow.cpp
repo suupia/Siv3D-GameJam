@@ -51,7 +51,7 @@ void MessageWindow::update_render()
 	show_message_window(name_, message);
 }
 
-void MessageWindow::open_message_window()
+void MessageWindow::go_to_next_message()
 {
 	if(is_waiting_for_input_)
 	{
