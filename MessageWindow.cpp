@@ -3,7 +3,7 @@
 
 #include "RectFUtility.h"
 
-
+// private
 void  MessageWindow::show_message_window(const String& name, const String& message) const
 {
 	// back ground box
@@ -21,6 +21,7 @@ void  MessageWindow::show_message_window(const String& name, const String& messa
 
 }
 
+// public
 void MessageWindow::update_logic()
 {
 	// update logic
