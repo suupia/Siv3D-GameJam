@@ -15,8 +15,7 @@ private:
 	int current_message_window_index_ = 0;
 
 public:
-	MessageWindowContainer(GameManager& gm, const Font& font,
-		const MessageWindowStruct& message_window_struct
+	MessageWindowContainer(GameManager& gm, const Font& font
 		) : gm_(gm), font_(font)
 	{
 		logic_id_ = gm_.register_logic([&]() { this->update_logic();});
