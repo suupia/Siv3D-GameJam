@@ -35,6 +35,8 @@ void Main()
 	while (System::Update())
 	{
 		// message_window.open_message_window(font, name, message);
+		if(KeySpace.down()) message_window.open_message_window(name,message);
+
 		message_window.update_logic();
 		message_window.update_render();
 	}

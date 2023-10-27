@@ -4,7 +4,7 @@
 #include "RectFUtility.h"
 
 
-void  MessageWindow::open_message_window(const String& name, const String& message) const
+void  MessageWindow::show_message_window(const String& name, const String& message) const
 {
 	// back ground box
 	const auto back_ground_rect = RectFUtility::calc_relative_rect(0, 3.0/5.0, 1, 2.0/5.0).draw(Palette::Lightslategray);
@@ -23,24 +23,6 @@ void  MessageWindow::open_message_window(const String& name, const String& messa
 
 void MessageWindow::update_logic()
 {
-	// input
-	if(KeySpace.down())
-	{
-		if(is_waiting_for_input_)
-		{
-			// start feeding the next message
-			current_split_message_index_++;
-			if(current_split_message_index_ >= split_messages_.size()) current_split_message_index_ = split_messages_.size() - 1;
-			current_message_ = split_messages_[current_split_message_index_];
-			message_char_index_ = 0;
-			is_waiting_for_input_ = false;
-		}else
-		{
-			// skip the current message feeding
-			message_char_index_= static_cast<int>(current_message_.size()) - 1;
-		}
-	}
-
 	// update logic
 	if(is_waiting_for_input_) return;
 
@@ -63,5 +45,22 @@ void MessageWindow::update_logic()
 void MessageWindow::update_render()
 {
 	const auto message = current_message_.substr(0, message_char_index_);
-	open_message_window(name_, message);
+	show_message_window(name_, message);
+}
+
+void MessageWindow::open_message_window(const String& name, const String& message)
+{
+	if(is_waiting_for_input_)
+	{
+		// start feeding the next message
+		current_split_message_index_++;
+		if(current_split_message_index_ >= split_messages_.size()) current_split_message_index_ = split_messages_.size() - 1;
+		current_message_ = split_messages_[current_split_message_index_];
+		message_char_index_ = 0;
+		is_waiting_for_input_ = false;
+	}else
+	{
+		// skip the current message feeding
+		message_char_index_= static_cast<int>(current_message_.size()) - 1;
+	}
 }

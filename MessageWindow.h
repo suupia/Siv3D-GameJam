@@ -23,7 +23,7 @@ private:
 
 	bool is_waiting_for_input_ = false;
 
-	void open_message_window(const String& name, const String& message) const;
+	void show_message_window(const String& name, const String& message) const;
 
 
 public:
@@ -44,4 +44,6 @@ public:
 
 	void update_logic() override;
 	void update_render() override;
+
+	void open_message_window(const String& name, const String& message);
 };
