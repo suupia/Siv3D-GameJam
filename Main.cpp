@@ -31,6 +31,10 @@ void Main()
 	const String name = U"Temp Name";
 	const String message = U"こんにちは。\nようこそ<<死の淵>>へ。";
 
+	// Register Assets
+	TextureAsset::Register(U"Takeshi", U"images/takeshi_tmp.png");
+	TextureAsset::Register(U"Founder", U"images/founder_tmp.png");
+
 
 	while (System::Update())
 	{
@@ -39,6 +43,9 @@ void Main()
 
 		message_window.update_logic();
 		message_window.update_render();
+
+	 	TextureAsset(U"Takeshi").draw(40, 40);
+		TextureAsset(U"Founder").draw(120,  40);
 	}
 }
 
