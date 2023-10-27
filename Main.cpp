@@ -31,13 +31,20 @@ void Main()
 	TextureAsset::Register(U"PhotoStudio", U"images/photo_studio.png");
 
 	const MessageWindowStruct founder ={
-	.name = U"創設者",
-	.messages = U"やあ、よく来たね。\n私が見込んだ新入りさん。~ここは写真館《死の淵》だ。\nその名の通り、ここは死の淵と言って……~え？あなた誰って言った？~私のことを語るには、映画7本分の尺が必要になるけど……。~うーん、そんな露骨に嫌な顔しないで。\n君、本当に分かりやすいね。",
-	.standing_picture = TextureAsset(U"Founder"),
+		.name = U"創設者",
+		.messages = U"やあ、よく来たね。\n私が見込んだ新入りさん。~ここは写真館《死の淵》だ。\nその名の通り、ここは死の淵と言って……~え？あなた誰って言った？~私のことを語るには、映画7本分の尺が必要になるけど……。~うーん、そんな露骨に嫌な顔しないで。\n君、本当に分かりやすいね。",
+		.standing_picture = TextureAsset(U"Founder"),
+	};
+
+	const MessageWindowStruct takeshi ={
+		.name = U"タケシ",
+		.messages = U"ここはどこだ、、？~俺はさっきまで雪山にいたはずだ、、~いったい何が起きたんだ。\nここは館みたいだが、、",
+		.standing_picture = TextureAsset(U"Takeshi"),
 	};
 
 	MessageWindowContainer message_window_container(gm, font);
 	message_window_container.add_message_window(MessageWindow (gm,font,founder));
+	message_window_container.add_message_window(MessageWindow (gm,font,takeshi));
 
 	while (System::Update())
 	{
