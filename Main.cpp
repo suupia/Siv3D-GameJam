@@ -30,10 +30,9 @@ void Main()
 	TextureAsset::Register(U"PhotoStudio", U"images/photo_studio.png");
 
 	const String name = U"創設者";
-	const String messages = U"こんにちは。\nようこそ<<死の淵>>へ。~私はあなたのガイドです。~ここには何かしらの後悔や不満を抱えたまま瀕死の状態となった人が訪れます。";
+	const String messages = U"やあ、よく来たね。\n私が見込んだ新入りさん。~ここは写真館《死の淵》だ。\nその名の通り、ここは死の淵と言って……~え？あなた誰って言った？~私のことを語るには、映画7本分の尺が必要になるけど……。~うーん、そんな露骨に嫌な顔しないで。\n君、本当に分かりやすいね。";
 	const auto founder_texture = TextureAsset(U"Founder");
 	MessageWindow message_window(gm,font,name,messages, founder_texture);
-
 
 
 	while (System::Update())
