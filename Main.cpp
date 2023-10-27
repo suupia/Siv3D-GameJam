@@ -1,5 +1,6 @@
 ﻿# include <Siv3D.hpp> // OpenSiv3D v0.6.11
 # include "MessageWindow.h"
+#include "MessageWindowContainer.h"
 # include "RectFUtility.h"
 
 void set_up_window()
@@ -36,6 +37,7 @@ void Main()
 	};
 	MessageWindow message_window(gm,font,founder);
 
+	MessageWindowContainer message_window_container(gm, font, founder);
 
 	while (System::Update())
 	{
