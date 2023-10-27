@@ -2,6 +2,12 @@
 #include "GameManager.h"
 #include "GameObject.h"
 
+struct MessageWindowStruct {
+	const String& name;
+	const String& messages;
+	const TextureAsset& standing_picture;
+};
+
 class MessageWindow : public GameObject
 {
 private:
@@ -10,9 +16,9 @@ private:
 	int render_id_;
 	const Font& font_;
 
-    // temp
-	const String name_ = U"Temp Name";
-	const String message_ = U"こんにちは。\nようこそ<<死の淵>>へ。~私はあなたのガイドです。~ここには何かしらの後悔や不満を抱えたまま瀕死の状態となった人が訪れます。";
+	const String& name_;
+	const String& messages_;
+	const TextureAsset& standing_picture_;
 
 	int message_char_index_ = 0;
 	int current_split_message_index_ = 0;
@@ -22,17 +28,23 @@ private:
 	double timer = 0.0f;
 
 	bool is_waiting_for_input_ = false;
+	bool is_showing_all_message_ = false;
 
-	void open_message_window(const String& name, const String& message) const;
+	void show_message_window(const String& name, const String& message) const;
 
 
 public:
-	MessageWindow(GameManager& gm, const Font& font) : gm_(gm), font_(font)
+	MessageWindow(GameManager& gm, const Font& font,
+		const MessageWindowStruct& message_window_struct
+		) : gm_(gm), font_(font),
+	name_(message_window_struct.name),
+	messages_(message_window_struct.messages),
+	standing_picture_(message_window_struct.standing_picture)
 	{
 		logic_id_ = gm_.register_logic([&]() { this->update_logic();});
 		render_id_ = gm_.register_render([&]() { this->update_render();});
 
-		split_messages_ = message_.split(U'~');
+		split_messages_ = messages_.split(U'~');
 		current_message_ = split_messages_[0];
 	}
 
@@ -44,4 +56,7 @@ public:
 
 	void update_logic() override;
 	void update_render() override;
+
+	void go_to_next_message();
+	bool is_show_all_message() const { return is_showing_all_message_; }  // 実装ファイルに書いた方がよい？
 };
