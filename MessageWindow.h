@@ -2,6 +2,12 @@
 #include "GameManager.h"
 #include "GameObject.h"
 
+struct MessageWindowStruct {
+	const String& name;
+	const String& messages;
+	const TextureAsset& standing_picture;
+};
+
 class MessageWindow : public GameObject
 {
 private:
@@ -28,10 +34,11 @@ private:
 
 public:
 	MessageWindow(GameManager& gm, const Font& font,
-		const String& name,
-		const String& messages,
-		const TextureAsset& standing_picture
-		) : gm_(gm), font_(font), name_(name), messages_(messages), standing_picture_(standing_picture)
+		const MessageWindowStruct& message_window_struct
+		) : gm_(gm), font_(font),
+	name_(message_window_struct.name),
+	messages_(message_window_struct.messages),
+	standing_picture_(message_window_struct.standing_picture)
 	{
 		logic_id_ = gm_.register_logic([&]() { this->update_logic();});
 		render_id_ = gm_.register_render([&]() { this->update_render();});

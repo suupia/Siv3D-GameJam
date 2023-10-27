@@ -29,10 +29,12 @@ void Main()
 	TextureAsset::Register(U"Founder", U"images/founder_tmp.png");
 	TextureAsset::Register(U"PhotoStudio", U"images/photo_studio.png");
 
-	const String name = U"創設者";
-	const String messages = U"やあ、よく来たね。\n私が見込んだ新入りさん。~ここは写真館《死の淵》だ。\nその名の通り、ここは死の淵と言って……~え？あなた誰って言った？~私のことを語るには、映画7本分の尺が必要になるけど……。~うーん、そんな露骨に嫌な顔しないで。\n君、本当に分かりやすいね。";
-	const auto founder_texture = TextureAsset(U"Founder");
-	MessageWindow message_window(gm,font,name,messages, founder_texture);
+	const MessageWindowStruct founder ={
+	.name = U"創設者",
+	.messages = U"やあ、よく来たね。\n私が見込んだ新入りさん。~ここは写真館《死の淵》だ。\nその名の通り、ここは死の淵と言って……~え？あなた誰って言った？~私のことを語るには、映画7本分の尺が必要になるけど……。~うーん、そんな露骨に嫌な顔しないで。\n君、本当に分かりやすいね。",
+	.standing_picture = TextureAsset(U"Founder"),
+	};
+	MessageWindow message_window(gm,font,founder);
 
 
 	while (System::Update())
