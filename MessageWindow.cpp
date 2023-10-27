@@ -42,7 +42,7 @@ void MessageWindow::update_logic()
 
 	if(message_char_index_ == current_message_.size() - 1) is_waiting_for_input_ = true;
 
-
+	if(current_split_message_index_ == split_messages_.size() - 1 && is_waiting_for_input_) is_showing_all_message_ = true;
 }
 
 void MessageWindow::update_render()

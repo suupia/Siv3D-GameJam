@@ -28,6 +28,7 @@ private:
 	double timer = 0.0f;
 
 	bool is_waiting_for_input_ = false;
+	bool is_showing_all_message_ = false;
 
 	void show_message_window(const String& name, const String& message) const;
 
@@ -57,4 +58,5 @@ public:
 	void update_render() override;
 
 	void go_to_next_message();
+	bool is_show_all_message() const { return is_showing_all_message_; }  // 実装ファイルに書いた方がよい？
 };

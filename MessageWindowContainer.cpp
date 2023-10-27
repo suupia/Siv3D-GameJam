@@ -8,7 +8,9 @@ void MessageWindowContainer::add_message_window(const MessageWindow& message_win
 
 void MessageWindowContainer::update_logic()
 {
-	message_windows_[current_message_window_index_].update_logic();
+	auto&  message_window = 	message_windows_[current_message_window_index_];
+	message_window.update_logic();
+	if(message_window .is_show_all_message())current_message_window_index_++;
 }
 
 void MessageWindowContainer::update_render()
