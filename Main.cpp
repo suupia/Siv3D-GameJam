@@ -24,17 +24,16 @@ void Main()
 
 	set_up_window();
 
-	const String name = U"Temp Name";
-	const String messages = U"こんにちは。\nようこそ<<死の淵>>へ。~私はあなたのガイドです。~ここには何かしらの後悔や不満を抱えたまま瀕死の状態となった人が訪れます。";
-
-	MessageWindow message_window(gm,font,name,messages);
-
-
-
 	// Register Assets
 	TextureAsset::Register(U"Takeshi", U"images/takeshi_tmp.png");
 	TextureAsset::Register(U"Founder", U"images/founder_tmp.png");
 	TextureAsset::Register(U"PhotoStudio", U"images/photo_studio.png");
+
+	const String name = U"創設者";
+	const String messages = U"こんにちは。\nようこそ<<死の淵>>へ。~私はあなたのガイドです。~ここには何かしらの後悔や不満を抱えたまま瀕死の状態となった人が訪れます。";
+	const auto founder_texture = TextureAsset(U"Founder");
+	MessageWindow message_window(gm,font,name,messages, founder_texture);
+
 
 
 	while (System::Update())
@@ -45,9 +44,9 @@ void Main()
 
 		message_window.update_logic();
 		message_window.update_render();
-
-	 	TextureAsset(U"Takeshi").draw(40, 40);
-		TextureAsset(U"Founder").draw(120,  40);
+		//
+	 // 	TextureAsset(U"Takeshi").draw(40, 40);
+		// TextureAsset(U"Founder").draw(120,  40);
 	}
 }
 

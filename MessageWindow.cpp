@@ -6,6 +6,9 @@
 // private
 void  MessageWindow::show_message_window(const String& name, const String& message) const
 {
+	// texture
+	(void)standing_picture_.draw(  Arg::center( Scene::Width() / 2, Scene::Height() / 2));
+
 	// back ground box
 	const auto back_ground_rect = RectFUtility::calc_relative_rect(0, 3.0/5.0, 1, 2.0/5.0).draw(Palette::Lightslategray);
 
@@ -18,7 +21,6 @@ void  MessageWindow::show_message_window(const String& name, const String& messa
 	const auto rect = RectFUtility::calc_relative_rect(1.0/30.0,21.0/40.0,1.0/4.0,1.0/8.0);
 	(void)rect.draw(Palette::Teal);
 	font_(name).drawAt(RectFUtility::calc_center_pos(rect), Palette::White);
-
 }
 
 // public
