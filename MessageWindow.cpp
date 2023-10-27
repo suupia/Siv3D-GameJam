@@ -49,7 +49,7 @@ void MessageWindow::update_render()
 	show_message_window(name_, message);
 }
 
-void MessageWindow::open_message_window(const String& name, const String& message)
+void MessageWindow::open_message_window()
 {
 	if(is_waiting_for_input_)
 	{

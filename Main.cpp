@@ -24,12 +24,12 @@ void Main()
 
 	set_up_window();
 
-
-	MessageWindow message_window(gm,font);
-
-
 	const String name = U"Temp Name";
-	const String message = U"こんにちは。\nようこそ<<死の淵>>へ。";
+	const String messages = U"こんにちは。\nようこそ<<死の淵>>へ。~私はあなたのガイドです。~ここには何かしらの後悔や不満を抱えたまま瀕死の状態となった人が訪れます。";
+
+	MessageWindow message_window(gm,font,name,messages);
+
+
 
 	// Register Assets
 	TextureAsset::Register(U"Takeshi", U"images/takeshi_tmp.png");
@@ -41,7 +41,7 @@ void Main()
 	{
 		TextureAsset(U"PhotoStudio").resized(1920,1080).draw(0, 0);
 		// message_window.open_message_window(font, name, message);
-		if(KeySpace.down()) message_window.open_message_window(name,message);
+		if(KeySpace.down()) message_window.open_message_window();
 
 		message_window.update_logic();
 		message_window.update_render();
