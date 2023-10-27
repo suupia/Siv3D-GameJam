@@ -34,10 +34,12 @@ void Main()
 	// Register Assets
 	TextureAsset::Register(U"Takeshi", U"images/takeshi_tmp.png");
 	TextureAsset::Register(U"Founder", U"images/founder_tmp.png");
+	TextureAsset::Register(U"PhotoStudio", U"images/photo_studio.png");
 
 
 	while (System::Update())
 	{
+		TextureAsset(U"PhotoStudio").resized(1920,1080).draw(0, 0);
 		// message_window.open_message_window(font, name, message);
 		if(KeySpace.down()) message_window.open_message_window(name,message);
 
