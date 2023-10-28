@@ -1,10 +1,10 @@
 ﻿#include "stdafx.h"
-#include "MessageWindow.h"
+#include "MessageContent.h"
 
 #include "RectFUtility.h"
 
 // private
-void  MessageWindow::show_message_window(const String& name, const String& message) const
+void  MessageContent::show_message_window(const String& name, const String& message) const
 {
 	// texture
 	(void)standing_picture_.draw(  Arg::center( Scene::Width() / 2, Scene::Height() / 2));
@@ -15,7 +15,7 @@ void  MessageWindow::show_message_window(const String& name, const String& messa
 	// message box
 	const auto message_rect= RectFUtility::to_horizontal_center( RectF{back_ground_rect.x, back_ground_rect.y, back_ground_rect.w * 0.8, back_ground_rect.h} );
 	(void)message_rect.draw(Palette::Lightblue);
-	font_(message).draw(Arg::topLeft(message_rect.x + message_rect.w * 0.2, message_rect.y + message_rect.h * 0.2), Palette::Black);  // message_rectをそのまま使って場所を決めているわけではないことに注意
+	font_(message).draw(Arg::topLeft(message_rect.x + message_rect.w * 0.1, message_rect.y + message_rect.h * 0.2), Palette::Black);  // message_rectをそのまま使って場所を決めているわけではないことに注意
 
 	// name box
 	const auto rect = RectFUtility::calc_relative_rect(1.0/30.0,21.0/40.0,1.0/4.0,1.0/8.0);
@@ -24,7 +24,7 @@ void  MessageWindow::show_message_window(const String& name, const String& messa
 }
 
 // public
-void MessageWindow::update_logic()
+void MessageContent::update_logic()
 {
 	// update logic
 	if(is_waiting_for_input_) return;
@@ -42,16 +42,31 @@ void MessageWindow::update_logic()
 
 	if(message_char_index_ == current_message_.size() - 1) is_waiting_for_input_ = true;
 
-	if(current_split_message_index_ == split_messages_.size() - 1 && is_waiting_for_input_) is_showing_all_message_ = true;
 }
 
-void MessageWindow::update_render()
+String insert_enter(const String& message)
 {
-	const auto message = current_message_.substr(0, message_char_index_);
+	constexpr  int max_char_count = 25;
+	int counter = 0;
+	String result;
+	for(auto i = 0; i < message.size(); i++)
+	{
+		result += message[i];
+		if(message[i] == U'\n') counter = 0;
+		if(counter % max_char_count == max_char_count -1) result += U"\n";
+		counter ++;
+	}
+	return result;
+}
+
+void MessageContent::update_render()
+{
+	auto message = current_message_.substr(0, message_char_index_);
+	message = insert_enter(message);
 	show_message_window(name_, message);
 }
 
-void MessageWindow::go_to_next_message()
+void MessageContent::go_to_next_message()
 {
 	if(is_waiting_for_input_)
 	{
@@ -61,6 +76,10 @@ void MessageWindow::go_to_next_message()
 		current_message_ = split_messages_[current_split_message_index_];
 		message_char_index_ = 0;
 		is_waiting_for_input_ = false;
+
+		// raise flag to showed all messages
+		if(current_split_message_index_ == split_messages_.size() - 1) is_showing_all_message_ = true;
+
 	}else
 	{
 		// skip the current message feeding
