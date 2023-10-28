@@ -43,8 +43,8 @@ void Main()
 	};
 
 	MessageWindowContainer message_window_container(gm, font);
-	message_window_container.add_message_window(MessageWindow (gm,font,founder));
-	message_window_container.add_message_window(MessageWindow (gm,font,takeshi));
+	message_window_container.add_message_window(MessageWindow (font,founder));
+	message_window_container.add_message_window(MessageWindow (font,takeshi));
 
 	while (System::Update())
 	{
