@@ -37,9 +37,9 @@ public:
 	template<class... Args>
     void add_message_content(const Args&... args)
 	{
-		for(auto content : std::initializer_list<MessageContent>{args...})
+		for(auto content_struct : std::initializer_list<MessageContentStruct>{args...})
 		{
-			message_windows_.push_back(content);
+			message_windows_.push_back(MessageContent(font_,content_struct));
 		}
 	}
 };
