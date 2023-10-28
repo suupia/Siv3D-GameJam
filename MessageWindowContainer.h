@@ -35,7 +35,7 @@ public:
 	void go_to_next_message();
 
 	template<class... Args>
-    void add_message_window(const Args&... args)
+    void add_message_content(const Args&... args)
 	{
 		for(auto content : std::initializer_list<MessageContent>{args...})
 		{

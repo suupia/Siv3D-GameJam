@@ -14,6 +14,8 @@ void set_up_window()
 	Window::Resize(windowWidth, windowHeight);
 	Window::SetStyle(WindowStyle::Sizable);
 
+
+
 	// Set Background Color
 	Scene::SetBackground(ColorF{ 139/ 255.0f,69/ 255.0f,19/ 255.0f});
 }
@@ -32,7 +34,7 @@ void Main()
 	TextureAsset::Register(U"Me", U"images/siv3d-kun.png");
 
 	MessageWindowContainer message_window_container(gm, font);
-	message_window_container.add_message_window(
+	message_window_container.add_message_content(
 		MessageContent(font,
 		               MessageContentStruct{
 			               .name = U"創設者",
