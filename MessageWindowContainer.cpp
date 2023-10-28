@@ -1,6 +1,7 @@
 ﻿#include "stdafx.h"
 #include "MessageWindowContainer.h"
 
+template void MessageWindowContainer::add_message_window<MessageContent>(const MessageContent&);
 
 void MessageWindowContainer::update_logic()
 {
