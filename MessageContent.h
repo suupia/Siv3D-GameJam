@@ -2,13 +2,13 @@
 #include "GameManager.h"
 #include "GameObject.h"
 
-struct MessageWindowStruct {
+struct MessageContentStruct {
 	const String& name;
 	const String& messages;
 	const TextureAsset& standing_picture;
 };
 
-class MessageWindow : public GameObject
+class MessageContent : public GameObject
 {
 private:
 	const Font& font_;
@@ -31,8 +31,8 @@ private:
 
 
 public:
-	MessageWindow(const Font& font,
-		const MessageWindowStruct& message_window_struct
+	MessageContent(const Font& font,
+		const MessageContentStruct& message_window_struct
 		) : font_(font),
 	name_(message_window_struct.name),
 	messages_(message_window_struct.messages),
@@ -42,7 +42,7 @@ public:
 		current_message_ = split_messages_[0];
 	}
 
-	~MessageWindow() = default;
+	~MessageContent() = default;
 
 	void update_logic() override;
 	void update_render() override;

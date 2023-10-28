@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "GameManager.h"
 #include "GameObject.h"
-#include "MessageWindow.h"
+#include "MessageContent.h"
 
 class MessageWindowContainer : public GameObject
 {
@@ -11,7 +11,7 @@ private:
 	int render_id_;
 	const Font& font_;
 
-	Array<MessageWindow> message_windows_;
+	Array<MessageContent> message_windows_;
 	int current_message_window_index_ = 0;
 
 public:
@@ -31,6 +31,6 @@ public:
 	void update_logic() override;
 	void update_render() override;
 
-	void add_message_window(const MessageWindow& message_window_struct);
+	void add_message_window(const MessageContent& message_window_struct);
 	void go_to_next_message();
 };

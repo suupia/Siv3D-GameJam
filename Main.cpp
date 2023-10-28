@@ -1,5 +1,5 @@
 ﻿# include <Siv3D.hpp> // OpenSiv3D v0.6.11
-# include "MessageWindow.h"
+# include "MessageContent.h"
 #include "MessageWindowContainer.h"
 # include "RectFUtility.h"
 
@@ -28,28 +28,29 @@ void Main()
 	// Register Assets
 	TextureAsset::Register(U"Takeshi", U"images/takeshi_tmp.png");
 	TextureAsset::Register(U"Founder", U"images/founder_tmp.png");
-	TextureAsset::Register(U"PhotoStudio", U"images/photo_studio.png");
-
-	const MessageWindowStruct founder ={
-		.name = U"創設者",
-		.messages = U"やあ、よく来たね。\n私が見込んだ新入りさん。~ここは写真館《死の淵》だ。\nその名の通り、ここは死の淵と言って……~え？あなた誰って言った？~私のことを語るには、映画7本分の尺が必要になるけど……。~うーん、そんな露骨に嫌な顔しないで。\n君、本当に分かりやすいね。",
-		.standing_picture = TextureAsset(U"Founder"),
-	};
-
-	const MessageWindowStruct takeshi ={
-		.name = U"タケシ",
-		.messages = U"ここはどこだ、、？~俺はさっきまで雪山にいたはずだ、、~いったい何が起きたんだ。\nここは館みたいだが、、",
-		.standing_picture = TextureAsset(U"Takeshi"),
-	};
+	TextureAsset::Register(U"PhotoStudio", U"images/photo_studio.png") ;
 
 	MessageWindowContainer message_window_container(gm, font);
-	message_window_container.add_message_window(MessageWindow (font,founder));
-	message_window_container.add_message_window(MessageWindow (font,takeshi));
+	message_window_container.add_message_window(
+		MessageContent(font,
+		              MessageContentStruct{
+			              .name = U"創設者",
+			              .messages =
+			              U"やあ、よく来たね。\n私が見込んだ新入りさん。~ここは写真館《死の淵》だ。\nその名の通り、ここは死の淵と言って……~え？あなた誰って言った？~私のことを語るには、映画7本分の尺が必要になるけど……。~うーん、そんな露骨に嫌な顔しないで。\n君、本当に分かりやすいね。",
+			              .standing_picture = TextureAsset(U"Founder"),
+		              }));
+	message_window_container.add_message_window(
+		MessageContent(font,
+		              MessageContentStruct{
+			              .name = U"タケシ",
+			              .messages = U"ここはどこだ、、？~俺はさっきまで雪山にいたはずだ、、~いったい何が起きたんだ。\nここは館みたいだが、、",
+			              .standing_picture = TextureAsset(U"Takeshi"),
+		              }));
 
 	while (System::Update())
 	{
 		// draw background
-		(void)TextureAsset(U"PhotoStudio").resized(1920,1080).draw(0, 0);
+		(void)TextureAsset(U"PhotoStudio").resized(Scene::Width(),Scene::Height()).draw(0, 0);
 
 
 		if(KeySpace.down()) message_window_container.go_to_next_message();

@@ -1,10 +1,10 @@
 ﻿#include "stdafx.h"
-#include "MessageWindow.h"
+#include "MessageContent.h"
 
 #include "RectFUtility.h"
 
 // private
-void  MessageWindow::show_message_window(const String& name, const String& message) const
+void  MessageContent::show_message_window(const String& name, const String& message) const
 {
 	// texture
 	(void)standing_picture_.draw(  Arg::center( Scene::Width() / 2, Scene::Height() / 2));
@@ -24,7 +24,7 @@ void  MessageWindow::show_message_window(const String& name, const String& messa
 }
 
 // public
-void MessageWindow::update_logic()
+void MessageContent::update_logic()
 {
 	// update logic
 	if(is_waiting_for_input_) return;
@@ -45,13 +45,13 @@ void MessageWindow::update_logic()
 	if(current_split_message_index_ == split_messages_.size() - 1 && is_waiting_for_input_) is_showing_all_message_ = true;
 }
 
-void MessageWindow::update_render()
+void MessageContent::update_render()
 {
 	const auto message = current_message_.substr(0, message_char_index_);
 	show_message_window(name_, message);
 }
 
-void MessageWindow::go_to_next_message()
+void MessageContent::go_to_next_message()
 {
 	if(is_waiting_for_input_)
 	{
