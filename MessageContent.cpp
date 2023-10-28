@@ -44,9 +44,22 @@ void MessageContent::update_logic()
 
 }
 
+String insert_enter(const String& message)
+{
+	constexpr  int max_char_count = 20;
+	String result;
+	for(auto i = 0; i < message.size(); i++)
+	{
+		result += message[i];
+		if(i % max_char_count == max_char_count -1) result += U"\n";
+	}
+	return result;
+}
+
 void MessageContent::update_render()
 {
-	const auto message = current_message_.substr(0, message_char_index_);
+	auto message = current_message_.substr(0, message_char_index_);
+	message = insert_enter(message);
 	show_message_window(name_, message);
 }
 
