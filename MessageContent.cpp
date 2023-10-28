@@ -42,7 +42,6 @@ void MessageContent::update_logic()
 
 	if(message_char_index_ == current_message_.size() - 1) is_waiting_for_input_ = true;
 
-	if(current_split_message_index_ == split_messages_.size() - 1 && is_waiting_for_input_) is_showing_all_message_ = true;
 }
 
 void MessageContent::update_render()
@@ -61,6 +60,10 @@ void MessageContent::go_to_next_message()
 		current_message_ = split_messages_[current_split_message_index_];
 		message_char_index_ = 0;
 		is_waiting_for_input_ = false;
+
+		// raise flag to showed all messages
+		if(current_split_message_index_ == split_messages_.size() - 1) is_showing_all_message_ = true;
+
 	}else
 	{
 		// skip the current message feeding
