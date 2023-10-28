@@ -29,6 +29,7 @@ void Main()
 	TextureAsset::Register(U"Takeshi", U"images/takeshi_tmp.png");
 	TextureAsset::Register(U"Founder", U"images/founder_tmp.png");
 	TextureAsset::Register(U"PhotoStudio", U"images/photo_studio.png") ;
+	TextureAsset::Register(U"Me", U"images/siv3d-kun.png");
 
 	MessageWindowContainer message_window_container(gm, font);
 	message_window_container.add_message_window(
@@ -43,9 +44,44 @@ void Main()
 		MessageContent(font,
 		              MessageContentStruct{
 			              .name = U"タケシ",
-			              .messages = U"ここはどこだ、、？~俺はさっきまで雪山にいたはずだ、、~いったい何が起きたんだ。\nここは館みたいだが、、",
+			              .messages = U"あの、ここは一体……？\n僕、山登りに来ていたはずなんですが……。",
 			              .standing_picture = TextureAsset(U"Takeshi"),
 		              }));
+	message_window_container.add_message_window(
+	MessageContent(font,
+				  MessageContentStruct{
+					  .name = U"ワタシ",
+					  .messages = U"ようこそ、ここは写真館《黄泉の前》です。",
+					  .standing_picture = TextureAsset(U"Me"),
+				  }));
+	message_window_container.add_message_window(
+	MessageContent(font,
+				  MessageContentStruct{
+					  .name = U"タケシ",
+					  .messages = U"黄泉の前！？写真館！？",
+					  .standing_picture = TextureAsset(U"Takeshi"),
+				  }));
+	message_window_container.add_message_window(
+	MessageContent(font,
+			  MessageContentStruct{
+				  .name = U"ワタシ",
+				  .messages = U"簡単に言うと、あなたは今ひん死状態なんです。\nここは、ひん死の人が来る場所なので。",
+				  .standing_picture = TextureAsset(U"Me"),
+			  }));
+	message_window_container.add_message_window(
+	MessageContent(font,
+			  MessageContentStruct{
+				  .name = U"タケシ",
+				  .messages = U"おおー、だから《黄泉の前》なんですね！意味分かんないです！",
+				  .standing_picture = TextureAsset(U"Takeshi"),
+			  }));
+	message_window_container.add_message_window(
+	MessageContent(font,
+		  MessageContentStruct{
+			  .name = U"ワタシ",
+			  .messages = U"確かに、意味を考え出すとアレかもしれませんが……。",
+			  .standing_picture = TextureAsset(U"Me"),
+		  }));
 
 	while (System::Update())
 	{
