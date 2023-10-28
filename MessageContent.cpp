@@ -44,7 +44,7 @@ void MessageContent::update_logic()
 
 }
 
-String insert_enter(const String& message)
+static String insert_enter(const String& message)
 {
 	constexpr  int max_char_count = 25;
 	int counter = 0;
