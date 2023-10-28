@@ -1,10 +1,6 @@
 ﻿#include "stdafx.h"
 #include "MessageWindowContainer.h"
 
-void MessageWindowContainer::add_message_window(const MessageContent& message_window_struct)
-{
-	message_windows_.push_back(message_window_struct);
-}
 
 void MessageWindowContainer::update_logic()
 {

@@ -31,6 +31,15 @@ public:
 	void update_logic() override;
 	void update_render() override;
 
-	void add_message_window(const MessageContent& message_window_struct);
+	// void add_message_window(const MessageContent& message_window_struct);
 	void go_to_next_message();
+
+	template<class... Args>
+    void add_message_window(const Args&... args)
+	{
+		for(auto content : std::initializer_list<MessageContent>{args...})
+		{
+			message_windows_.push_back(content);
+		}
+	}
 };
