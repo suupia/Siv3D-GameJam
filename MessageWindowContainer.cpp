@@ -19,3 +19,8 @@ void MessageWindowContainer::go_to_next_message()
 {
 	message_windows_[current_message_window_index_].go_to_next_message();
 }
+
+void MessageWindowContainer::debug_print() const
+{
+	Print << U"MessageWindowContainer Debug Print";
+}

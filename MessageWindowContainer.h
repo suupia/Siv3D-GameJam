@@ -42,4 +42,6 @@ public:
 			message_windows_.push_back(MessageContent(font_,content_struct));
 		}
 	}
+
+	void debug_print() const;
 };
