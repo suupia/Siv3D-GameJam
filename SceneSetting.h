@@ -13,7 +13,5 @@ enum class SceneState {
 };
 
 struct SceneData {
-	
-};
 
-using Scene = SceneManager<SceneState, SceneData>;
+};

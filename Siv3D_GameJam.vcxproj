@@ -198,6 +198,7 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="PastPhotoButton.cpp" />
+    <ClCompile Include="PrologueScene.cpp" />
     <ClCompile Include="RectFUtility.cpp" />
     <ClCompile Include="SceneSetting.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -404,6 +405,7 @@
     <ClInclude Include="MessageContent.h" />
     <ClInclude Include="MessageWindowContainer.h" />
     <ClInclude Include="PastPhotoButton.h" />
+    <ClInclude Include="PrologueScene.h" />
     <ClInclude Include="RectFUtility.h" />
     <ClInclude Include="SceneSetting.h" />
     <ClInclude Include="stdafx.h" />
