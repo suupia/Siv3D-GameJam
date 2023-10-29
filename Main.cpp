@@ -1,6 +1,7 @@
 ﻿# include <Siv3D.hpp> // OpenSiv3D v0.6.11
 # include "MessageContent.h"
 #include "MessageWindowContainer.h"
+#include "PastPhotoButton.h"
 # include "RectFUtility.h"
 
 void set_up_window()
@@ -18,6 +19,27 @@ void set_up_window()
 
 	// Set Background Color
 	Scene::SetBackground(ColorF{ 139/ 255.0f,69/ 255.0f,19/ 255.0f});
+}
+
+bool Button(const Rect& rect, const Font& font, const String& text, bool enabled)
+{
+	if (enabled && rect.mouseOver())
+	{
+		Cursor::RequestStyle(CursorStyle::Hand);
+	}
+
+	if (enabled)
+	{
+		rect.draw(ColorF{ 0.3, 0.7, 1.0 });
+		font(text).drawAt(40, (rect.x + rect.w / 2), (rect.y + rect.h / 2));
+	}
+	else
+	{
+		rect.draw(ColorF{ 0.5 });
+		font(text).drawAt(40, (rect.x + rect.w / 2), (rect.y + rect.h / 2), ColorF{ 0.7 });
+	}
+
+	return (enabled && rect.leftClicked());
 }
 
 void Main()
@@ -80,6 +102,10 @@ void Main()
 		}
 	);
 
+	// Cause Determination Part
+	PastPhotoButton past_photo_button(gm, font,RectF{ 100, 50, 300, 100 });
+	std::vector<int> selected_indexes;
+
 	while (System::Update())
 	{
 		// draw background
@@ -88,10 +114,13 @@ void Main()
 
 		if(KeySpace.down()) message_window_container.go_to_next_message();
 
-		// message_window.update_logic();
-		// message_window.update_render();
 		message_window_container.update_logic();
 		message_window_container.update_render();
+
+
+		// Cause Determination Part
+		past_photo_button.update_logic();
+		past_photo_button.update_render();
 	}
 }
 

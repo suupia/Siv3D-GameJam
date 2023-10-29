@@ -197,6 +197,7 @@
       <AdditionalOptions>/Zc:__cplusplus </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="PastPhotoButton.cpp" />
     <ClCompile Include="RectFUtility.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -401,6 +402,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="MessageContent.h" />
     <ClInclude Include="MessageWindowContainer.h" />
+    <ClInclude Include="PastPhotoButton.h" />
     <ClInclude Include="RectFUtility.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
