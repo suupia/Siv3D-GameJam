@@ -3,6 +3,24 @@
 
 #include "RectFUtility.h"
 
+namespace  {
+	String insert_enter(const String& message)
+	{
+		constexpr  int max_char_count = 25;
+		int counter = 0;
+		String result;
+		for(auto i = 0; i < message.size(); i++)
+		{
+			result += message[i];
+			if(message[i] == U'\n') counter = 0;
+			if(counter % max_char_count == max_char_count -1) result += U"\n";
+			counter ++;
+		}
+		return result;
+	}
+
+}
+
 // private
 void  MessageContent::show_message_window(const String& name, const String& message) const
 {
@@ -44,20 +62,6 @@ void MessageContent::update_logic()
 
 }
 
-static String insert_enter(const String& message)
-{
-	constexpr  int max_char_count = 25;
-	int counter = 0;
-	String result;
-	for(auto i = 0; i < message.size(); i++)
-	{
-		result += message[i];
-		if(message[i] == U'\n') counter = 0;
-		if(counter % max_char_count == max_char_count -1) result += U"\n";
-		counter ++;
-	}
-	return result;
-}
 
 void MessageContent::update_render()
 {
