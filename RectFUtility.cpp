@@ -1,9 +1,9 @@
 ﻿#include "stdafx.h"
 #include "RectFUtility.h"
 
-RectF RectFUtility::calc_relative_rect(double offset_x, double offset_y, double width, double height)
+RectF RectFUtility::calc_relative_rect(double offset_x_ratio, double offset_y_ratio, double width_ratio, double height_ratio)
 {
-	return RectF{ offset_x * Scene::Width(), offset_y * Scene::Height(), width * Scene::Width(), height * Scene::Height() };
+	return RectF{ offset_x_ratio * Scene::Width(), offset_y_ratio * Scene::Height(), width_ratio * Scene::Width(), height_ratio * Scene::Height() };
 }
 
 Vec2 RectFUtility::calc_center_pos(const RectF& rect)

@@ -54,6 +54,7 @@ void Main()
 	TextureAsset::Register(U"Founder", U"images/founder_tmp.png");
 	TextureAsset::Register(U"PhotoStudio", U"images/photo_studio.png") ;
 	TextureAsset::Register(U"Me", U"images/siv3d-kun.png");
+	TextureAsset::Register(U"Book", U"images/book_tmp.png");
 
 	MessageWindowContainer message_window_container(gm, font);
 	message_window_container.add_message_content(
@@ -103,6 +104,7 @@ void Main()
 	);
 
 	// Cause Determination Part
+	// back ground
 	PastPhotoButton past_photo_button(gm, font,RectF{ 100, 50, 300, 100 });
 	std::vector<int> selected_indexes;
 
