@@ -5,8 +5,8 @@
 class PrologueScene : public SceneManager<SceneState, SceneData>::Scene
 {
 private:
-	std::unique_ptr<GameManager> gm_;
-	std::unique_ptr<Font>  font_;
+	GameManager gm_;
+	Font font_;
 	std::unique_ptr<MessageWindowContainer> message_window_container_;
 public:
 

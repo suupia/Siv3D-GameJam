@@ -5,6 +5,7 @@
 #include "PrologueScene.h"
 # include "RectFUtility.h"
 #include "SceneSetting.h"
+#include "TitleScene.h"
 
 void set_up_window()
 {
@@ -107,12 +108,13 @@ void Main()
 
 	// Cause Determination Part
 	// back ground
-	PastPhotoButton past_photo_button(gm, font,RectF{ 100, 50, 300, 100 });
-	std::vector<int> selected_indexes;
-
+	// PastPhotoButton past_photo_button(gm, font,RectF{ 100, 50, 300, 100 });
+	// std::vector<int> selected_indexes;
+	//
 
 	// Scene Manager
 	SceneManager<SceneState,SceneData> scene_manager;
+	scene_manager.add<TitleScene>(SceneState::Title);
 	scene_manager.add<PrologueScene>(SceneState::Prologue);
 
 	scene_manager.init(SceneState::Prologue);
@@ -132,6 +134,15 @@ void Main()
 		// // Cause Determination Part
 		// past_photo_button.update_logic();
 		// past_photo_button.update_render();
+
+		if(Key1.pressed())
+		{
+			scene_manager.changeScene(SceneState::Title);
+		}
+		if(Key2.pressed())
+		{
+			scene_manager.changeScene(SceneState::Prologue);
+		}
 
 		if(not scene_manager.update()) break;
 	}
