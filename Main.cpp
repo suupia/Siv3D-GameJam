@@ -40,14 +40,32 @@ void Main()
 	MessageWindowContainer message_window_container(gm, font);
 	auto a =	message_reader.readMessageAll();
 	auto b = message_content_picture_attacher.create_message_content_struct(a);
-	message_window_container.add_message_content(
+	message_window_container.add_message_contents(b);
 
-	);
+	// debug
+	auto zero = b.at(0);
+	Print <<U"zero.name: "<< zero.name;
+	Print <<U"zero.messages: "<< zero.messages;
+	// Print <<U"zero.standing_picture: "<< zero.standing_picture;
+	if(&zero.standing_picture != nullptr)
+	{
+		Print <<U"not null";
+	}
+	else
+	{
+		Print <<U"null";
+	}
+
 
 	while (System::Update())
 	{
 		// draw background
 		(void)TextureAsset(U"PhotoStudio").resized(Scene::Width(),Scene::Height()).draw(0, 0);
+
+		// message_window_container.update_logic();
+		 message_window_container.update_render();
+
+		if(KeySpace.down()) message_window_container.go_to_next_message();
 
 
 		if(Key0.down())

@@ -3,9 +3,9 @@
 #include "GameObject.h"
 
 struct MessageContentStruct {
-	const String& name;
-	const String& messages;
-	const TextureAsset& standing_picture;
+	const String name;
+	const String messages;
+	const TextureAsset standing_picture;
 };
 
 class MessageContent : public GameObject
@@ -39,7 +39,7 @@ public:
 	standing_picture_(message_window_struct.standing_picture)
 	{
 		split_messages_ = messages_.split(U'~');
-		current_message_ = split_messages_[0];
+		//current_message_ = split_messages_[0];  // I erase this line. Is it OK?
 	}
 
 	~MessageContent() = default;

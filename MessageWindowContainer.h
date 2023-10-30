@@ -35,6 +35,14 @@ public:
 	// void add_message_window(const MessageContent& message_window_struct);
 	void go_to_next_message();
 
+	void add_message_contents(const Array<MessageContentStruct>& message_content_structs)
+	{
+		for(auto content_struct : message_content_structs)
+		{
+			message_windows_.push_back(MessageContent(font_,content_struct));
+		}
+	}
+
 	template<class... Args>
     void add_message_content(const Args&... args)
 	{
