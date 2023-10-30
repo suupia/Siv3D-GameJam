@@ -46,10 +46,10 @@ void Main()
 		(void)TextureAsset(U"PhotoStudio").resized(Scene::Width(),Scene::Height()).draw(0, 0);
 
 
-		if(KeySpace.down())
+		if(Key0.down())
 		{
-			Print <<  message_reader.getMessageStruct().name;
-			Print << message_reader.getMessageStruct().messages;
+			Print <<  message_reader.readMessageOne().name;
+			Print << message_reader.readMessageOne().messages;
 		}
 	}
 }
