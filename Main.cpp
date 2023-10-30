@@ -38,15 +38,16 @@ void Main()
 	TextureAsset::Register(U"Me", U"images/siv3d-kun.png");
 
 	MessageWindowContainer message_window_container(gm, font);
-	auto a =	message_reader.readMessageAll();
-	auto b = message_content_picture_attacher.create_message_content_struct(a);
-	message_window_container.add_message_contents(b);
+	auto message_structs =	message_reader.readMessageAll();
+	auto message_content_structs = message_content_picture_attacher.create_message_content_struct(message_structs);
+	message_window_container.add_message_contents(message_content_structs);
 
 	// debug
-	auto zero = b.at(0);
+	auto zero = message_content_structs.at(0);
 	Print <<U"zero.name: "<< zero.name;
 	Print <<U"zero.messages: "<< zero.messages;
 	// Print <<U"zero.standing_picture: "<< zero.standing_picture;
+	Print << U"zero standing_picture" <<  zero.standing_picture.width();
 	if(&zero.standing_picture != nullptr)
 	{
 		Print <<U"not null";
@@ -63,7 +64,7 @@ void Main()
 		(void)TextureAsset(U"PhotoStudio").resized(Scene::Width(),Scene::Height()).draw(0, 0);
 
 		// message_window_container.update_logic();
-		 message_window_container.update_render();
+		message_window_container.update_render();
 
 		if(KeySpace.down()) message_window_container.go_to_next_message();
 
