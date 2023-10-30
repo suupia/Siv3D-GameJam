@@ -2,6 +2,7 @@
 #include "GameManager.h"
 #include "GameObject.h"
 #include "MessageContent.h"
+#include "MessageContentPictureAttacher.h"
 
 class MessageWindowContainer : public GameObject
 {

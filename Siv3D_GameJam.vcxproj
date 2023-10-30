@@ -119,6 +119,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MessageContent.cpp" />
+    <ClCompile Include="MessageContentPictureAttacher.cpp" />
     <ClCompile Include="MessageReader.cpp" />
     <ClCompile Include="MessageWindowContainer.cpp">
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -401,6 +402,7 @@
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="MessageContent.h" />
+    <ClInclude Include="MessageContentPictureAttacher.h" />
     <ClInclude Include="MessageReader.h" />
     <ClInclude Include="MessageWindowContainer.h" />
     <ClInclude Include="RectFUtility.h" />

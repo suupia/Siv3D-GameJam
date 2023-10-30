@@ -1,0 +1,32 @@
+#include "stdafx.h"
+#include "MessageContentPictureAttacher.h"
+
+#include "MessageReader.h"
+
+
+MessageContentPictureAttacher::MessageContentPictureAttacher()
+{
+	TextureAsset::Register(U"Takeshi", U"images/takeshi_tmp.png");
+	TextureAsset::Register(U"Founder", U"images/founder_tmp.png");
+	TextureAsset::Register(U"PhotoStudio", U"images/photo_studio.png") ;
+	TextureAsset::Register(U"Me", U"images/siv3d-kun.png");
+}
+
+Array<MessageContentStruct> MessageContentPictureAttacher::create_message_content_struct(Array<MessageStruct> message_structs)
+{
+	Array<MessageContentStruct> result;
+
+	for(auto content : message_structs)
+	{
+		TextureAsset person_picture = TextureAsset(U"Me");
+		if (content.name == U"Founder")
+			person_picture = TextureAsset(U"Founder");
+		else if (content.name == U"Takeshi")
+			person_picture = TextureAsset(U"Takeshi");
+		else
+			throw Error(U"Unexpected name\nThe name of the text file may be incorrect.");
+
+		result.push_back({content.name, content.messages, person_picture});
+	}
+	return result;
+}

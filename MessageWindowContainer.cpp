@@ -1,5 +1,6 @@
 ﻿#include "stdafx.h"
 #include "MessageWindowContainer.h"
+#include "MessageContentPictureAttacher.h"
 
 template void MessageWindowContainer::add_message_content<MessageContentStruct>(const MessageContentStruct&);
 

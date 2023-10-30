@@ -1,5 +1,6 @@
 ﻿# include <Siv3D.hpp> // OpenSiv3D v0.6.11
 # include "MessageContent.h"
+#include "MessageContentPictureAttacher.h"
 #include "MessageReader.h"
 #include "MessageWindowContainer.h"
 # include "RectFUtility.h"
@@ -26,6 +27,7 @@ void Main()
 	const Font font{ FontMethod::MSDF, 48 };
 	GameManager gm;
 	MessageReader message_reader;
+	MessageContentPictureAttacher message_content_picture_attacher;
 
 	set_up_window();
 
@@ -37,6 +39,7 @@ void Main()
 
 	MessageWindowContainer message_window_container(gm, font);
 	auto a =	message_reader.readMessageAll();
+	auto b = message_content_picture_attacher.create_message_content_struct(a);
 	message_window_container.add_message_content(
 
 	);
