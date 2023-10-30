@@ -1,4 +1,10 @@
 #pragma once
+#include "MessageContent.h"
+
+struct MessageStruct {
+	const String name;
+	const String messages;
+};
 
 class MessageReader
 {
@@ -6,6 +12,6 @@ class MessageReader
 	String current_line_;
 public:
 	MessageReader();
-	String getMessage();
+	MessageStruct getMessageStruct();
 
 };

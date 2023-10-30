@@ -13,22 +13,24 @@ MessageReader::MessageReader()
 	}
 }
 
-String MessageReader::getMessage()
+MessageStruct MessageReader::getMessageStruct()
 {
-	String result_line;
+	String name;
+	String messages;
+
 	String line;
 
 	reader_.readLine(line);
 	if(line.starts_with(U"$"))
 	{
-		result_line = U"[" + line.substr(1) + U"]\n";
+		name = line.substr(1);
 		while (line)
 		{
 			reader_.readLine(line);
-			result_line += line + U"\n";
+			messages += line + U"\n";
 		}
 		// erase the last "\n"
-		result_line.pop_back();result_line.pop_back();
+		messages.pop_back();messages.pop_back();
 	}
-	return result_line;
+	return MessageStruct{ name, messages };
 }
