@@ -39,12 +39,12 @@ void Main()
 
 	MessageWindowContainer message_window_container(gm, font);
 	auto message_structs = message_reader.readMessageAll();
-	// for (auto m_st : message_structs)
-	// {
-	// 	// Print << U"m_st.name: " << m_st.name;
-	// 	// Print << U"m_st.messages: " << m_st.messages;
-	// }
-	//
+	for (auto m_st : message_structs)
+	{
+		Print << U"m_st.name: " << m_st.name;
+		Print << U"m_st.messages: " << m_st.messages;
+	}
+
 	// auto message_content_structs = message_content_picture_attacher.create_message_content_struct(message_structs);
 	// // message_window_container.add_message_contents(message_content_structs);
 	//
@@ -76,13 +76,13 @@ void Main()
 	{
 		// draw background
 		(void)TextureAsset(U"PhotoStudio").resized(Scene::Width(),Scene::Height()).draw(0, 0);
-
+		//
 		// message_window_container.update_logic();
 		// message_window_container.update_render();
 		//
 		// if(KeySpace.down()) message_window_container.go_to_next_message();
 
-		//
+
 		// message_windows_.at(0).update_logic();
 		// message_windows_.at(0).update_render();
 		// if(Key2.down()) message_windows_.at(0).go_to_next_message();
