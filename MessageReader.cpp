@@ -4,7 +4,7 @@
 
 namespace
 {
-	MessageStruct ReadOneChunk(TextReader& reader_, String line)
+	Optional<MessageStruct> ReadOneChunk(TextReader& reader_, String line)
 	{
 		if(line.starts_with(U"$"))
 		{
@@ -16,12 +16,12 @@ namespace
 				messages += line + U"\n";
 			}
 			// erase the last "\n"
-			messages.pop_back();messages.pop_back();
+			messages.pop_back();
 			return MessageStruct{ name, messages };
 		}
 		else
 		{
-			throw Error{ U"Invalid format" };
+			return none;
 		}
 	}
 }
@@ -41,7 +41,14 @@ MessageStruct MessageReader::readMessageOne()
 {
 	String line; // Destination of read strings
 	reader_.readLine(line);
-	return  ReadOneChunk(reader_, line);
+	if(const auto message_struct = ReadOneChunk(reader_, line); message_struct)
+	{
+		return *message_struct;
+	}
+	else
+	{
+		throw Error{ U"Failed to read a message" };
+	}
 }
 
 Array<MessageStruct> MessageReader::readMessageAll()
@@ -51,7 +58,10 @@ Array<MessageStruct> MessageReader::readMessageAll()
 	reader_.readLines(lines);
 	for(const auto line: lines)
 	{
-		result.push_back(ReadOneChunk(reader_,line));
+		if(const auto message_struct = ReadOneChunk(reader_, line); message_struct)
+		{
+			result.push_back(*message_struct);
+		}
 	}
 	return result;
 }
