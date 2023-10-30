@@ -9,7 +9,9 @@ struct MessageStruct {
 class MessageReader
 {
 	TextReader reader_;
-	String current_line_;
+	Array<String> lines_; // Destination of read strings
+
+	Optional<MessageStruct>  PopOneChunk();
 public:
 	MessageReader();
 	[[nodiscard]]

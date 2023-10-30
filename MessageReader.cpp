@@ -4,7 +4,7 @@
 
 namespace
 {
-	Optional<MessageStruct> ReadOneChunk(TextReader& reader_, String line)
+	Optional<MessageStruct> ReadOneChunk(TextReader& reader_, String& line)
 	{
 		if(line.starts_with(U"$"))
 		{
@@ -12,7 +12,11 @@ namespace
 			String messages;
 			while (line)
 			{
+				Print << U"ReadOneChunk before line: " << line;
+
 				reader_.readLine(line);
+				Print << U"ReadOneChunk after line: " << line;
+
 				messages += line + U"\n";
 			}
 			// erase the last "\n"
@@ -37,6 +41,36 @@ MessageReader::MessageReader()
 	}
 }
 
+Optional<MessageStruct> MessageReader::PopOneChunk()
+{
+	while (true)
+	{
+		if(lines_.front().starts_with(U"$")) break;
+		lines_.pop_front();
+		if(lines_.size() <= 0) return  none;
+	}
+
+	assert(lines_.front().starts_with(U"$"));
+
+	const String name = lines_.front().substr(1);
+	lines_.pop_front();
+
+	String messages;
+	while (true)
+	{
+		if(lines_.empty()) return none;
+		if(lines_.front().starts_with(U"$")) break;
+		auto message_line = lines_.front();
+		lines_.pop_front();
+
+		messages += message_line + U"\n";
+	}
+	// erase the last "\n"
+	messages.pop_back();
+	return MessageStruct{name, messages};
+
+}
+
 MessageStruct MessageReader::readMessageOne()
 {
 	String line; // Destination of read strings
@@ -54,14 +88,21 @@ MessageStruct MessageReader::readMessageOne()
 Array<MessageStruct> MessageReader::readMessageAll()
 {
 	Array<MessageStruct> result;
-	Array<String> lines; // Destination of read strings
-	reader_.readLines(lines);
-	for(const auto line: lines)
+	reader_.readLines(lines_);
+	Print << U"lines" << lines_;
+
+	MessageStruct message_struct;
+	while (true)
 	{
-		if(const auto message_struct = ReadOneChunk(reader_, line); message_struct)
+		if(auto chunk = PopOneChunk(); chunk)
 		{
-			result.push_back(*message_struct);
+			result.push_back(*chunk);
+		}else
+		{
+			break;
 		}
 	}
+
 	return result;
 }
+
