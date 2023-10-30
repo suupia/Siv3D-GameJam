@@ -36,6 +36,7 @@ void Main()
 	TextureAsset::Register(U"Me", U"images/siv3d-kun.png");
 
 	MessageWindowContainer message_window_container(gm, font);
+   // auto a =	message_reader.readMessageAll();
 	message_window_container.add_message_content(
 
 	);

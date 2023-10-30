@@ -12,7 +12,9 @@ class MessageReader
 	String current_line_;
 public:
 	MessageReader();
+	[[nodiscard]]
 	MessageStruct readMessageOne();
+	[[nodiscard]]
 	Array<MessageStruct> readMessageAll();
 
 };

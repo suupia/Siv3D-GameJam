@@ -39,8 +39,7 @@ MessageReader::MessageReader()
 
 MessageStruct MessageReader::readMessageOne()
 {
-	String line;
-
+	String line; // Destination of read strings
 	reader_.readLine(line);
 	return  ReadOneChunk(reader_, line);
 }
@@ -48,11 +47,8 @@ MessageStruct MessageReader::readMessageOne()
 Array<MessageStruct> MessageReader::readMessageAll()
 {
 	Array<MessageStruct> result;
-
 	Array<String> lines; // Destination of read strings
-
 	reader_.readLines(lines);
-
 	for(const auto line: lines)
 	{
 		result.push_back(ReadOneChunk(reader_,line));
