@@ -45,42 +45,35 @@ void Main()
 		Print << U"m_st.messages: " << m_st.messages;
 	}
 
-	// auto message_content_structs = message_content_picture_attacher.create_message_content_struct(message_structs);
-	// // message_window_container.add_message_contents(message_content_structs);
-	//
-	// Array<MessageContent> message_windows_;
-	// for(auto content_struct : message_content_structs)
-	// {
-	// 	// Print << U"content_struct.name: " << content_struct.name;
-	// 	// Print << U"content_struct.messages: " << content_struct.messages;
-	// 	message_windows_.push_back(MessageContent(font,content_struct));
-	// }
-	//
-	// // debug
-	// auto zero = message_content_structs.at(0);
-	// Print <<U"zero.name: "<< zero.name;
-	// Print <<U"zero.messages: "<< zero.messages;
-	// // Print <<U"zero.standing_picture: "<< zero.standing_picture;
-	// Print << U"zero standing_picture" <<  zero.standing_picture.width();
-	// if(&zero.standing_picture != nullptr)
-	// {
-	// 	Print <<U"not null";
-	// }
-	// else
-	// {
-	// 	Print <<U"null";
-	// }
+	auto message_content_structs = message_content_picture_attacher.create_message_content_struct(message_structs);
+
+	Array<MessageContent> message_windows_;
+	for(auto content_struct : message_content_structs)
+	{
+		// Print << U"content_struct.name: " << content_struct.name;
+		// Print << U"content_struct.messages: " << content_struct.messages;
+		message_windows_.push_back(MessageContent(font,content_struct));
+	}
+
+	message_window_container.add_message_contents(message_windows_);
+
+	// debug
+	auto zero = message_content_structs.at(0);
+	Print <<U"zero.name: "<< zero.name;
+	Print <<U"zero.messages: "<< zero.messages;
+	// Print <<U"zero.standing_picture: "<< zero.standing_picture;
+	Print << U"zero standing_picture" <<  zero.standing_picture.width();
 
 
 	while (System::Update())
 	{
 		// draw background
 		(void)TextureAsset(U"PhotoStudio").resized(Scene::Width(),Scene::Height()).draw(0, 0);
-		//
-		// message_window_container.update_logic();
-		// message_window_container.update_render();
-		//
-		// if(KeySpace.down()) message_window_container.go_to_next_message();
+
+		message_window_container.update_logic();
+		message_window_container.update_render();
+
+		if(KeySpace.down()) message_window_container.go_to_next_message();
 
 
 		// message_windows_.at(0).update_logic();

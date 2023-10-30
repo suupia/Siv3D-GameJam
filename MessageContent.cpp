@@ -71,10 +71,10 @@ void MessageContent::update_logic()
 
 void MessageContent::update_render()
 {
-	 debug_show_message_window(name_, current_message_);
-	// auto message = current_message_.substr(0, message_char_index_);
-	// message = insert_enter(message);
-	// show_message_window(name_, message);
+	// debug_show_message_window(name_, current_message_);
+	auto message = current_message_.substr(0, message_char_index_);
+	message = insert_enter(message);
+	show_message_window(name_, message);
 }
 
 void MessageContent::go_to_next_message()

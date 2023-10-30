@@ -4,7 +4,7 @@
 
 namespace
 {
-	Optional<MessageStruct> ReadOneChunk(TextReader& reader_, String& line)
+	Optional<MessageStruct> ReadOneChunk(TextReader& reader, String& line)
 	{
 		if(line.starts_with(U"$"))
 		{
@@ -14,7 +14,7 @@ namespace
 			{
 				Print << U"ReadOneChunk before line: " << line;
 
-				reader_.readLine(line);
+				reader.readLine(line);
 				Print << U"ReadOneChunk after line: " << line;
 
 				messages += line + U"\n";
