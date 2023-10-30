@@ -4,9 +4,25 @@
 
 namespace
 {
-	MessageStruct ConvertToMessageStruct(const String& name, const String& messages)
+	MessageStruct ReadOneChunk(TextReader& reader_, String line)
 	{
-		return MessageStruct{ name, messages };
+		if(line.starts_with(U"$"))
+		{
+			const String name = line.substr(1);
+			String messages;
+			while (line)
+			{
+				reader_.readLine(line);
+				messages += line + U"\n";
+			}
+			// erase the last "\n"
+			messages.pop_back();messages.pop_back();
+			return MessageStruct{ name, messages };
+		}
+		else
+		{
+			throw Error{ U"Invalid format" };
+		}
 	}
 }
 
@@ -26,19 +42,7 @@ MessageStruct MessageReader::readMessageOne()
 	String line;
 
 	reader_.readLine(line);
-	if(line.starts_with(U"$"))
-	{
-		const String name = line.substr(1);
-		String messages;
-		while (line)
-		{
-			reader_.readLine(line);
-			messages += line + U"\n";
-		}
-		// erase the last "\n"
-		messages.pop_back();messages.pop_back();
-		return MessageStruct{ name, messages };
-	}
+	return  ReadOneChunk(reader_, line);
 }
 
 Array<MessageStruct> MessageReader::readMessageAll()
@@ -49,21 +53,9 @@ Array<MessageStruct> MessageReader::readMessageAll()
 
 	reader_.readLines(lines);
 
-	for(auto line: lines)
+	for(const auto line: lines)
 	{
-		if(line.starts_with(U"$"))
-		{
-			const String name = line.substr(1);
-			String messages;
-			while (line)
-			{
-				reader_.readLine(line);
-				messages += line + U"\n";
-			}
-			// erase the last "\n"
-			messages.pop_back();messages.pop_back();
-			result.push_back( MessageStruct{ name, messages });
-		}
+		result.push_back(ReadOneChunk(reader_,line));
 	}
 	return result;
 }
