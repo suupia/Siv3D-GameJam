@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "MessageContentPictureAttacher.h"
 
 #include "MessageReader.h"
@@ -19,12 +19,12 @@ Array<MessageContentStruct> MessageContentPictureAttacher::create_message_conten
 	for(auto content : message_structs)
 	{
 		TextureAsset person_picture = TextureAsset(U"Me");
-		if (content.name == U"Founder")
+		if (content.name == U"創設者")
 			person_picture = TextureAsset(U"Founder");
 		else if (content.name == U"Takeshi")
 			person_picture = TextureAsset(U"Takeshi");
 		else
-			throw Error(U"Unexpected name\nThe name of the text file may be incorrect.");
+			throw Error(U"Unexpected name name:{}\nThe name of the text file may be incorrect."_fmt(content.name));
 
 		result.push_back({content.name, content.messages, person_picture});
 	}
