@@ -2,9 +2,8 @@
 #include "stdafx.h"
 #include "MessageReader.h"
 
-MessageReader::MessageReader()
+MessageReader::MessageReader(const String& path) : reader_{path}
 {
-	reader_ =  TextReader{ U"texts/sc_prologue.txt" };
 	// If the file cannot be opened
 	if (not reader_)
 	{

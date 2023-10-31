@@ -9,7 +9,7 @@ namespace
 	{
 		MessageContentContainer message_content_container(gm, font);
 
-		const auto message_structs = MessageReader().readMessageAll();
+		const auto message_structs = MessageReader(U"texts/sc_Takeshi_1.txt" ).readMessageAll();
 		const auto message_content_structs = MessageContentPictureAttacher().create_message_content_struct(message_structs);
 
 		Array<MessageContent> message_contents;
