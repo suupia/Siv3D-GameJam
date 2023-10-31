@@ -87,10 +87,6 @@ void Main()
 	// Scene Manager
 	auto scene_manager = set_up_scene_manager();
 
-	// Message Content Container
-	auto message_content_container  = build_message_content_container(gm, font);
-
-
 	while (System::Update())
 	{
 		// // draw background
@@ -117,11 +113,6 @@ void Main()
 		}
 
 		if(not scene_manager.update()) break;
-
-		message_content_container.update_logic();
-		message_content_container.update_render();
-
-		if(KeySpace.down()) message_content_container.go_to_next_message();
 
 	}
 }
