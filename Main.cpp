@@ -1,9 +1,13 @@
 ﻿# include <Siv3D.hpp> // OpenSiv3D v0.6.11
 # include "MessageContent.h"
+#include "PastPhotoButton.h"
+#include "PrologueScene.h"
 #include "MessageContentPictureAttacher.h"
 #include "MessageReader.h"
 #include "MessageContentContainer.h"
 # include "RectFUtility.h"
+#include "SceneSetting.h"
+#include "TitleScene.h"
 
 namespace
 {
@@ -24,22 +28,36 @@ namespace
 		Scene::SetBackground(ColorF{ 139/ 255.0f,69/ 255.0f,19/ 255.0f});
 	}
 
-	MessageContentContainer build_message_content_container(GameManager& gm, const Font& font)
+	SceneManager<SceneState,SceneData> set_up_scene_manager()
 	{
-		MessageContentContainer message_content_container(gm, font);
+		SceneManager<SceneState,SceneData> scene_manager;
+		scene_manager.add<TitleScene>(SceneState::Title);
+		scene_manager.add<PrologueScene>(SceneState::Prologue);
 
-		const auto message_structs = MessageReader().readMessageAll();
-	    const auto message_content_structs = MessageContentPictureAttacher().create_message_content_struct(message_structs);
-
-		Array<MessageContent> message_contents;
-		for(auto content_struct : message_content_structs)
-		{
-			message_contents.push_back(MessageContent(font,content_struct));
-		}
-		message_content_container.add_message_contents(message_contents);
-
-		return message_content_container;
+		scene_manager.init(SceneState::Prologue);
+		return  scene_manager;
 	}
+}
+
+bool Button(const Rect& rect, const Font& font, const String& text, bool enabled)
+{
+	if (enabled && rect.mouseOver())
+	{
+		Cursor::RequestStyle(CursorStyle::Hand);
+	}
+
+	if (enabled)
+	{
+		rect.draw(ColorF{ 0.3, 0.7, 1.0 });
+		font(text).drawAt(40, (rect.x + rect.w / 2), (rect.y + rect.h / 2));
+	}
+	else
+	{
+		rect.draw(ColorF{ 0.5 });
+		font(text).drawAt(40, (rect.x + rect.w / 2), (rect.y + rect.h / 2), ColorF{ 0.7 });
+	}
+
+	return (enabled && rect.leftClicked());
 }
 
 void Main()
@@ -49,17 +67,22 @@ void Main()
 
 	set_up_window();
 
-	auto message_content_container  = build_message_content_container(gm, font);
+	// Scene Manager
+	auto scene_manager = set_up_scene_manager();
 
 	while (System::Update())
 	{
-		// draw background
-		(void)TextureAsset(U"PhotoStudio").resized(Scene::Width(),Scene::Height()).draw(0, 0);
+		if(Key1.pressed())
+		{
+			scene_manager.changeScene(SceneState::Title);
+		}
+		if(Key2.pressed())
+		{
+			scene_manager.changeScene(SceneState::Prologue);
+		}
 
-		message_content_container.update_logic();
-		message_content_container.update_render();
+		if(not scene_manager.update()) break;
 
-		if(KeySpace.down()) message_content_container.go_to_next_message();
 	}
 }
 

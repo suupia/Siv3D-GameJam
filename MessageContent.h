@@ -42,7 +42,7 @@ public:
 	~MessageContent() = default;
 
 	void update_logic() override;
-	void update_render() override;
+	void update_render() const override;
 
 	void show_all_message();
 	[[nodiscard]]

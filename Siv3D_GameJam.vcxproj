@@ -199,11 +199,15 @@
       <AdditionalOptions>/Zc:__cplusplus </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="PastPhotoButton.cpp" />
+    <ClCompile Include="PrologueScene.cpp" />
     <ClCompile Include="RectFUtility.cpp" />
+    <ClCompile Include="SceneSetting.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\engine\texture\box-shadow\128.png" />
@@ -402,11 +406,15 @@
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="MessageContent.h" />
+    <ClInclude Include="PastPhotoButton.h" />
+    <ClInclude Include="PrologueScene.h" />
     <ClInclude Include="MessageContentPictureAttacher.h" />
     <ClInclude Include="MessageReader.h" />
     <ClInclude Include="MessageContentContainer.h" />
     <ClInclude Include="RectFUtility.h" />
+    <ClInclude Include="SceneSetting.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App\example\obj\blacksmith.obj">
@@ -491,6 +499,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\images\back_photoStudio.png" />
+    <Content Include="App\images\book_tmp.png" />
     <Content Include="App\images\founder_tmp.png" />
     <Content Include="App\images\photo_studio.png" />
     <Content Include="App\images\takeshi_tmp.png" />

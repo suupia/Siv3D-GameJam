@@ -9,7 +9,7 @@ void MessageContentContainer::update_logic()
 	message_content.update_logic();
 }
 
-void MessageContentContainer::update_render()
+void MessageContentContainer::update_render() const
 {
 	message_contents_.at(current_message_content_index_).update_render();
 }

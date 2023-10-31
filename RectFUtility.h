@@ -3,7 +3,7 @@
 static  class RectFUtility
 {
 public:
-	static RectF calc_relative_rect(double offset_x, double offset_y, double width, double height);
+	static RectF calc_relative_rect(double offset_x_ratio, double offset_y_ratio, double width_ratio, double height_ratio);
 
 	static Vec2 calc_center_pos(const RectF& rect);
 
