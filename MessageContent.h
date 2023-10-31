@@ -18,9 +18,7 @@ private:
 	const TextureAsset standing_picture_;
 
 	int message_char_index_ = 0;
-	// int current_split_message_index_ = 0;
-	// String current_message_;
-	// Array<String> split_messages_;
+	String current_message_;
 	float interval_second_ = 0.07f;
 	double timer = 0.0f;
 
@@ -46,5 +44,6 @@ public:
 	void update_logic() override;
 	void update_render() override;
 
+	void show_all_message();
 	bool is_show_all_message() const { return is_showing_all_message_; }  // 実装ファイルに書いた方がよい？
 };

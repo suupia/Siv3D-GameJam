@@ -49,14 +49,23 @@ void MessageContent::update_logic()
 		}
 	}
 
-	if(message_char_index_ == messages_.size() - 1) is_waiting_for_input_ = true;
+	if(message_char_index_ == messages_.size() - 1)
+	{
+		is_waiting_for_input_ = true;
+		is_showing_all_message_ = true;
+	}
 
 }
 
 
 void MessageContent::update_render()
 {
-
-	show_message_window(name_, messages_);
+	current_message_ = messages_.substr(0, message_char_index_);
+	show_message_window(name_, current_message_);
 }
 
+void MessageContent::show_all_message()
+{
+	message_char_index_ = static_cast<int>(messages_.size()) - 1;
+	is_showing_all_message_ = true;
+}
