@@ -2,34 +2,6 @@
 #include "stdafx.h"
 #include "MessageReader.h"
 
-namespace
-{
-	Optional<MessageStruct> ReadOneChunk(TextReader& reader, String& line)
-	{
-		if(line.starts_with(U"$"))
-		{
-			const String name = line.substr(1);
-			String messages;
-			while (line)
-			{
-				Print << U"ReadOneChunk before line: " << line;
-
-				reader.readLine(line);
-				Print << U"ReadOneChunk after line: " << line;
-
-				messages += line + U"\n";
-			}
-			// erase the last "\n"
-			messages.pop_back();
-			return MessageStruct{ name, messages };
-		}
-		else
-		{
-			return none;
-		}
-	}
-}
-
 MessageReader::MessageReader()
 {
 	reader_ =  TextReader{ U"texts/sc_prologue.txt" };
@@ -39,6 +11,9 @@ MessageReader::MessageReader()
 		// throw an error
 		throw Error{ U"Failed to open `sc_prologue.txt`" };
 	}
+
+	// Read once to avoid error !!
+	reader_.readLines(lines_);
 }
 
 Optional<MessageStruct> MessageReader::PopOneChunk()
@@ -73,11 +48,9 @@ Optional<MessageStruct> MessageReader::PopOneChunk()
 
 MessageStruct MessageReader::readMessageOne()
 {
-	String line; // Destination of read strings
-	reader_.readLine(line);
-	if(const auto message_struct = ReadOneChunk(reader_, line); message_struct)
+	if(const auto chunk= PopOneChunk(); chunk)
 	{
-		return *message_struct;
+		return *chunk;
 	}
 	else
 	{
@@ -88,8 +61,6 @@ MessageStruct MessageReader::readMessageOne()
 Array<MessageStruct> MessageReader::readMessageAll()
 {
 	Array<MessageStruct> result;
-	reader_.readLines(lines_);
-	Print << U"lines" << lines_;
 
 	MessageStruct message_struct;
 	while (true)

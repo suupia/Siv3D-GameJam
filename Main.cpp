@@ -37,18 +37,18 @@ void Main()
 	TextureAsset::Register(U"PhotoStudio", U"images/photo_studio.png") ;
 	TextureAsset::Register(U"Me", U"images/siv3d-kun.png");
 
-	MessageWindowContainer message_window_container(gm, font);
-	auto message_structs = message_reader.readMessageAll();
-
-	auto message_content_structs = message_content_picture_attacher.create_message_content_struct(message_structs);
-
-	Array<MessageContent> message_windows_;
-	for(auto content_struct : message_content_structs)
-	{
-		message_windows_.push_back(MessageContent(font,content_struct));
-	}
-
-	message_window_container.add_message_contents(message_windows_);
+	// MessageWindowContainer message_window_container(gm, font);
+	// auto message_structs = message_reader.readMessageAll();
+	//
+	// auto message_content_structs = message_content_picture_attacher.create_message_content_struct(message_structs);
+	//
+	// Array<MessageContent> message_windows_;
+	// for(auto content_struct : message_content_structs)
+	// {
+	// 	message_windows_.push_back(MessageContent(font,content_struct));
+	// }
+	//
+	// message_window_container.add_message_contents(message_windows_);
 
 
 	while (System::Update())
@@ -56,16 +56,17 @@ void Main()
 		// draw background
 		(void)TextureAsset(U"PhotoStudio").resized(Scene::Width(),Scene::Height()).draw(0, 0);
 
-		message_window_container.update_logic();
-		message_window_container.update_render();
-
-		if(KeySpace.down()) message_window_container.go_to_next_message();
+		// message_window_container.update_logic();
+		// message_window_container.update_render();
+		//
+		// if(KeySpace.down()) message_window_container.go_to_next_message();
 
 
 		if(Key0.down())
 		{
-			Print <<  message_reader.readMessageOne().name;
-			Print << message_reader.readMessageOne().messages;
+			auto readOne = message_reader.readMessageOne();
+			Print <<  readOne.name;
+			Print << readOne.messages;
 		}
 	}
 }
