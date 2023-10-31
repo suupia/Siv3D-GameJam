@@ -1,6 +1,6 @@
 #pragma once
-#include "GameManager.h"
-#include "MessageContentContainer.h"
+#include "../GameManager/GameManager.h"
+#include "../GameObject//MessageContentContainer.h"
 #include "SceneSetting.h"
 
 class PrologueScene : public SceneManager<SceneState, SceneData>::Scene

@@ -1,7 +1,6 @@
-﻿#include "stdafx.h"
+﻿#include "../stdafx.h"
 #include "MessageContent.h"
-
-#include "RectFUtility.h"
+#include "../Utility/RectFUtility.h"
 
 // private
 void  MessageContent::show_message_window(const String& name, const String& message) const

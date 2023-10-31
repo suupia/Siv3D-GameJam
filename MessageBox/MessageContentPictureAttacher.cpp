@@ -1,8 +1,9 @@
-﻿#include "stdafx.h"
+﻿#include "../stdafx.h"
 #include "MessageContentPictureAttacher.h"
-
 #include "MessageReader.h"
 
+
+struct MessageContentStruct;
 
 MessageContentPictureAttacher::MessageContentPictureAttacher()
 {

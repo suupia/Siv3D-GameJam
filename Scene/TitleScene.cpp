@@ -1,7 +1,6 @@
-﻿#include "stdafx.h"
+﻿#include "../stdafx.h"
 #include "TitleScene.h"
-
-#include "RectFUtility.h"
+#include "../Utility/RectFUtility.h"
 
 TitleScene::TitleScene(const InitData& init):
 	IScene(init),

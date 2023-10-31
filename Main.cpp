@@ -1,15 +1,8 @@
 ﻿# include <Siv3D.hpp> // OpenSiv3D v0.6.11
-
-#include "Episode1Scene.h"
-# include "MessageContent.h"
-#include "PastPhotoButton.h"
-#include "PrologueScene.h"
-#include "MessageContentPictureAttacher.h"
-#include "MessageReader.h"
-#include "MessageContentContainer.h"
-# include "RectFUtility.h"
-#include "SceneSetting.h"
-#include "TitleScene.h"
+#include "Scene/SceneSetting.h"
+#include "Scene/Episode1Scene.h"
+#include "Scene/PrologueScene.h"
+#include "Scene/TitleScene.h"
 
 namespace
 {

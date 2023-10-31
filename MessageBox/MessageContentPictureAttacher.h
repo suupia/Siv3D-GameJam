@@ -1,5 +1,5 @@
 #pragma once
-#include "MessageContent.h"
+#include "../GameObject//MessageContent.h"
 #include "MessageReader.h"
 
 class MessageContentPictureAttacher
