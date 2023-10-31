@@ -9,6 +9,8 @@ TitleScene::TitleScene(const InitData& init):
 		              Scene::Width() / 2, Scene::Height() / 2 + 100, 200, 100
 	              }, font_, U"はじめる")
 {
+	TextureAsset::Register(U"PhotoStudio", U"images/back_photoStudio.png") ;
+
 }
 
 void TitleScene::update(){

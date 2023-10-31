@@ -28,7 +28,6 @@ PrologueScene::PrologueScene(const InitData& init) : IScene(init), gm_(GameManag
 {
 	Print << U"Constructed PrologueScene";
 
-
 }
 
 void PrologueScene::update()

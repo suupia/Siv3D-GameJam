@@ -34,7 +34,7 @@ namespace
 		scene_manager.add<TitleScene>(SceneState::Title);
 		scene_manager.add<PrologueScene>(SceneState::Prologue);
 
-		scene_manager.init(SceneState::Prologue);
+		scene_manager.init(SceneState::Title);
 		return  scene_manager;
 	}
 }
