@@ -1,6 +1,5 @@
-﻿#include "stdafx.h"
+﻿#include "../stdafx.h"
 #include "MessageContentContainer.h"
-#include "MessageContentPictureAttacher.h"
 
 
 void MessageContentContainer::update_logic()

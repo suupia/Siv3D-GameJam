@@ -1,6 +1,6 @@
 #pragma once
-#include "Button.h"
-#include "GameManager.h"
+#include "../Button/Button.h"
+#include "../GameManager/GameManager.h"
 #include "SceneSetting.h"
 
 class TitleScene: public SceneManager<SceneState, SceneData>::Scene

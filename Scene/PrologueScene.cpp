@@ -1,8 +1,7 @@
-#include "stdafx.h"
+#include "../stdafx.h"
 #include "PrologueScene.h"
-#include "MessageContentContainer.h"
-#include "MessageContentContainerBuilder.h"
-#include "PastPhotoButton.h"
+#include "../MessageBox/MessageContentContainerBuilder.h"
+#include "../GameObject/PastPhotoButton.h"
 
 PrologueScene::PrologueScene(const InitData& init) :
 	IScene(init),

@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "GameManager.h"
+#include "../GameManager/GameManager.h"
 #include "GameObject.h"
 #include "MessageContent.h"
 

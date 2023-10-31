@@ -1,5 +1,5 @@
 # include <Siv3D.hpp> // OpenSiv3D v0.6.11
-#include "stdafx.h"
+#include "../stdafx.h"
 #include "MessageReader.h"
 
 MessageReader::MessageReader(const String& path) : reader_{path}

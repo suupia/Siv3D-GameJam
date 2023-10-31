@@ -1,4 +1,4 @@
-﻿#include "stdafx.h"
+﻿#include "../stdafx.h"
 #include "PastPhotoButton.h"
 
 void PastPhotoButton::update_logic()

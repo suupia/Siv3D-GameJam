@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "MessageContentContainer.h"
+#include "../GameObject/MessageContentContainer.h"
 
 class MessageContentContainerBuilder
 {

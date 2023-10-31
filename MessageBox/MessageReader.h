@@ -1,5 +1,4 @@
 #pragma once
-#include "MessageContent.h"
 
 struct MessageStruct {
 	const String name;

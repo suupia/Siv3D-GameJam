@@ -1,7 +1,6 @@
 ﻿#pragma once
-#include "Button.h"
-#include "GameManager.h"
-#include "MessageContentContainer.h"
+#include "../GameManager/GameManager.h"
+#include "../GameObject//MessageContentContainer.h"
 #include "SceneSetting.h"
 
 class Episode1Scene: public SceneManager<SceneState, SceneData>::Scene

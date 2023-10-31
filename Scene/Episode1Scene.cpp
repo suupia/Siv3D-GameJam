@@ -1,7 +1,7 @@
-﻿#include "stdafx.h"
+﻿#include "../stdafx.h"
 #include "Episode1Scene.h"
-#include "MessageContentContainerBuilder.h"
-
+#include "../MessageBox/MessageContentContainerBuilder.h"
+#include "../GameManager/GameManager.h"
 
 Episode1Scene::Episode1Scene(const InitData& init):
 	IScene(init),

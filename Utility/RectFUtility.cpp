@@ -1,4 +1,4 @@
-﻿#include "stdafx.h"
+﻿#include "../stdafx.h"
 #include "RectFUtility.h"
 
 RectF RectFUtility::calc_relative_rect(double offset_x_ratio, double offset_y_ratio, double width_ratio, double height_ratio)

@@ -1,5 +1,4 @@
 ﻿#pragma once
-#include "GameManager.h"
 #include "GameObject.h"
 
 struct MessageContentStruct {
