@@ -43,4 +43,5 @@ void PrologueScene::update()
 
 void PrologueScene::draw() const
 {
+
 }
