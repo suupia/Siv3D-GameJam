@@ -46,6 +46,5 @@ public:
 	void update_logic() override;
 	void update_render() override;
 
-	void go_to_next_message();
 	bool is_show_all_message() const { return is_showing_all_message_; }  // 実装ファイルに書いた方がよい？
 };

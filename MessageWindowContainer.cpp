@@ -20,5 +20,4 @@ void MessageWindowContainer::go_to_next_message()
 {
 	current_message_window_index_ ++ ;
 	if(message_windows_.size() <= current_message_window_index_) current_message_window_index_ = message_windows_.size() -1;
-	//message_windows_.at(current_message_window_index_).go_to_next_message();
 }

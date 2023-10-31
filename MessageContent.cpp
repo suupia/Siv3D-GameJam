@@ -4,21 +4,6 @@
 #include "RectFUtility.h"
 
 namespace  {
-	String insert_enter(const String& message)
-	{
-		constexpr  int max_char_count = 25;
-		int counter = 0;
-		String result;
-		for(auto i = 0; i < message.size(); i++)
-		{
-			result += message[i];
-			if(message[i] == U'\n') counter = 0;
-			if(counter % max_char_count == max_char_count -1) result += U"\n";
-			counter ++;
-		}
-		return result;
-	}
-
 	void debug_show_message_window(const String& name, const String& message)
 	{
 		Print << U"name : " << name;
@@ -71,29 +56,7 @@ void MessageContent::update_logic()
 
 void MessageContent::update_render()
 {
-	// debug_show_message_window(name_, current_message_);
-	// auto message = current_message_.substr(0, message_char_index_);
-	// message = insert_enter(message);
+
 	show_message_window(name_, messages_);
 }
 
-void MessageContent::go_to_next_message()
-{
-	// if(is_waiting_for_input_)
-	// {
-	// 	// start feeding the next message
-	// 	current_split_message_index_++;
-	// 	if(current_split_message_index_ >= split_messages_.size()) current_split_message_index_ = split_messages_.size() - 1;
-	// 	current_message_ = split_messages_[current_split_message_index_];
-	// 	message_char_index_ = 0;
-	// 	is_waiting_for_input_ = false;
-	//
-	// 	// raise flag to showed all messages
-	// 	if(current_split_message_index_ == split_messages_.size() - 1) is_showing_all_message_ = true;
-	//
-	// }else
-	// {
-	// 	// skip the current message feeding
-	// 	message_char_index_= static_cast<int>(current_message_.size()) - 1;
-	// }
-}
