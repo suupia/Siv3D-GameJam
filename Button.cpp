@@ -41,5 +41,6 @@ void Button::draw() const
 	{
 		Cursor::RequestStyle(CursorStyle::Hand);
 	}
-	rect_.draw();
+	rect_.draw(ColorF{ 0.3, 0.7, 1.0 });
+	(void)font_(text_).drawAt(40, (rect_.x + rect_.w / 2), (rect_.y + rect_.h / 2));
 }

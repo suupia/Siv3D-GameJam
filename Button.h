@@ -3,8 +3,8 @@
 class Button
 {
 	RectF rect_;
-	const Font& font_;
-	const String& text_;
+	const Font font_;
+	const String text_;
 public:
 
 	Button(RectF rect, const Font& font, const String& text);

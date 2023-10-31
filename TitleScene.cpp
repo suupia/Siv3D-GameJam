@@ -26,12 +26,18 @@ namespace
 	}
 }
 
-TitleScene::TitleScene(const InitData& init): IScene(init),gm_(GameManager()),font_{FontMethod::MSDF, 48}
+TitleScene::TitleScene(const InitData& init): IScene(init),gm_(GameManager()),font_{FontMethod::MSDF, 48}, start_button_(RectF{Scene::Width() / 2, Scene::Height() / 2 + 100, 200, 100}, font_, U"はじめる")
 {
 }
 
 void TitleScene::update(){
 	if(KeyA.down()) changeScene(SceneState::Prologue, 2.0s);
+
+	if(start_button_.is_down())
+	{
+		Print << U"start";
+		changeScene(SceneState::Prologue, 2.0s);
+	}
 
 
 }
@@ -41,10 +47,5 @@ void TitleScene::draw() const {
 
 	font_(U"写真館<<黄泉の前>>").drawAt(Scene::Width() / 2, Scene::Height() / 2, Palette::Black);
 
-	if(	Button(RectF{Scene::Width() / 2, Scene::Height() / 2 + 100, 200, 100}, font_, U"はじめる", true))
-	{
-		Print << U"はじめる";
-	}
-
-
+	start_button_.draw();
 }
