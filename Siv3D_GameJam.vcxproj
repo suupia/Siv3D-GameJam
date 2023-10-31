@@ -121,7 +121,7 @@
     <ClCompile Include="MessageContent.cpp" />
     <ClCompile Include="MessageContentPictureAttacher.cpp" />
     <ClCompile Include="MessageReader.cpp" />
-    <ClCompile Include="MessageWindowContainer.cpp">
+    <ClCompile Include="MessageContentContainer.cpp">
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <Optimization>Disabled</Optimization>
@@ -404,7 +404,7 @@
     <ClInclude Include="MessageContent.h" />
     <ClInclude Include="MessageContentPictureAttacher.h" />
     <ClInclude Include="MessageReader.h" />
-    <ClInclude Include="MessageWindowContainer.h" />
+    <ClInclude Include="MessageContentContainer.h" />
     <ClInclude Include="RectFUtility.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>

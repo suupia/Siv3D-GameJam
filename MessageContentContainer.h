@@ -2,9 +2,9 @@
 #include "GameManager.h"
 #include "GameObject.h"
 #include "MessageContent.h"
-#include "MessageContentPictureAttacher.h"
 
-class MessageWindowContainer : public GameObject
+
+class MessageContentContainer : public GameObject
 {
 private:
 	GameManager& gm_;
@@ -12,18 +12,18 @@ private:
 	int render_id_;
 	const Font& font_;
 
-	Array<MessageContent> message_windows_;
-	int current_message_window_index_ = 0;
+	Array<MessageContent> message_contents_;
+	int current_message_content_index_ = 0;
 
 public:
-	MessageWindowContainer(GameManager& gm, const Font& font
+	MessageContentContainer(GameManager& gm, const Font& font
 		) : gm_(gm), font_(font)
 	{
 		logic_id_ = gm_.register_logic([&]() { this->update_logic();});
 		render_id_ = gm_.register_render([&]() { this->update_render();});
 	}
 
-	~MessageWindowContainer()
+	~MessageContentContainer()
 	{
 		gm_.unregister_logic(logic_id_);
 		gm_.unregister_render(render_id_);

@@ -2,7 +2,7 @@
 # include "MessageContent.h"
 #include "MessageContentPictureAttacher.h"
 #include "MessageReader.h"
-#include "MessageWindowContainer.h"
+#include "MessageContentContainer.h"
 # include "RectFUtility.h"
 
 namespace
@@ -40,7 +40,7 @@ void Main()
 	TextureAsset::Register(U"PhotoStudio", U"images/photo_studio.png") ;
 	TextureAsset::Register(U"Me", U"images/siv3d-kun.png");
 
-	MessageWindowContainer message_window_container(gm, font);
+	MessageContentContainer message_window_container(gm, font);
 	auto message_structs = message_reader.readMessageAll();
 
 	auto message_content_structs = message_content_picture_attacher.create_message_content_struct(message_structs);
