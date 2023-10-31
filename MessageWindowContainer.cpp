@@ -2,7 +2,6 @@
 #include "MessageWindowContainer.h"
 #include "MessageContentPictureAttacher.h"
 
-template void MessageWindowContainer::add_message_content<MessageContentStruct>(const MessageContentStruct&);
 
 void MessageWindowContainer::update_logic()
 {
@@ -13,6 +12,14 @@ void MessageWindowContainer::update_logic()
 void MessageWindowContainer::update_render()
 {
 	message_windows_.at(current_message_window_index_).update_render();
+}
+
+void MessageWindowContainer::add_message_contents(const Array<MessageContent>& message_content_structs)
+{
+	for(auto content_struct : message_content_structs)
+	{
+		message_windows_.push_back(content_struct);
+	}
 }
 
 void MessageWindowContainer::go_to_next_message()
@@ -28,3 +35,4 @@ void MessageWindowContainer::go_to_next_message()
 		message_window.show_all_message();
 	}
 }
+
