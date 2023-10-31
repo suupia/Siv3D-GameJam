@@ -8,7 +8,6 @@ void MessageWindowContainer::update_logic()
 {
 	auto&  message_window = 	message_windows_.at(current_message_window_index_);
 	message_window.update_logic();
-	// if(message_window .is_show_all_message())current_message_window_index_++;
 }
 
 void MessageWindowContainer::update_render()

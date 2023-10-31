@@ -3,15 +3,6 @@
 
 #include "RectFUtility.h"
 
-namespace  {
-	void debug_show_message_window(const String& name, const String& message)
-	{
-		Print << U"name : " << name;
-		Print << U"message : " << message;
-	}
-
-}
-
 // private
 void  MessageContent::show_message_window(const String& name, const String& message) const
 {
