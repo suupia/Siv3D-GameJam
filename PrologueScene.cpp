@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "PrologueScene.h"
-
-#include "MessageContent.h"
-#include "MessageWindowContainer.h"
+#include "MessageContentContainer.h"
 #include "PastPhotoButton.h"
 
 
@@ -10,7 +8,7 @@ PrologueScene::PrologueScene(const InitData& init) : IScene(init), gm_(GameManag
 {
 	Print << U"Constructed PrologueScene";
 
-	message_window_container_  = std::make_unique<MessageWindowContainer>(gm_, font_);
+	message_window_container_  = std::make_unique<MessageContentContainer>(gm_, font_);
 
 }
 

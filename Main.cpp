@@ -1,9 +1,13 @@
 ﻿# include <Siv3D.hpp> // OpenSiv3D v0.6.11
 # include "MessageContent.h"
+#include "PastPhotoButton.h"
+#include "PrologueScene.h"
 #include "MessageContentPictureAttacher.h"
 #include "MessageReader.h"
 #include "MessageContentContainer.h"
 # include "RectFUtility.h"
+#include "SceneSetting.h"
+#include "TitleScene.h"
 
 namespace
 {
@@ -42,6 +46,27 @@ namespace
 	}
 }
 
+bool Button(const Rect& rect, const Font& font, const String& text, bool enabled)
+{
+	if (enabled && rect.mouseOver())
+	{
+		Cursor::RequestStyle(CursorStyle::Hand);
+	}
+
+	if (enabled)
+	{
+		rect.draw(ColorF{ 0.3, 0.7, 1.0 });
+		font(text).drawAt(40, (rect.x + rect.w / 2), (rect.y + rect.h / 2));
+	}
+	else
+	{
+		rect.draw(ColorF{ 0.5 });
+		font(text).drawAt(40, (rect.x + rect.w / 2), (rect.y + rect.h / 2), ColorF{ 0.7 });
+	}
+
+	return (enabled && rect.leftClicked());
+}
+
 void Main()
 {
 	const Font font{ FontMethod::MSDF, 48 };
@@ -49,17 +74,48 @@ void Main()
 
 	set_up_window();
 
+	// Scene Manager
+	SceneManager<SceneState,SceneData> scene_manager;
+	scene_manager.add<TitleScene>(SceneState::Title);
+	scene_manager.add<PrologueScene>(SceneState::Prologue);
+
+	scene_manager.init(SceneState::Prologue);
+
 	auto message_content_container  = build_message_content_container(gm, font);
+
 
 	while (System::Update())
 	{
-		// draw background
-		(void)TextureAsset(U"PhotoStudio").resized(Scene::Width(),Scene::Height()).draw(0, 0);
+		// // draw background
+		// (void)TextureAsset(U"PhotoStudio").resized(Scene::Width(),Scene::Height()).draw(0, 0);
+		//
+		//
+		// if(KeySpace.down()) message_window_container.go_to_next_message();
+		//
+		// message_window_container.update_logic();
+		// message_window_container.update_render();
+		//
+		//
+		// // Cause Determination Part
+		// past_photo_button.update_logic();
+		// past_photo_button.update_render();
+
+		if(Key1.pressed())
+		{
+			scene_manager.changeScene(SceneState::Title);
+		}
+		if(Key2.pressed())
+		{
+			scene_manager.changeScene(SceneState::Prologue);
+		}
+
+		if(not scene_manager.update()) break;
 
 		message_content_container.update_logic();
 		message_content_container.update_render();
 
 		if(KeySpace.down()) message_content_container.go_to_next_message();
+
 	}
 }
 

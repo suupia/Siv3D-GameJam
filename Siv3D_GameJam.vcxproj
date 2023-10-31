@@ -406,15 +406,11 @@
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="MessageContent.h" />
-<<<<<<< HEAD
-    <ClInclude Include="MessageWindowContainer.h" />
     <ClInclude Include="PastPhotoButton.h" />
     <ClInclude Include="PrologueScene.h" />
-=======
     <ClInclude Include="MessageContentPictureAttacher.h" />
     <ClInclude Include="MessageReader.h" />
     <ClInclude Include="MessageContentContainer.h" />
->>>>>>> main
     <ClInclude Include="RectFUtility.h" />
     <ClInclude Include="SceneSetting.h" />
     <ClInclude Include="stdafx.h" />
