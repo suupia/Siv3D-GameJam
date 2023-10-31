@@ -36,12 +36,12 @@ void PrologueScene::update()
 	(void)TextureAsset(U"PhotoStudio").resized(Scene::Width(),Scene::Height()).draw(0, 0);
 
 	message_content_container_.update_logic();
-	message_content_container_.update_render();
 
 	if(KeySpace.down()) message_content_container_.go_to_next_message();
 }
 
 void PrologueScene::draw() const
 {
+	message_content_container_.update_render();
 
 }

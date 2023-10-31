@@ -30,7 +30,7 @@ public:
 	}
 
 	void update_logic() override;
-	void update_render() override;
+	void update_render() const override;
 
 	void add_message_contents(const Array<MessageContent>& message_content_structs);
 	void go_to_next_message();

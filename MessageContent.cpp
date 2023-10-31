@@ -46,12 +46,14 @@ void MessageContent::update_logic()
 		is_showing_all_message_ = true;
 	}
 
+	current_message_ = messages_.substr(0, message_char_index_);
+
+
 }
 
 
-void MessageContent::update_render()
+void MessageContent::update_render() const
 {
-	current_message_ = messages_.substr(0, message_char_index_);
 	show_message_window(name_, current_message_);
 }
 

@@ -6,7 +6,7 @@ void PastPhotoButton::update_logic()
 
 }
 
-void PastPhotoButton::update_render()
+void PastPhotoButton::update_render() const
 {
 	rect_.draw();
 

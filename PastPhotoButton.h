@@ -26,6 +26,6 @@ public:
 	}
 
 	void update_logic() override;
-	void update_render() override;
+	void update_render() const override;
 
 };
