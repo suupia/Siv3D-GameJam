@@ -40,18 +40,18 @@ void Main()
 	TextureAsset::Register(U"PhotoStudio", U"images/photo_studio.png") ;
 	TextureAsset::Register(U"Me", U"images/siv3d-kun.png");
 
-	MessageContentContainer message_window_container(gm, font);
+	MessageContentContainer message_content_container(gm, font);
 	auto message_structs = message_reader.readMessageAll();
 
 	auto message_content_structs = message_content_picture_attacher.create_message_content_struct(message_structs);
 
-	Array<MessageContent> message_windows_;
+	Array<MessageContent> message_contents;
 	for(auto content_struct : message_content_structs)
 	{
-		message_windows_.push_back(MessageContent(font,content_struct));
+		message_contents.push_back(MessageContent(font,content_struct));
 	}
 
-	message_window_container.add_message_contents(message_windows_);
+	message_content_container.add_message_contents(message_contents);
 
 
 	while (System::Update())
@@ -59,10 +59,10 @@ void Main()
 		// draw background
 		(void)TextureAsset(U"PhotoStudio").resized(Scene::Width(),Scene::Height()).draw(0, 0);
 
-		message_window_container.update_logic();
-		message_window_container.update_render();
+		message_content_container.update_logic();
+		message_content_container.update_render();
 
-		if(KeySpace.down()) message_window_container.go_to_next_message();
+		if(KeySpace.down()) message_content_container.go_to_next_message();
 	}
 }
 

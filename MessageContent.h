@@ -45,5 +45,6 @@ public:
 	void update_render() override;
 
 	void show_all_message();
+	[[nodiscard]]
 	bool is_show_all_message() const { return is_showing_all_message_; }  // 実装ファイルに書いた方がよい？
 };
