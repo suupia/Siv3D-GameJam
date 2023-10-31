@@ -28,6 +28,16 @@ namespace
 		Scene::SetBackground(ColorF{ 139/ 255.0f,69/ 255.0f,19/ 255.0f});
 	}
 
+	SceneManager<SceneState,SceneData> set_up_scene_manager()
+	{
+		SceneManager<SceneState,SceneData> scene_manager;
+		scene_manager.add<TitleScene>(SceneState::Title);
+		scene_manager.add<PrologueScene>(SceneState::Prologue);
+
+		scene_manager.init(SceneState::Prologue);
+		return  scene_manager;
+	}
+
 	MessageContentContainer build_message_content_container(GameManager& gm, const Font& font)
 	{
 		MessageContentContainer message_content_container(gm, font);
@@ -75,12 +85,9 @@ void Main()
 	set_up_window();
 
 	// Scene Manager
-	SceneManager<SceneState,SceneData> scene_manager;
-	scene_manager.add<TitleScene>(SceneState::Title);
-	scene_manager.add<PrologueScene>(SceneState::Prologue);
+	auto scene_manager = set_up_scene_manager();
 
-	scene_manager.init(SceneState::Prologue);
-
+	// Message Content Container
 	auto message_content_container  = build_message_content_container(gm, font);
 
 
