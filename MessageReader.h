@@ -13,7 +13,7 @@ class MessageReader
 
 	Optional<MessageStruct>  PopOneChunk();
 public:
-	MessageReader();
+	MessageReader(const String& path);
 	[[nodiscard]]
 	MessageStruct readMessageOne();
 	[[nodiscard]]

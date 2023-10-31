@@ -10,7 +10,6 @@ TitleScene::TitleScene(const InitData& init):
 	start_button_( RectFUtility::to_horizontal_center( RectFUtility::calc_relative_rect(0.5, 0.7, 0.1,0.08)), font_, U"はじめる")
 {
 	TextureAsset::Register(U"PhotoStudio", U"images/back_photoStudio.png") ;
-
 }
 
 void TitleScene::update(){
