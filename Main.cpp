@@ -52,6 +52,10 @@ void Main()
 
 	while (System::Update())
 	{
+
+		if(not scene_manager.update()) break;
+
+		// for debug
 		if(Key1.pressed())
 		{
 			scene_manager.changeScene(SceneState::Title);
@@ -60,9 +64,10 @@ void Main()
 		{
 			scene_manager.changeScene(SceneState::Prologue);
 		}
-
-		if(not scene_manager.update()) break;
-
+		if(Key3.pressed())
+		{
+			scene_manager.changeScene(SceneState::Episode1);
+		}
 	}
 }
 
