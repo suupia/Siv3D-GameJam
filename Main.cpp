@@ -23,6 +23,23 @@ namespace
 		// Set Background Color
 		Scene::SetBackground(ColorF{ 139/ 255.0f,69/ 255.0f,19/ 255.0f});
 	}
+
+	MessageContentContainer build_message_content_container(GameManager& gm, const Font& font)
+	{
+		MessageContentContainer message_content_container(gm, font);
+
+		const auto message_structs = MessageReader().readMessageAll();
+	    const auto message_content_structs = MessageContentPictureAttacher().create_message_content_struct(message_structs);
+
+		Array<MessageContent> message_contents;
+		for(auto content_struct : message_content_structs)
+		{
+			message_contents.push_back(MessageContent(font,content_struct));
+		}
+		message_content_container.add_message_contents(message_contents);
+
+		return message_content_container;
+	}
 }
 
 void Main()
@@ -40,19 +57,7 @@ void Main()
 	TextureAsset::Register(U"PhotoStudio", U"images/photo_studio.png") ;
 	TextureAsset::Register(U"Me", U"images/siv3d-kun.png");
 
-	MessageContentContainer message_content_container(gm, font);
-	auto message_structs = message_reader.readMessageAll();
-
-	auto message_content_structs = message_content_picture_attacher.create_message_content_struct(message_structs);
-
-	Array<MessageContent> message_contents;
-	for(auto content_struct : message_content_structs)
-	{
-		message_contents.push_back(MessageContent(font,content_struct));
-	}
-
-	message_content_container.add_message_contents(message_contents);
-
+	auto message_content_container  = build_message_content_container(gm, font);
 
 	while (System::Update())
 	{
