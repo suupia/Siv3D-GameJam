@@ -1,13 +1,13 @@
 ﻿#include "stdafx.h"
 #include "TitleScene.h"
 
+#include "RectFUtility.h"
+
 TitleScene::TitleScene(const InitData& init):
 	IScene(init),
 	gm_(GameManager()),
 	font_{FontMethod::MSDF, 48},
-	start_button_(RectF{
-		              Scene::Width() / 2, Scene::Height() / 2 + 100, 200, 100
-	              }, font_, U"はじめる")
+	start_button_( RectFUtility::to_horizontal_center( RectFUtility::calc_relative_rect(0.5, 0.7, 0.1,0.08)), font_, U"はじめる")
 {
 	TextureAsset::Register(U"PhotoStudio", U"images/back_photoStudio.png") ;
 

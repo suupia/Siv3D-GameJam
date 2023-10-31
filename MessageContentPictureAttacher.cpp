@@ -10,7 +10,7 @@ MessageContentPictureAttacher::MessageContentPictureAttacher()
 	TextureAsset::Register(U"Founder", U"images/founder_tmp.png");
 	TextureAsset::Register(U"PhotoStudio", U"images/back_photoStudio.png") ;
 	TextureAsset::Register(U"Me", U"images/siv3d-kun.png");
-	
+
 }
 
 Array<MessageContentStruct> MessageContentPictureAttacher::create_message_content_struct(Array<MessageStruct> message_structs)
