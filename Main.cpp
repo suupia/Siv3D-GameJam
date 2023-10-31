@@ -1,29 +1,53 @@
 ﻿# include <Siv3D.hpp> // OpenSiv3D v0.6.11
 # include "MessageContent.h"
-#include "MessageWindowContainer.h"
+#include "MessageContentPictureAttacher.h"
+#include "MessageReader.h"
+#include "MessageContentContainer.h"
 # include "RectFUtility.h"
 
-void set_up_window()
+namespace
 {
-	constexpr  int windowWidth = 1920;
-	constexpr  int windowHeight = 1080;
-	if(windowWidth * 9 != windowHeight * 16)
+	void set_up_window()
 	{
-		throw Error(U"You should set the resolution to 16:9");
+		constexpr  int windowWidth = 1920;
+		constexpr  int windowHeight = 1080;
+		if(windowWidth * 9 != windowHeight * 16)
+		{
+			throw Error(U"You should set the resolution to 16:9");
+		}
+		Window::Resize(windowWidth, windowHeight);
+		Window::SetStyle(WindowStyle::Sizable);
+
+
+
+		// Set Background Color
+		Scene::SetBackground(ColorF{ 139/ 255.0f,69/ 255.0f,19/ 255.0f});
 	}
-	Window::Resize(windowWidth, windowHeight);
-	Window::SetStyle(WindowStyle::Sizable);
 
+	MessageContentContainer build_message_content_container(GameManager& gm, const Font& font)
+	{
+		MessageContentContainer message_content_container(gm, font);
 
+		const auto message_structs = MessageReader().readMessageAll();
+	    const auto message_content_structs = MessageContentPictureAttacher().create_message_content_struct(message_structs);
 
-	// Set Background Color
-	Scene::SetBackground(ColorF{ 139/ 255.0f,69/ 255.0f,19/ 255.0f});
+		Array<MessageContent> message_contents;
+		for(auto content_struct : message_content_structs)
+		{
+			message_contents.push_back(MessageContent(font,content_struct));
+		}
+		message_content_container.add_message_contents(message_contents);
+
+		return message_content_container;
+	}
 }
 
 void Main()
 {
 	const Font font{ FontMethod::MSDF, 48 };
 	GameManager gm;
+	MessageReader message_reader;
+	MessageContentPictureAttacher message_content_picture_attacher;
 
 	set_up_window();
 
@@ -33,65 +57,17 @@ void Main()
 	TextureAsset::Register(U"PhotoStudio", U"images/photo_studio.png") ;
 	TextureAsset::Register(U"Me", U"images/siv3d-kun.png");
 
-	MessageWindowContainer message_window_container(gm, font);
-	message_window_container.add_message_content(
-
-		// MessageContentStruct{
-		// 	.name = U"創設者",
-		// 	.messages =
-		// 	U"やあ、よく来たね。\n私が見込んだ新入りさん。~ここは写真館《黄泉の前》だ。\nその名の通り、ここは死の淵と言って……~え？あなた誰って言った？~私のことを語るには、映画7本分の尺が必要になるけど……。~うーん、そんな露骨に嫌な顔しないで。\n君、本当に分かりやすいね。~まあ、とにかく。\n今はこの写真館の話をしよう。~さっきも言ったけど、ここは《黄泉の前》だ。\nだから、お客様もちょっと特殊でね。~理由は様々さ。ただ、1つ共通点を挙げるならば。\n彼らは《負の感情》を持ってここに来る。~君の仕事は、お客様の《負の感情》の原因を\n見つけてあげることだ。~……ん？なぜそんなことをするのか？\nとでも言いたげだね。~お客様の気持ちを考えてみてよ。~彼らは\"何が\"不満で、\"誰に\"悲しみを抱いたのか、まるで覚えてない。~生まれる方法は1つしか無いけど、死ぬ方法は何万通りもある。《黄泉の前》に来る。\nニンゲンだって同じだ。~それを「思い出せ」の一言で済ませるのは、あまりにも気の毒じゃないか？~幸い、私たちは彼らの人生を垣間見ることができる。\n彼らのアルバムが全て教えてくれるから。~さあ、とにかく始めてみよう。\n丁度、お客様も来たみたいだからね。",
-		// 	.standing_picture = TextureAsset(U"Founder"),
-		// },
-
-		MessageContentStruct{
-			.name = U"タケシ",
-			.messages = U"あの、ここは一体……？\n僕、山登りに来ていたはずなんですが……。",
-			.standing_picture = TextureAsset(U"Takeshi"),
-		},
-
-		MessageContentStruct{
-			.name = U"ワタシ",
-			.messages = U"ようこそ、ここは写真館《黄泉の前》です。",
-			.standing_picture = TextureAsset(U"Me"),
-		},
-
-		MessageContentStruct{
-			.name = U"タケシ",
-			.messages = U"黄泉の前！？写真館！？",
-			.standing_picture = TextureAsset(U"Takeshi"),
-		},
-
-		MessageContentStruct{
-			.name = U"ワタシ",
-			.messages = U"簡単に言うと、あなたは今ひん死状態なんです。\nここは、ひん死の人が来る場所なので。",
-			.standing_picture = TextureAsset(U"Me"),
-		},
-
-		MessageContentStruct{
-			.name = U"タケシ",
-			.messages = U"おおー、だから《黄泉の前》なんですね！意味分かんないです！",
-			.standing_picture = TextureAsset(U"Takeshi"),
-		},
-
-		MessageContentStruct{
-			.name = U"ワタシ",
-			.messages = U"確かに、意味を考え出すとアレかもしれませんが……。",
-			.standing_picture = TextureAsset(U"Me"),
-		}
-	);
+	auto message_content_container  = build_message_content_container(gm, font);
 
 	while (System::Update())
 	{
 		// draw background
 		(void)TextureAsset(U"PhotoStudio").resized(Scene::Width(),Scene::Height()).draw(0, 0);
 
+		message_content_container.update_logic();
+		message_content_container.update_render();
 
-		if(KeySpace.down()) message_window_container.go_to_next_message();
-
-		// message_window.update_logic();
-		// message_window.update_render();
-		message_window_container.update_logic();
-		message_window_container.update_render();
+		if(KeySpace.down()) message_content_container.go_to_next_message();
 	}
 }
 
