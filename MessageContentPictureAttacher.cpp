@@ -8,7 +8,7 @@ MessageContentPictureAttacher::MessageContentPictureAttacher()
 {
 	TextureAsset::Register(U"Takeshi", U"images/takeshi_tmp.png");
 	TextureAsset::Register(U"Founder", U"images/founder_tmp.png");
-	TextureAsset::Register(U"PhotoStudio", U"images/photo_studio.png") ;
+	TextureAsset::Register(U"PhotoStudio", U"images/back_photoStudio.png") ;
 	TextureAsset::Register(U"Me", U"images/siv3d-kun.png");
 }
 

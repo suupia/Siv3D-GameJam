@@ -11,5 +11,5 @@ void TitleScene::update(){
 }
 
 void TitleScene::draw() const {
-	(void)TextureAsset(U"Windmill").resized(Scene::Width(),Scene::Height()).draw(0, 0);
+	(void)TextureAsset(U"PhotoStudio").resized(Scene::Width(),Scene::Height()).draw(0, 0);
 }

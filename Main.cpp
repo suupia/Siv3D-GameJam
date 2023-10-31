@@ -72,20 +72,6 @@ void Main()
 
 	while (System::Update())
 	{
-		// // draw background
-		// (void)TextureAsset(U"PhotoStudio").resized(Scene::Width(),Scene::Height()).draw(0, 0);
-		//
-		//
-		// if(KeySpace.down()) message_window_container.go_to_next_message();
-		//
-		// message_window_container.update_logic();
-		// message_window_container.update_render();
-		//
-		//
-		// // Cause Determination Part
-		// past_photo_button.update_logic();
-		// past_photo_button.update_render();
-
 		if(Key1.pressed())
 		{
 			scene_manager.changeScene(SceneState::Title);

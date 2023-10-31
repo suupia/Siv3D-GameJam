@@ -499,6 +499,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\images\back_photoStudio.png" />
     <Content Include="App\images\book_tmp.png" />
     <Content Include="App\images\founder_tmp.png" />
     <Content Include="App\images\photo_studio.png" />
