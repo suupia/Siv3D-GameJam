@@ -24,10 +24,13 @@ namespace
 	}
 }
 
-PrologueScene::PrologueScene(const InitData& init) : IScene(init), gm_(GameManager()), font_{ FontMethod::MSDF, 48 }, message_content_container_(build_message_content_container(gm_, font_))
+PrologueScene::PrologueScene(const InitData& init) :
+	IScene(init),
+	gm_(GameManager()),
+	font_{FontMethod::MSDF, 48},
+	message_content_container_(build_message_content_container(gm_, font_))
 {
 	Print << U"Constructed PrologueScene";
-
 }
 
 void PrologueScene::update()

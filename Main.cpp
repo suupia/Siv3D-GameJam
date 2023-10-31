@@ -1,4 +1,6 @@
 ﻿# include <Siv3D.hpp> // OpenSiv3D v0.6.11
+
+#include "Episode1Scene.h"
 # include "MessageContent.h"
 #include "PastPhotoButton.h"
 #include "PrologueScene.h"
@@ -33,6 +35,7 @@ namespace
 		SceneManager<SceneState,SceneData> scene_manager;
 		scene_manager.add<TitleScene>(SceneState::Title);
 		scene_manager.add<PrologueScene>(SceneState::Prologue);
+		scene_manager.add<Episode1Scene>(SceneState::Episode1);
 
 		scene_manager.init(SceneState::Title);
 		return  scene_manager;
