@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "../stdafx.h"
 #include "Button.h"
 
 Button::Button(RectF rect, const Font& font, const String& text)

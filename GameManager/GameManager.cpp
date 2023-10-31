@@ -1,4 +1,4 @@
-﻿#include "stdafx.h"
+﻿#include "../stdafx.h"
 #include "GameManager.h"
 
 // コールバックの登録時にユニークなIDを返す
