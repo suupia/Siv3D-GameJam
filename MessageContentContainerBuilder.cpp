@@ -4,6 +4,10 @@
 #include "MessageContentPictureAttacher.h"
 #include "MessageReader.h"
 
+MessageContentContainerBuilder::MessageContentContainerBuilder(const String& path) :
+	path_(path)
+{
+}
 
 MessageContentContainer MessageContentContainerBuilder::build_message_content_container(GameManager& gm, const Font& font) const
 {

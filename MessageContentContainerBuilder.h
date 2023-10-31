@@ -5,6 +5,6 @@ class MessageContentContainerBuilder
 {
 	String path_;
 public:
-	MessageContentContainerBuilder(String path);
+	MessageContentContainerBuilder(const String& path);
    MessageContentContainer build_message_content_container(GameManager& gm, const Font& font)const;
 };
