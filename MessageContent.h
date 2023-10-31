@@ -13,14 +13,14 @@ class MessageContent : public GameObject
 private:
 	const Font& font_;
 
-	const String& name_;
-	const String& messages_;
-	const TextureAsset& standing_picture_;
+	const String name_;
+	const String messages_;
+	const TextureAsset standing_picture_;
 
 	int message_char_index_ = 0;
-	int current_split_message_index_ = 0;
-	String current_message_;
-	Array<String> split_messages_;
+	// int current_split_message_index_ = 0;
+	// String current_message_;
+	// Array<String> split_messages_;
 	float interval_second_ = 0.07f;
 	double timer = 0.0f;
 
@@ -38,8 +38,7 @@ public:
 	messages_(message_window_struct.messages),
 	standing_picture_(message_window_struct.standing_picture)
 	{
-		split_messages_ = messages_.split(U'~');
-		//current_message_ = split_messages_[0];  // I erase this line. Is it OK?
+
 	}
 
 	~MessageContent() = default;

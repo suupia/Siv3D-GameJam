@@ -50,8 +50,8 @@ void Main()
 	Array<MessageContent> message_windows_;
 	for(auto content_struct : message_content_structs)
 	{
-		// Print << U"content_struct.name: " << content_struct.name;
-		// Print << U"content_struct.messages: " << content_struct.messages;
+		//Print << U"content_struct.name: " << content_struct.name;
+		//Print << U"content_struct.messages: " << content_struct.messages;
 		message_windows_.push_back(MessageContent(font,content_struct));
 	}
 
