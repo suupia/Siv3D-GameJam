@@ -9,7 +9,7 @@ MessageContentPictureAttacher::MessageContentPictureAttacher()
 	TextureAsset::Register(U"Takeshi", U"images/takeshi_tmp.png");
 	TextureAsset::Register(U"Founder", U"images/founder_tmp.png");
 	TextureAsset::Register(U"PhotoStudio", U"images/back_photoStudio.png") ;
-	TextureAsset::Register(U"Me", U"images/siv3d-kun.png");
+	TextureAsset::Register(U"I", U"images/siv3d-kun.png");
 
 }
 
@@ -21,10 +21,14 @@ Array<MessageContentStruct> MessageContentPictureAttacher::create_message_conten
 	for(auto content : message_structs)
 	{
 		TextureAsset person_picture = TextureAsset(U"Me");
-		if (content.name == U"創設者")
+		if(content.name == U"ワタシ")
+			person_picture = TextureAsset(U"I");
+		else if (content.name == U"創設者")
 			person_picture = TextureAsset(U"Founder");
-		else if (content.name == U"Takeshi")
+		else if (content.name == U"たけし")
 			person_picture = TextureAsset(U"Takeshi");
+		else if (content.name == U"none")
+			person_picture = TextureAsset(U"I");
 		else
 			throw Error(U"Unexpected name name:{}\nThe name of the text file may be incorrect."_fmt(content.name));
 
