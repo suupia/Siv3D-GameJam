@@ -46,16 +46,8 @@ void Main()
 {
 	const Font font{ FontMethod::MSDF, 48 };
 	GameManager gm;
-	MessageReader message_reader;
-	MessageContentPictureAttacher message_content_picture_attacher;
 
 	set_up_window();
-
-	// Register Assets
-	TextureAsset::Register(U"Takeshi", U"images/takeshi_tmp.png");
-	TextureAsset::Register(U"Founder", U"images/founder_tmp.png");
-	TextureAsset::Register(U"PhotoStudio", U"images/photo_studio.png") ;
-	TextureAsset::Register(U"Me", U"images/siv3d-kun.png");
 
 	auto message_content_container  = build_message_content_container(gm, font);
 
