@@ -27,11 +27,19 @@ IdentifyPartScene::IdentifyPartScene(const InitData& init):
 	buttons_.push_back(button4);
 	buttons_.push_back(button5);
 
+	is_selected_array.resize(buttons_.size());
 }
 
 void IdentifyPartScene:: update()
 {
-
+	for(int i = 0; i< buttons_.size(); i++)
+	{
+		if(buttons_[i].is_down())
+		{
+			Print << U"button" << i << U" is down";
+			is_selected_array[i] = !is_selected_array[i];
+		}
+	}
 }
 
 void IdentifyPartScene:: draw() const

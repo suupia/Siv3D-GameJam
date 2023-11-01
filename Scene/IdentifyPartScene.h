@@ -9,6 +9,7 @@ private:
 	GameManager gm_;
 	Font font_;
 	Array<Button> buttons_;
+	Array<bool> is_selected_array;
 public:
 	IdentifyPartScene(const InitData& init);
 
