@@ -7,8 +7,8 @@ enum class SceneState {
 	Episode1,
 	Episode2,
 	Episode3,
-	IdentifyProcess,
-	SelectPhotoProcess,
+	IdentifyPart,
+	SelectPhotoPart,
 	Epilogue,
 };
 

@@ -25,5 +25,4 @@ void Episode1Scene::draw() const {
 
 	message_content_container_.update_render();
 
-
 }
