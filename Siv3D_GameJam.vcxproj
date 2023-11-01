@@ -896,6 +896,7 @@
       <AdditionalOptions>/Zc:__cplusplus </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Scene\IdentifyPartScene.cpp" />
     <ClCompile Include="Scene\PrologueScene.cpp">
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -1417,6 +1418,7 @@
     <ClInclude Include="MessageBox\MessageContentPictureAttacher.h" />
     <ClInclude Include="MessageBox\MessageReader.h" />
     <ClInclude Include="Scene\Episode1Scene.h" />
+    <ClInclude Include="Scene\IdentifyPartScene.h" />
     <ClInclude Include="Scene\PrologueScene.h" />
     <ClInclude Include="Scene\SceneSetting.h" />
     <ClInclude Include="Scene\TitleScene.h" />
