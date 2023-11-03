@@ -35,6 +35,24 @@ namespace
 		}
 	}
 
+	bool judge_selected_photos_are_correct(	Array<IdentifyPhotoData> identify_photo_data)
+	{
+		Array should_be_selected = {0,2,3,5,8,10};
+		Array<int> actual_selected;
+		for(int i = 0; i< identify_photo_data.size(); i++)
+		{
+			if(identify_photo_data.at(i).is_selected)
+			{
+				actual_selected.push_back(i);
+			}
+		}
+
+		std::ranges::sort(should_be_selected);
+		std::ranges::sort(actual_selected);
+
+		return should_be_selected == actual_selected;
+	}
+
 }
 
 // public
@@ -138,7 +156,15 @@ void IdentifyPartScene::detect_button()
 	if(confirm_button_.is_down())
 	{
 		Print << U"confirm button is down";
-		changeScene(SceneState::Episode1Answer, 2.0s);
+		if (judge_selected_photos_are_correct(identify_photo_data_))
+		{
+			changeScene(SceneState::Episode1Answer, 2.0s);
+		}
+		else
+		{
+			Print << U"wrong answer";
+			// show_hint();
+		}
 		return;
 	}
 
