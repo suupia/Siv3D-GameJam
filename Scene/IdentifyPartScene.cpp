@@ -28,40 +28,32 @@ IdentifyPartScene::IdentifyPartScene(const InitData& init):
 	const auto sticky_note4 = RectFUtility::calc_relative_rect(x+3*w,y,w,h);
 	const auto sticky_note5 = RectFUtility::calc_relative_rect(x+2*w,y+2*h,w,h);
 
-	buttons_.push_back(button0);
-	buttons_.push_back(button1);
-	buttons_.push_back(button2);
-	buttons_.push_back(button3);
-	buttons_.push_back(button4);
-	buttons_.push_back(button5);
 
-	sticky_note_poss_.push_back(sticky_note0);
-	sticky_note_poss_.push_back(sticky_note1);
-	sticky_note_poss_.push_back(sticky_note2);
-	sticky_note_poss_.push_back(sticky_note3);
-	sticky_note_poss_.push_back(sticky_note4);
-	sticky_note_poss_.push_back(sticky_note5);
-
-	is_selected_array.resize(buttons_.size());
+	identify_photo_data_.push_back({button0, sticky_note0, false});
+	identify_photo_data_.push_back({button1, sticky_note1, false});
+	identify_photo_data_.push_back({button2, sticky_note2, false});
+	identify_photo_data_.push_back({button3, sticky_note3, false});
+	identify_photo_data_.push_back({button4, sticky_note4, false});
+	identify_photo_data_.push_back({button5, sticky_note5, false});
 }
 
 void IdentifyPartScene:: update()
 {
-	for(int i = 0; i< buttons_.size(); i++)
+	for(int i = 0; i< identify_photo_data_.size(); i++)
 	{
-		if(buttons_[i].is_down())
+		if(identify_photo_data_.at(i).button.is_down())
 		{
 			Print << U"button" << i << U" is down";
-			is_selected_array[i] = !is_selected_array[i];
+			identify_photo_data_.at(i).is_selected = !identify_photo_data_.at(i).is_selected;
 		}
 	}
 
 	// debug is_selected_array
 	if (KeyD.down())
 	{
-		for (int i = 0; i < is_selected_array.size(); i++)
+		for (int i = 0; i < identify_photo_data_.size(); i++)
 		{
-			Print << U"is_selected_array[" << i << U"] = " << is_selected_array[i];
+			Print << U"is_selected_array[" << i << U"] = " << identify_photo_data_.at(i).is_selected;
 		}
 	}
 }
@@ -70,16 +62,14 @@ void IdentifyPartScene:: draw() const
 {
 	(void)TextureAsset(U"Book").resized(Scene::Width(),Scene::Height()).draw(0, 0);
 
-	for(const auto& button : buttons_)
+	for (int i = 0; i < identify_photo_data_.size(); i++)
 	{
-		button.draw();
-	}
-
-	for(int i = 0; i< sticky_note_poss_.size(); i++)
-	{
-		if(is_selected_array.at(i))
-
-		(void)TextureAsset(U"StickyNote").resized(sticky_note_poss_[i].w,sticky_note_poss_[i].h).draw(sticky_note_poss_[i].x, sticky_note_poss_[i].y);
+		identify_photo_data_.at(i).button.draw();
+		if (identify_photo_data_.at(i).is_selected)
+		{
+			auto sticky_note_pos = identify_photo_data_.at(i).sticky_note_pos;
+			(void)TextureAsset(U"StickyNote").resized(sticky_note_pos.w, sticky_note_pos.h).draw(sticky_note_pos.x, sticky_note_pos.y);
+		}
 	}
 
 }
