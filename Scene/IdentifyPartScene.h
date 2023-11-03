@@ -26,6 +26,9 @@ private:
 	Array<IdentifyPhotoData> identify_photo_data_;
 	int current_page_ = 0;
 	const int all_photo_number_ = 12;
+	const int photo_number_per_row_ = 3;
+	const int photo_number_per_col_ = 2;
+	const int photo_number_per_page_ = photo_number_per_row_ * photo_number_per_col_;
 
 	void detect_button();
 	void turn_page(bool is_next);

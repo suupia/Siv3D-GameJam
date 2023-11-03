@@ -93,7 +93,7 @@ void IdentifyPartScene:: draw() const
 	(void)TextureAsset(U"Book").resized(Scene::Width(),Scene::Height()).draw(0, 0);
 
 	// draw identify photos
-	for (int i = 0; i < identify_photo_data_.size(); i++)
+	for (int i = 0; i < photo_number_per_page_; i++)
 	{
 		identify_photo_data_.at(i).button.draw();
 		if (identify_photo_data_.at(i).is_selected)
