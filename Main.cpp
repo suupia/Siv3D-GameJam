@@ -32,7 +32,7 @@ namespace
 		scene_manager.add<Episode1Scene>(SceneState::Episode1);
 		scene_manager.add<IdentifyPartScene>(SceneState::IdentifyPart);
 
-		scene_manager.init(SceneState::Title);
+		scene_manager.init(SceneState::IdentifyPart);
 		return  scene_manager;
 	}
 }
