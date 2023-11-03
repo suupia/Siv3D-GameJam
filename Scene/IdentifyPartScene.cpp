@@ -18,7 +18,7 @@ namespace
 			// even -> left : texture, right : text
 			const auto res_x = x + col_index * w;
 			const auto res_y = y + row_index * h;
-			const auto button = Button( RectFUtility::calc_relative_rect(res_x,res_y,w/2,h), font, U"{}"_fmt(index));
+			const auto button = Button( RectFUtility::calc_relative_rect(res_x,res_y,w/2,h), font, U"{}"_fmt(index),U"IdentifyPhoto{}"_fmt(index));
 			const auto sticky_note = RectFUtility::calc_relative_rect(res_x+ w/2,res_y,w/2,h);
 			return {button, sticky_note, false};
 		}else
@@ -26,7 +26,7 @@ namespace
 			// odd -> left : text, right : texture
 			const auto res_x = x + col_index * w;
 			const auto res_y = y + row_index * h;
-			const auto button = Button( RectFUtility::calc_relative_rect(res_x+ w/2,res_y,w/2,h), font, U"{}"_fmt(index));
+			const auto button = Button( RectFUtility::calc_relative_rect(res_x+ w/2,res_y,w/2,h), font, U"{}"_fmt(index),U"IdentifyPhoto{}"_fmt(index));
 			const auto sticky_note = RectFUtility::calc_relative_rect(res_x,res_y,w/2,h);
 			return {button, sticky_note, false};
 		}
@@ -92,7 +92,7 @@ void IdentifyPartScene:: draw() const
 		identify_photo_data_.at(i).button.draw();
 		if (identify_photo_data_.at(i).is_selected)
 		{
-			auto sticky_note_pos = identify_photo_data_.at(i).sticky_note_pos;
+			const auto sticky_note_pos = identify_photo_data_.at(i).sticky_note_pos;
 			(void)TextureAsset(U"StickyNote").resized(sticky_note_pos.w, sticky_note_pos.h).draw(sticky_note_pos.x, sticky_note_pos.y);
 		}
 	}
