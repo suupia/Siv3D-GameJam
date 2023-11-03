@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Siv3D_GameJam", "Siv3D_GameJam.vcxproj", "{CBDB5674-791E-413A-B3FB-6E3EF743B9AA}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestProject", "TestProject\TestProject.vcxproj", "{B6C419B2-2DAA-4869-BBB0-0C948EC5587C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -15,6 +17,10 @@ Global
 		{CBDB5674-791E-413A-B3FB-6E3EF743B9AA}.Debug|x64.Build.0 = Debug|x64
 		{CBDB5674-791E-413A-B3FB-6E3EF743B9AA}.Release|x64.ActiveCfg = Release|x64
 		{CBDB5674-791E-413A-B3FB-6E3EF743B9AA}.Release|x64.Build.0 = Release|x64
+		{B6C419B2-2DAA-4869-BBB0-0C948EC5587C}.Debug|x64.ActiveCfg = Debug|x64
+		{B6C419B2-2DAA-4869-BBB0-0C948EC5587C}.Debug|x64.Build.0 = Debug|x64
+		{B6C419B2-2DAA-4869-BBB0-0C948EC5587C}.Release|x64.ActiveCfg = Release|x64
+		{B6C419B2-2DAA-4869-BBB0-0C948EC5587C}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
