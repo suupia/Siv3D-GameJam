@@ -24,7 +24,9 @@ private:
 	Button next_page_button_;
 	Button back_page_button_;
 	Array<IdentifyPhotoData> identify_photo_data_;
-	int current_page_;
-	void detect_button();
+	int current_page_ = 0;
+	const int all_photo_number_ = 12;
 
+	void detect_button();
+	void turn_page(bool is_next);
 };

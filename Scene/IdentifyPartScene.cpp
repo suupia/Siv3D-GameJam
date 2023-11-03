@@ -7,7 +7,7 @@ namespace
 {
 	IdentifyPhotoData create_identify_photo_data(int index, double x, double y, double w, double h,Array<String> captions,  const Font& font)
 	{
-		constexpr int row_number = 3;
+		constexpr int row_number = 3;  // Todo: should be member variable?
 		constexpr int col_number = 2;
 
 		const int row_index = index % 3;
@@ -45,13 +45,12 @@ IdentifyPartScene::IdentifyPartScene(const InitData& init):
 	IScene(init),
 	gm_(GameManager()),
 	font_{FontMethod::MSDF, 48},
-	next_page_button_(  RectFUtility::calc_relative_rect(0.05, 0.9, 0.1,0.08), font_, U"次のページ"),
-	back_page_button_( RectFUtility::calc_relative_rect(0.85, 0.9, 0.1,0.08), font_, U"前のページ")
+	next_page_button_(  RectFUtility::calc_relative_rect(0.85, 0.9, 0.1,0.08), font_, U"次のページ"),
+	back_page_button_( RectFUtility::calc_relative_rect(0.05, 0.9, 0.1,0.08), font_, U"前のページ")
 {
-	constexpr int photo_number = 6;
 	TextureAsset::Register(U"Book", U"images/book_tmp.png") ;
 	TextureAsset::Register(U"StickyNote", U"images/sticky_note_tmp.png") ;
-	for(int i = 0; i< photo_number; i++)
+	for(int i = 0; i< all_photo_number_; i++)
 	{
 		const auto path = U"images/identify_photo_tmp_{}.png"_fmt(i);
 		TextureAsset::Register(U"IdentifyPhoto{}"_fmt(i), path) ;
@@ -67,7 +66,7 @@ IdentifyPartScene::IdentifyPartScene(const InitData& init):
 	OneLineTextReader reader(U"texts/takeshi_identify_texts.txt");
 	const auto captions = reader.readOneLineAll();
 
-	for(int i = 0; i < photo_number; i++)
+	for(int i = 0; i < all_photo_number_; i++)
 	{
 		identify_photo_data_.push_back( create_identify_photo_data(i, x, y, w, h,captions, font_));
 	}
@@ -126,11 +125,13 @@ void IdentifyPartScene::detect_button()
 	if(next_page_button_.is_down())
 	{
 		Print << U"next page button is down";
+		turn_page(true);
 		return;
 	}
 	if(back_page_button_.is_down())
 	{
 		Print << U"back page button is down";
+		turn_page(false);
 		return;
 	}
 
@@ -144,5 +145,19 @@ void IdentifyPartScene::detect_button()
 			return;
 		}
 	}
+}
 
+void IdentifyPartScene::turn_page(const bool is_next)
+{
+	const auto all_page_number = identify_photo_data_.size() / all_photo_number_ + 1;
+	if(is_next)
+	{
+		if(current_page_ + 1 < all_page_number)
+		current_page_++;
+	}else
+	{
+		if(0 <= current_page_ - 1)
+		current_page_--;
+	}
+	Print << U"current_page_ = " << current_page_;
 }
