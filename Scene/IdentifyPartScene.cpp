@@ -5,7 +5,7 @@
 
 namespace
 {
-	IdentifyPhotoData create_identify_photo_data(int index, double x, double y, double w, double h, const Font& font)
+	IdentifyPhotoData create_identify_photo_data(int index, double x, double y, double w, double h,Array<String> captions,  const Font& font)
 	{
 		constexpr int row_number = 3;
 		constexpr int col_number = 2;
@@ -14,6 +14,9 @@ namespace
 		const int col_index = index / 3;
 		const int page_index = index / (row_number * col_number);
 
+		String caption = captions.at(index);
+		Print << U"caption = " << caption;
+
 		if(index % 2 == 0)
 		{
 			// even -> left : texture, right : text
@@ -21,6 +24,7 @@ namespace
 			const auto res_y = y + row_index * h;
 			const auto button = Button( RectFUtility::calc_relative_rect(res_x,res_y,w/2,h), font, U"{}"_fmt(index),U"IdentifyPhoto{}"_fmt(index));
 			const auto sticky_note = RectFUtility::calc_relative_rect(res_x+ w/2,res_y,w/2,h);
+			(void)font(caption).drawAt(40, res_x+ w/2,res_y);
 			return {button, sticky_note, false};
 		}else
 		{
@@ -29,6 +33,7 @@ namespace
 			const auto res_y = y + row_index * h;
 			const auto button = Button( RectFUtility::calc_relative_rect(res_x+ w/2,res_y,w/2,h), font, U"{}"_fmt(index),U"IdentifyPhoto{}"_fmt(index));
 			const auto sticky_note = RectFUtility::calc_relative_rect(res_x,res_y,w/2,h);
+			(void)font(caption).drawAt(40, res_x,res_y);
 			return {button, sticky_note, false};
 		}
 
@@ -58,17 +63,15 @@ IdentifyPartScene::IdentifyPartScene(const InitData& init):
 	double w = 0.43;
 	double h = 0.31;
 
+
+	OneLineTextReader reader(U"texts/takeshi_identify_texts.txt");
+	const auto captions = reader.readOneLineAll();
+	// debug captions
+	// for(auto text : captions)Print << text;
+
 	for(int i = 0; i < photo_number; i++)
 	{
-		identify_photo_data_.push_back( create_identify_photo_data(i, x, y, w, h, font_));
-	}
-
-	// debug
-	OneLineTextReader reader(U"texts/takeshi_identify_texts.txt");
-	const auto array = reader.readOneLineAll();
-	for(auto text : array)
-	{
-		Print << text;
+		identify_photo_data_.push_back( create_identify_photo_data(i, x, y, w, h,captions, font_));
 	}
 
 }

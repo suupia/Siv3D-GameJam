@@ -8,4 +8,5 @@ public:
 private:
 	TextReader reader_;
 	Array<String> lines_; // Destination of read strings
+	Optional<String> PopOneChunk();
 };
