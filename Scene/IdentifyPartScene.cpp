@@ -38,7 +38,9 @@ namespace
 IdentifyPartScene::IdentifyPartScene(const InitData& init):
 	IScene(init),
 	gm_(GameManager()),
-	font_{FontMethod::MSDF, 48}
+	font_{FontMethod::MSDF, 48},
+	next_page_button_(  RectFUtility::calc_relative_rect(0.05, 0.8, 0.1,0.08), font_, U"次のページ"),
+	back_page_button_( RectFUtility::calc_relative_rect(0.85, 0.8, 0.1,0.08), font_, U"前のページ")
 {
 	constexpr int photo_number = 6;
 
@@ -64,6 +66,7 @@ IdentifyPartScene::IdentifyPartScene(const InitData& init):
 
 void IdentifyPartScene:: update()
 {
+	// detect is_down() on identify photos
 	for(int i = 0; i< identify_photo_data_.size(); i++)
 	{
 		if(identify_photo_data_.at(i).button.is_down())
@@ -71,6 +74,16 @@ void IdentifyPartScene:: update()
 			Print << U"button" << i << U" is down";
 			identify_photo_data_.at(i).is_selected = !identify_photo_data_.at(i).is_selected;
 		}
+	}
+
+	// detect is_down() on next & back button
+	if(next_page_button_.is_down())
+	{
+		Print << U"next page button is down";
+	}
+	if(back_page_button_.is_down())
+	{
+		Print << U"back page button is down";
 	}
 
 	// debug is_selected_array
@@ -85,8 +98,10 @@ void IdentifyPartScene:: update()
 
 void IdentifyPartScene:: draw() const
 {
+	// draw background
 	(void)TextureAsset(U"Book").resized(Scene::Width(),Scene::Height()).draw(0, 0);
 
+	// draw identify photos
 	for (int i = 0; i < identify_photo_data_.size(); i++)
 	{
 		identify_photo_data_.at(i).button.draw();
@@ -96,5 +111,9 @@ void IdentifyPartScene:: draw() const
 			(void)TextureAsset(U"StickyNote").resized(sticky_note_pos.w, sticky_note_pos.h).draw(sticky_note_pos.x, sticky_note_pos.y);
 		}
 	}
+
+	// draw next & back button
+	next_page_button_.draw();
+	back_page_button_.draw();
 
 }
