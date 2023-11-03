@@ -1512,6 +1512,7 @@
     <Content Include="App\images\book_tmp.png" />
     <Content Include="App\images\founder_tmp.png" />
     <Content Include="App\images\photo_studio.png" />
+    <Content Include="App\images\sticky_note_tmp.png" />
     <Content Include="App\images\takeshi_tmp.png" />
     <Content Include="App\texts\sc_prologue.txt" />
     <Content Include="App\texts\sc_Takeshi_1.txt" />
