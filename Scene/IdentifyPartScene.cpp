@@ -169,7 +169,9 @@ void IdentifyPartScene::detect_button()
 	}
 
 	// detect is_down() on identify photos
-	for(int i = 0; i< identify_photo_data_.size(); i++)
+	const auto start_index = current_page_ * photo_number_per_page_;
+	const auto end_index = start_index + photo_number_per_page_;
+	for(int i = start_index; i< end_index; i++)
 	{
 		if(identify_photo_data_.at(i).button.is_down())
 		{
