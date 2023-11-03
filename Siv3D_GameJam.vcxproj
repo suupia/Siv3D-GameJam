@@ -583,7 +583,6 @@
       <AdditionalOptions>/Zc:__cplusplus </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="IdentifyText\IdentifyTextReader.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MessageBox\MessageContentContainerBuilder.cpp">
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -1136,6 +1135,84 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Utility\OneLineTextReader.cpp">
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <Optimization>Disabled</Optimization>
+      <SupportJustMyCode>true</SupportJustMyCode>
+      <AssemblerOutput>NoListing</AssemblerOutput>
+      <AssemblerListingLocation>D:\Siv3D\Siv3D_GameJam\Intermediate\Siv3D_GameJam\Debug\Intermediate\</AssemblerListingLocation>
+      <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
+      <BrowseInformation>false</BrowseInformation>
+      <BrowseInformationFile>D:\Siv3D\Siv3D_GameJam\Intermediate\Siv3D_GameJam\Debug\Intermediate\</BrowseInformationFile>
+      <CompileAs>Default</CompileAs>
+      <ConformanceMode>true</ConformanceMode>
+      <DiagnosticsFormat>Column</DiagnosticsFormat>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <ErrorReporting>Prompt</ErrorReporting>
+      <ExpandAttributedSource>false</ExpandAttributedSource>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <EnableASAN>false</EnableASAN>
+      <EnableFuzzer>false</EnableFuzzer>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <ForcedIncludeFiles>stdafx.h;</ForcedIncludeFiles>
+      <GenerateModuleDependencies>false</GenerateModuleDependencies>
+      <GenerateSourceDependencies>false</GenerateSourceDependencies>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard_C>Default</LanguageStandard_C>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ModuleDependenciesFile>D:\Siv3D\Siv3D_GameJam\Intermediate\Siv3D_GameJam\Debug\Intermediate\</ModuleDependenciesFile>
+      <ModuleOutputFile>D:\Siv3D\Siv3D_GameJam\Intermediate\Siv3D_GameJam\Debug\Intermediate\</ModuleOutputFile>
+      <OmitDefaultLibName>false</OmitDefaultLibName>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <ObjectFileName>D:\Siv3D\Siv3D_GameJam\Intermediate\Siv3D_GameJam\Debug\Intermediate\</ObjectFileName>
+      <CallingConvention>Cdecl</CallingConvention>
+      <ProgramDataBaseFileName>D:\Siv3D\Siv3D_GameJam\Intermediate\Siv3D_GameJam\Debug\Intermediate\vc143.pdb</ProgramDataBaseFileName>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>D:\Siv3D\Siv3D_GameJam\Intermediate\Siv3D_GameJam\Debug\Intermediate\Siv3D_GameJam(debug).pch</PrecompiledHeaderOutputFile>
+      <PreprocessToFile>false</PreprocessToFile>
+      <PreprocessKeepComments>false</PreprocessKeepComments>
+      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+      <ShowIncludes>false</ShowIncludes>
+      <SourceDependenciesFile>D:\Siv3D\Siv3D_GameJam\Intermediate\Siv3D_GameJam\Debug\Intermediate\</SourceDependenciesFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <SmallerTypeCheck>false</SmallerTypeCheck>
+      <SpectreMitigation>false</SpectreMitigation>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <TrackerLogDirectory>D:\Siv3D\Siv3D_GameJam\Intermediate\Siv3D_GameJam\Debug\Intermediate\Siv3D_GameJam.tlog\</TrackerLogDirectory>
+      <TranslateIncludes>false</TranslateIncludes>
+      <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <UseFullPaths>true</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <XMLDocumentationFileName>D:\Siv3D\Siv3D_GameJam\Intermediate\Siv3D_GameJam\Debug\Intermediate\</XMLDocumentationFileName>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <IntelJCCErratum>false</IntelJCCErratum>
+      <BuildStlModules>false</BuildStlModules>
+      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
+      <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
+      <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
+      <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_ENABLE_EXTENDED_ALIGNED_STORAGE;_SILENCE_CXX20_CISO646_REMOVED_WARNING;_SILENCE_ALL_CXX23_DEPRECATION_WARNINGS;_UNICODE;UNICODE;</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DisableSpecificWarnings>26451;26812;</DisableSpecificWarnings>
+      <AdditionalOptions>/Zc:__cplusplus </AdditionalOptions>
+      <LinkCompiled>true</LinkCompiled>
+    </ClCompile>
     <ClCompile Include="Utility\RectFUtility.cpp">
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -1415,7 +1492,6 @@
     <ClInclude Include="GameObject\MessageContent.h" />
     <ClInclude Include="GameObject\MessageContentContainer.h" />
     <ClInclude Include="GameObject\PastPhotoButton.h" />
-    <ClInclude Include="IdentifyText\IdentifyTextReader.h" />
     <ClInclude Include="MessageBox\MessageContentContainerBuilder.h" />
     <ClInclude Include="MessageBox\MessageContentPictureAttacher.h" />
     <ClInclude Include="MessageBox\MessageReader.h" />
@@ -1425,6 +1501,7 @@
     <ClInclude Include="Scene\SceneSetting.h" />
     <ClInclude Include="Scene\TitleScene.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Utility\OneLineTextReader.h" />
     <ClInclude Include="Utility\RectFUtility.h" />
   </ItemGroup>
   <ItemGroup>
@@ -1524,7 +1601,7 @@
     <Content Include="App\images\takeshi_tmp.png" />
     <Content Include="App\texts\sc_prologue.txt" />
     <Content Include="App\texts\sc_Takeshi_1.txt" />
-    <Content Include="App\texts\takeshi_identy_texts.txt" />
+    <Content Include="App\texts\takeshi_identify_texts.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

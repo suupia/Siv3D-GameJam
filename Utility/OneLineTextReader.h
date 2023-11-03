@@ -1,10 +1,10 @@
 ﻿#pragma once
 
-class IdentifyTextReader
+class OneLineTextReader
 {
 public:
-	IdentifyTextReader(const String& path);
-	Array<String> readIdentifyTextAll();
+	OneLineTextReader(const String& path);
+	Array<String> readOneLineAll();
 private:
 	TextReader reader_;
 	Array<String> lines_; // Destination of read strings

@@ -1,7 +1,7 @@
 ﻿#include "../stdafx.h"
-#include "IdentifyTextReader.h"
+#include "OneLineTextReader.h"
 
-IdentifyTextReader::IdentifyTextReader(const String& path) : reader_(path)
+OneLineTextReader::OneLineTextReader(const String& path) : reader_(path)
 {
 	// If the file cannot be opened
 	if (not reader_)
@@ -14,7 +14,7 @@ IdentifyTextReader::IdentifyTextReader(const String& path) : reader_(path)
 	reader_.readLines(lines_);
 }
 
-Array<String> IdentifyTextReader::readIdentifyTextAll()
+Array<String> OneLineTextReader::readOneLineAll()
 {
 	Array<String> result;
 

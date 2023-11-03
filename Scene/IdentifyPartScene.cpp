@@ -1,6 +1,7 @@
 ﻿#include "../stdafx.h"
 #include "IdentifyPartScene.h"
 #include "../Utility/RectFUtility.h"
+#include "../Utility/OneLineTextReader.h"
 
 namespace
 {
@@ -61,6 +62,15 @@ IdentifyPartScene::IdentifyPartScene(const InitData& init):
 	{
 		identify_photo_data_.push_back( create_identify_photo_data(i, x, y, w, h, font_));
 	}
+
+	// debug
+	OneLineTextReader reader(U"texts/takeshi_identify_texts.txt");
+	const auto array = reader.readOneLineAll();
+	for(auto text : array)
+	{
+		Print << text;
+	}
+
 }
 
 void IdentifyPartScene:: update()
