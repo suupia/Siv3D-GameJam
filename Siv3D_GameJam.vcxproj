@@ -1511,6 +1511,12 @@
     <Content Include="App\images\back_photoStudio.png" />
     <Content Include="App\images\book_tmp.png" />
     <Content Include="App\images\founder_tmp.png" />
+    <Content Include="App\images\identify_photo_tmp_0.png" />
+    <Content Include="App\images\identify_photo_tmp_1.png" />
+    <Content Include="App\images\identify_photo_tmp_2.png" />
+    <Content Include="App\images\identify_photo_tmp_3.png" />
+    <Content Include="App\images\identify_photo_tmp_4.png" />
+    <Content Include="App\images\identify_photo_tmp_5.png" />
     <Content Include="App\images\photo_studio.png" />
     <Content Include="App\images\sticky_note_tmp.png" />
     <Content Include="App\images\takeshi_tmp.png" />
