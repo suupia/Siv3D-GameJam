@@ -57,7 +57,9 @@ void IdentifyPartScene:: draw() const
 	(void)TextureAsset(U"Book").resized(Scene::Width(),Scene::Height()).draw(0, 0);
 
 	// draw identify photos
-	for (int i = 0; i < photo_number_per_page_; i++)
+	const auto start_index = current_page_ * photo_number_per_page_;
+	const auto end_index = start_index + photo_number_per_page_;
+	for (int i = start_index; i < end_index; i++)
 	{
 		identify_photo_data_.at(i).button.draw();
 		if (identify_photo_data_.at(i).is_selected)
@@ -82,14 +84,14 @@ void IdentifyPartScene:: draw() const
 
 IdentifyPhotoData IdentifyPartScene::create_identify_photo_data(int index, double x, double y, double w, double h,Array<String> captions)
 {
-	const int row_index = index % 3;
-	const int col_index = index / 3;
-	const int page_index = index /photo_number_per_page_;
+	const int photo_index = index % photo_number_per_page_;  // Indicates the position of the photo on the page.
+	const int row_index = photo_index % 3;
+	const int col_index = photo_index / 3;
 
 	String caption = captions.at(index);
 	Print << U"caption = " << caption;
 
-	if(index % 2 == 0)
+	if(photo_index % 2 == 0)
 	{
 		// even -> left : texture, right : text
 		const auto res_x = x + col_index * w;
