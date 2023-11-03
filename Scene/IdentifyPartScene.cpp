@@ -24,8 +24,8 @@ namespace
 			const auto res_y = y + row_index * h;
 			const auto button = Button( RectFUtility::calc_relative_rect(res_x,res_y,w/2,h), font, U"{}"_fmt(index),U"IdentifyPhoto{}"_fmt(index));
 			const auto sticky_note = RectFUtility::calc_relative_rect(res_x+ w/2,res_y,w/2,h);
-			(void)font(caption).drawAt(40, res_x+ w/2,res_y);
-			return {button, sticky_note, false};
+			const auto caption_pos = RectFUtility::calc_relative_rect(res_x+ w/2,res_y,w/2,h);
+			return {button, sticky_note,  captions.at(index),caption_pos, false};
 		}else
 		{
 			// odd -> left : text, right : texture
@@ -33,8 +33,8 @@ namespace
 			const auto res_y = y + row_index * h;
 			const auto button = Button( RectFUtility::calc_relative_rect(res_x+ w/2,res_y,w/2,h), font, U"{}"_fmt(index),U"IdentifyPhoto{}"_fmt(index));
 			const auto sticky_note = RectFUtility::calc_relative_rect(res_x,res_y,w/2,h);
-			(void)font(caption).drawAt(40, res_x,res_y);
-			return {button, sticky_note, false};
+			const auto caption_pos = RectFUtility::calc_relative_rect(res_x,res_y,w/2,h);
+			return {button, sticky_note,  captions.at(index),caption_pos,false};
 		}
 
 
@@ -66,8 +66,6 @@ IdentifyPartScene::IdentifyPartScene(const InitData& init):
 
 	OneLineTextReader reader(U"texts/takeshi_identify_texts.txt");
 	const auto captions = reader.readOneLineAll();
-	// debug captions
-	// for(auto text : captions)Print << text;
 
 	for(int i = 0; i < photo_number; i++)
 	{
@@ -122,6 +120,11 @@ void IdentifyPartScene:: draw() const
 			const auto sticky_note_pos = identify_photo_data_.at(i).sticky_note_pos;
 			(void)TextureAsset(U"StickyNote").resized(sticky_note_pos.w, sticky_note_pos.h).draw(sticky_note_pos.x, sticky_note_pos.y);
 		}
+
+		auto caption = identify_photo_data_.at(i).caption_text;
+		const auto caption_rect = identify_photo_data_.at(i).caption_rect;
+		(void)font_(caption).drawAt(30, caption_rect.x + caption_rect.w / 2 , caption_rect.y + caption_rect.h / 2, Palette::Black);
+
 	}
 
 	// draw next & back button
