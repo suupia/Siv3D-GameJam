@@ -43,7 +43,6 @@ IdentifyPartScene::IdentifyPartScene(const InitData& init):
 	back_page_button_( RectFUtility::calc_relative_rect(0.85, 0.8, 0.1,0.08), font_, U"前のページ")
 {
 	constexpr int photo_number = 6;
-
 	TextureAsset::Register(U"Book", U"images/book_tmp.png") ;
 	TextureAsset::Register(U"StickyNote", U"images/sticky_note_tmp.png") ;
 	for(int i = 0; i< photo_number; i++)

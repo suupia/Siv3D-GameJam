@@ -11,7 +11,7 @@ MessageReader::MessageReader(const String& path) : reader_{path}
 		throw Error{ U"Failed to open `sc_prologue.txt`" };
 	}
 
-	// Read once to avoid error !!
+	// Read it just once to prevent the mistakes that come from reading it multiple times !!
 	reader_.readLines(lines_);
 }
 

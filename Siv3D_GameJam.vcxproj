@@ -583,6 +583,7 @@
       <AdditionalOptions>/Zc:__cplusplus </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="IdentifyText\IdentifyTextReader.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MessageBox\MessageContentContainerBuilder.cpp">
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -1414,6 +1415,7 @@
     <ClInclude Include="GameObject\MessageContent.h" />
     <ClInclude Include="GameObject\MessageContentContainer.h" />
     <ClInclude Include="GameObject\PastPhotoButton.h" />
+    <ClInclude Include="IdentifyText\IdentifyTextReader.h" />
     <ClInclude Include="MessageBox\MessageContentContainerBuilder.h" />
     <ClInclude Include="MessageBox\MessageContentPictureAttacher.h" />
     <ClInclude Include="MessageBox\MessageReader.h" />
@@ -1522,6 +1524,7 @@
     <Content Include="App\images\takeshi_tmp.png" />
     <Content Include="App\texts\sc_prologue.txt" />
     <Content Include="App\texts\sc_Takeshi_1.txt" />
+    <Content Include="App\texts\takeshi_identy_texts.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
