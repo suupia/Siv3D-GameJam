@@ -1592,10 +1592,16 @@
     <Content Include="App\images\founder_tmp.png" />
     <Content Include="App\images\identify_photo_tmp_0.png" />
     <Content Include="App\images\identify_photo_tmp_1.png" />
+    <Content Include="App\images\identify_photo_tmp_10.png" />
+    <Content Include="App\images\identify_photo_tmp_11.png" />
     <Content Include="App\images\identify_photo_tmp_2.png" />
     <Content Include="App\images\identify_photo_tmp_3.png" />
     <Content Include="App\images\identify_photo_tmp_4.png" />
     <Content Include="App\images\identify_photo_tmp_5.png" />
+    <Content Include="App\images\identify_photo_tmp_6.png" />
+    <Content Include="App\images\identify_photo_tmp_7.png" />
+    <Content Include="App\images\identify_photo_tmp_8.png" />
+    <Content Include="App\images\identify_photo_tmp_9.png" />
     <Content Include="App\images\photo_studio.png" />
     <Content Include="App\images\sticky_note_tmp.png" />
     <Content Include="App\images\takeshi_tmp.png" />
