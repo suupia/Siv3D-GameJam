@@ -30,7 +30,6 @@ private:
 	const int photo_number_per_col_ = 2;
 	const int photo_number_per_page_ = photo_number_per_row_ * photo_number_per_col_;
 
-	IdentifyPhotoData create_identify_photo_data(int index, double x, double y, double w, double h,Array<String> captions);
 	void detect_button();
 	void turn_page(bool is_next);
 };

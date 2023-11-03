@@ -3,6 +3,39 @@
 #include "../Utility/RectFUtility.h"
 #include "../Utility/OneLineTextReader.h"
 
+namespace
+{
+	IdentifyPhotoData create_identify_photo_data(int index, double x, double y, double w, double h,Array<String> captions, const Font& font_, const int photo_number_per_page)
+	{
+		const int photo_index = index % photo_number_per_page;  // Indicates the position of the photo on the page.
+		const int row_index = photo_index % 3;
+		const int col_index = photo_index / 3;
+
+		String caption = captions.at(index);
+		Print << U"caption = " << caption;
+
+		if(photo_index % 2 == 0)
+		{
+			// even -> left : texture, right : text
+			const auto res_x = x + col_index * w;
+			const auto res_y = y + row_index * h;
+			const auto button = Button( RectFUtility::calc_relative_rect(res_x,res_y,w/2,h), font_, U"{}"_fmt(index),U"IdentifyPhoto{}"_fmt(index));
+			const auto sticky_note = RectFUtility::calc_relative_rect(res_x+ w/2,res_y,w/2,h);
+			const auto caption_pos = RectFUtility::calc_relative_rect(res_x+ w/2,res_y,w/2,h);
+			return {button, sticky_note,  captions.at(index),caption_pos, false};
+		}else
+		{
+			// odd -> left : text, right : texture
+			const auto res_x = x + col_index * w;
+			const auto res_y = y + row_index * h;
+			const auto button = Button( RectFUtility::calc_relative_rect(res_x+ w/2,res_y,w/2,h), font_, U"{}"_fmt(index),U"IdentifyPhoto{}"_fmt(index));
+			const auto sticky_note = RectFUtility::calc_relative_rect(res_x,res_y,w/2,h);
+			const auto caption_pos = RectFUtility::calc_relative_rect(res_x,res_y,w/2,h);
+			return {button, sticky_note,  captions.at(index),caption_pos,false};
+		}
+	}
+
+}
 
 // public
 IdentifyPartScene::IdentifyPartScene(const InitData& init):
@@ -32,7 +65,7 @@ IdentifyPartScene::IdentifyPartScene(const InitData& init):
 
 	for(int i = 0; i < all_photo_number_; i++)
 	{
-		identify_photo_data_.push_back( create_identify_photo_data(i, x, y, w, h,captions));
+		identify_photo_data_.push_back( create_identify_photo_data(i, x, y, w, h,captions, font_, photo_number_per_page_));
 	}
 
 }
@@ -82,37 +115,6 @@ void IdentifyPartScene:: draw() const
 
 // private
 
-IdentifyPhotoData IdentifyPartScene::create_identify_photo_data(int index, double x, double y, double w, double h,Array<String> captions)
-{
-	const int photo_index = index % photo_number_per_page_;  // Indicates the position of the photo on the page.
-	const int row_index = photo_index % 3;
-	const int col_index = photo_index / 3;
-
-	String caption = captions.at(index);
-	Print << U"caption = " << caption;
-
-	if(photo_index % 2 == 0)
-	{
-		// even -> left : texture, right : text
-		const auto res_x = x + col_index * w;
-		const auto res_y = y + row_index * h;
-		const auto button = Button( RectFUtility::calc_relative_rect(res_x,res_y,w/2,h), font_, U"{}"_fmt(index),U"IdentifyPhoto{}"_fmt(index));
-		const auto sticky_note = RectFUtility::calc_relative_rect(res_x+ w/2,res_y,w/2,h);
-		const auto caption_pos = RectFUtility::calc_relative_rect(res_x+ w/2,res_y,w/2,h);
-		return {button, sticky_note,  captions.at(index),caption_pos, false};
-	}else
-	{
-		// odd -> left : text, right : texture
-		const auto res_x = x + col_index * w;
-		const auto res_y = y + row_index * h;
-		const auto button = Button( RectFUtility::calc_relative_rect(res_x+ w/2,res_y,w/2,h), font_, U"{}"_fmt(index),U"IdentifyPhoto{}"_fmt(index));
-		const auto sticky_note = RectFUtility::calc_relative_rect(res_x,res_y,w/2,h);
-		const auto caption_pos = RectFUtility::calc_relative_rect(res_x,res_y,w/2,h);
-		return {button, sticky_note,  captions.at(index),caption_pos,false};
-	}
-
-}
-
 /// <summary>
 /// In this method, we detect is_down() on buttons and then "return" to avoid duplicate detection.
 /// </summary>
@@ -158,3 +160,5 @@ void IdentifyPartScene::turn_page(const bool is_next)
 	}
 	Print << U"current_page_ = " << current_page_;
 }
+
+
