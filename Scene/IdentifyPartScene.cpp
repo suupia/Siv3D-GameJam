@@ -43,7 +43,8 @@ IdentifyPartScene::IdentifyPartScene(const InitData& init):
 	gm_(GameManager()),
 	font_{FontMethod::MSDF, 48},
 	next_page_button_(  RectFUtility::calc_relative_rect(0.85, 0.9, 0.1,0.08), font_, U"次のページ"),
-	back_page_button_( RectFUtility::calc_relative_rect(0.05, 0.9, 0.1,0.08), font_, U"前のページ")
+	back_page_button_( RectFUtility::calc_relative_rect(0.05, 0.9, 0.1,0.08), font_, U"前のページ"),
+	confirm_button_(RectFUtility::calc_relative_rect(0.45, 0.9, 0.1,0.08), font_, U"確定")
 {
 	TextureAsset::Register(U"Book", U"images/book_tmp.png") ;
 	TextureAsset::Register(U"StickyNote", U"images/sticky_note_tmp.png") ;
@@ -110,6 +111,7 @@ void IdentifyPartScene:: draw() const
 	// draw next & back button
 	next_page_button_.draw();
 	back_page_button_.draw();
+	confirm_button_.draw();
 
 }
 
@@ -131,6 +133,12 @@ void IdentifyPartScene::detect_button()
 	{
 		Print << U"back page button is down";
 		turn_page(false);
+		return;
+	}
+	if(confirm_button_.is_down())
+	{
+		Print << U"confirm button is down";
+		changeScene(SceneState::Episode1Answer, 2.0s);
 		return;
 	}
 

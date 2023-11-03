@@ -1,4 +1,6 @@
 ﻿# include <Siv3D.hpp> // OpenSiv3D v0.6.11
+
+#include "Scene/Episode1AnswerScene.h"
 #include "Scene/SceneSetting.h"
 #include "Scene/Episode1Scene.h"
 #include "Scene/IdentifyPartScene.h"
@@ -30,6 +32,7 @@ namespace
 		scene_manager.add<TitleScene>(SceneState::Title);
 		scene_manager.add<PrologueScene>(SceneState::Prologue);
 		scene_manager.add<Episode1Scene>(SceneState::Episode1);
+		scene_manager.add<Episode1AnswerScene>(SceneState::Episode1Answer);
 		scene_manager.add<IdentifyPartScene>(SceneState::IdentifyPart);
 
 		scene_manager.init(SceneState::IdentifyPart);

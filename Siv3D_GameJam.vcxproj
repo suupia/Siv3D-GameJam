@@ -818,6 +818,7 @@
       <AdditionalOptions>/Zc:__cplusplus </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Scene\Episode1AnswerScene.cpp" />
     <ClCompile Include="Scene\Episode1Scene.cpp">
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -1495,6 +1496,7 @@
     <ClInclude Include="MessageBox\MessageContentContainerBuilder.h" />
     <ClInclude Include="MessageBox\MessageContentPictureAttacher.h" />
     <ClInclude Include="MessageBox\MessageReader.h" />
+    <ClInclude Include="Scene\Episode1AnswerScene.h" />
     <ClInclude Include="Scene\Episode1Scene.h" />
     <ClInclude Include="Scene\IdentifyPartScene.h" />
     <ClInclude Include="Scene\PrologueScene.h" />
@@ -1607,6 +1609,7 @@
     <Content Include="App\images\takeshi_tmp.png" />
     <Content Include="App\texts\sc_prologue.txt" />
     <Content Include="App\texts\sc_Takeshi_1.txt" />
+    <Content Include="App\texts\sc_Takeshi_2.txt" />
     <Content Include="App\texts\takeshi_identify_texts.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
