@@ -25,5 +25,6 @@ private:
 	Button back_page_button_;
 	Array<IdentifyPhotoData> identify_photo_data_;
 	int current_page_;
+	void detect_button();
 
 };

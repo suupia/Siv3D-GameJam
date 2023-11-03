@@ -37,16 +37,16 @@ namespace
 			return {button, sticky_note,  captions.at(index),caption_pos,false};
 		}
 
-
 	}
 }
 
+// public
 IdentifyPartScene::IdentifyPartScene(const InitData& init):
 	IScene(init),
 	gm_(GameManager()),
 	font_{FontMethod::MSDF, 48},
-	next_page_button_(  RectFUtility::calc_relative_rect(0.05, 0.8, 0.1,0.08), font_, U"次のページ"),
-	back_page_button_( RectFUtility::calc_relative_rect(0.85, 0.8, 0.1,0.08), font_, U"前のページ")
+	next_page_button_(  RectFUtility::calc_relative_rect(0.05, 0.9, 0.1,0.08), font_, U"次のページ"),
+	back_page_button_( RectFUtility::calc_relative_rect(0.85, 0.9, 0.1,0.08), font_, U"前のページ")
 {
 	constexpr int photo_number = 6;
 	TextureAsset::Register(U"Book", U"images/book_tmp.png") ;
@@ -76,25 +76,7 @@ IdentifyPartScene::IdentifyPartScene(const InitData& init):
 
 void IdentifyPartScene:: update()
 {
-	// detect is_down() on identify photos
-	for(int i = 0; i< identify_photo_data_.size(); i++)
-	{
-		if(identify_photo_data_.at(i).button.is_down())
-		{
-			Print << U"button" << i << U" is down";
-			identify_photo_data_.at(i).is_selected = !identify_photo_data_.at(i).is_selected;
-		}
-	}
-
-	// detect is_down() on next & back button
-	if(next_page_button_.is_down())
-	{
-		Print << U"next page button is down";
-	}
-	if(back_page_button_.is_down())
-	{
-		Print << U"back page button is down";
-	}
+	detect_button();
 
 	// debug is_selected_array
 	if (KeyD.down())
@@ -130,5 +112,37 @@ void IdentifyPartScene:: draw() const
 	// draw next & back button
 	next_page_button_.draw();
 	back_page_button_.draw();
+
+}
+
+// private
+
+/// <summary>
+/// In this method, we detect is_down() on buttons and then "return" to avoid duplicate detection.
+/// </summary>
+void IdentifyPartScene::detect_button()
+{
+	// detect is_down() on next & back button
+	if(next_page_button_.is_down())
+	{
+		Print << U"next page button is down";
+		return;
+	}
+	if(back_page_button_.is_down())
+	{
+		Print << U"back page button is down";
+		return;
+	}
+
+	// detect is_down() on identify photos
+	for(int i = 0; i< identify_photo_data_.size(); i++)
+	{
+		if(identify_photo_data_.at(i).button.is_down())
+		{
+			Print << U"button" << i << U" is down";
+			identify_photo_data_.at(i).is_selected = !identify_photo_data_.at(i).is_selected;
+			return;
+		}
+	}
 
 }
