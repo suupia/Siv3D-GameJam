@@ -100,20 +100,20 @@ namespace
 	struct RingEffect : IEffect
 	{
 		Vec2 m_pos;
-
 		ColorF m_color;
 
 		// このコンストラクタ引数が、Effect::add<RingEffect>() の引数になる
-		explicit RingEffect(const Vec2& pos)
+		explicit RingEffect(const Vec2& pos, ColorF color)
 			: m_pos{ pos }
-		, m_color{ RandomColorF() } {}
+		, m_color{color } {}
 
 		bool update(double t) override
 		{
-			// 時間に応じて大きくなる輪を描く
-			Circle{ m_pos, (t * 100) }.drawFrame(4, m_color);
+			// イージング
+			const double e = EaseOutExpo(t);
 
-			// 1 秒未満なら継続する
+			Circle{ m_pos, (e * 150) }.drawFrame((10.0 * (1.0 - e)), m_color);
+
 			return (t < 1.0);
 		}
 	};
@@ -150,6 +150,8 @@ IdentifyPartScene::IdentifyPartScene(const InitData& init):
 	{
 		identify_photo_data_.push_back( create_identify_photo_data(i, w_margin, h_margin, w_ratio, h_ratio,captions, font_, photo_number_per_row_, photo_number_per_page_));
 	}
+
+	effects_.resize(all_page_number());
 
 }
 
@@ -196,7 +198,7 @@ void IdentifyPartScene:: draw() const
 	confirm_button_.draw();
 
 	// update effects
-	effect_.update();
+	effects_.at(current_page_).update();
 
 }
 
@@ -239,26 +241,26 @@ void IdentifyPartScene::detect_button()
 		}
 		else
 		{
-			// show wrong effect
-			effect_.clear();
-			for(const auto wrong_selected_index : wrong_selected_photos)
+			for(int page_index = 0 ; page_index < all_page_number() ; page_index ++)
 			{
-				const auto start_index = current_page_ * photo_number_per_page_;
+				effects_.at(page_index).clear();
+				const auto start_index = page_index * photo_number_per_page_;
 				const auto end_index = start_index + photo_number_per_page_;
-				if( start_index<= wrong_selected_index && wrong_selected_index < end_index)
+				for(const auto wrong_selected_index : wrong_selected_photos)
 				{
-					const auto button = identify_photo_data_.at(wrong_selected_index).button;
-					effect_.add<RingEffect>(button.get_rect().center());
+					if( start_index<= wrong_selected_index && wrong_selected_index < end_index)
+					{
+						const auto button = identify_photo_data_.at(wrong_selected_index).button;
+						effects_.at(page_index).add<RingEffect>(button.get_rect().center(), Palette::Red);
+					}
 				}
-			}
-			for(const auto not_selected_index : not_selected_photos)
-			{
-				const auto start_index = current_page_ * photo_number_per_page_;
-				const auto end_index = start_index + photo_number_per_page_;
-				if( start_index<= not_selected_index && not_selected_index < end_index)
+				for(const auto not_selected_index : not_selected_photos)
 				{
-					const auto button = identify_photo_data_.at(not_selected_index).button;
-					effect_.add<RingEffect>(button.get_rect().center());
+					if( start_index<= not_selected_index && not_selected_index < end_index)
+					{
+						const auto button = identify_photo_data_.at(not_selected_index).button;
+						effects_.at(page_index).add<RingEffect>(button.get_rect().center(), Palette::Green);
+					}
 				}
 			}
 

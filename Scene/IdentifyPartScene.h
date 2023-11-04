@@ -31,8 +31,9 @@ private:
 	const int photo_number_per_col_ = 2;
 	const int photo_number_per_page_ = photo_number_per_row_ * photo_number_per_col_;
 
-	Effect effect_;
+	Array<Effect> effects_;
 
 	void detect_button();
 	void turn_page(bool is_next);
+	int all_page_number() {return identify_photo_data_.size() / all_photo_number_ + 1;}
 };
