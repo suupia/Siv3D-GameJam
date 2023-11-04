@@ -19,7 +19,7 @@ namespace
 		}
 	}
 
-	IdentifyPhotoData create_identify_photo_data(int index, double x, double y, double w, double h,Array<String> captions, const Font& font_,const int photo_number_per_row, const int photo_number_per_page)
+	IdentifyPhotoData create_identify_photo_data(int index, double w_margin, double h_margin, double w, double h,Array<String> captions, const Font& font_,const int photo_number_per_row, const int photo_number_per_page)
 	{
 		const int photo_index = index % photo_number_per_page;  // Indicates the position of the photo on the page.
 		const int row_index = photo_index % photo_number_per_row;
@@ -29,27 +29,27 @@ namespace
 		Print << U"caption = " << caption;
 
 		// calculate the position of the photo
-		const auto res_x = x + col_index * w;
-		const auto res_y = y + row_index * h;
+		const auto x = w_margin + col_index * w;
+		const auto y  = h_margin + row_index * h;
 
 		// calculate the position of the sticky note
 		double sticky_w = w/3;
 		double sticky_h = h/4;
-		double sticky_x =  is_left_page(col_index)? x - 60/100.0 * x : res_x + w - sticky_w + 60/100.0* x;
-		double sticky_y = res_y + h/3;
+		double sticky_x =  is_left_page(col_index)? w_margin - 60/100.0 * w_margin : x + w - sticky_w + 60/100.0* w_margin;
+		double sticky_y = y + h/3;
 		const auto sticky_pos = RectFUtility::calc_relative_rect(sticky_x,sticky_y,sticky_w,sticky_h);
 
 		if(photo_index % 2 == 0)
 		{
 			// even -> left : texture, right : text
-			const auto button = Button( RectFUtility::calc_relative_rect(res_x,res_y,w/2,h), font_, U"{}"_fmt(index),U"IdentifyPhoto{}"_fmt(index));
-			const auto caption_pos = RectFUtility::calc_relative_rect(res_x+ w/2,res_y,w/2,h);
+			const auto button = Button( RectFUtility::calc_relative_rect(x,y,w/2,h), font_, U"{}"_fmt(index),U"IdentifyPhoto{}"_fmt(index));
+			const auto caption_pos = RectFUtility::calc_relative_rect(x+ w/2,y,w/2,h);
 			return {button, sticky_pos,  captions.at(index),caption_pos, false};
 		}else
 		{
 			// odd -> left : text, right : texture
-			const auto button = Button( RectFUtility::calc_relative_rect(res_x+ w/2,res_y,w/2,h), font_, U"{}"_fmt(index),U"IdentifyPhoto{}"_fmt(index));
-			const auto caption_pos = RectFUtility::calc_relative_rect(res_x,res_y,w/2,h);
+			const auto button = Button( RectFUtility::calc_relative_rect(x+ w/2,y,w/2,h), font_, U"{}"_fmt(index),U"IdentifyPhoto{}"_fmt(index));
+			const auto caption_pos = RectFUtility::calc_relative_rect(x,y,w/2,h);
 			return {button, sticky_pos,  captions.at(index),caption_pos,false};
 		}
 
@@ -92,16 +92,10 @@ IdentifyPartScene::IdentifyPartScene(const InitData& init):
 		TextureAsset::Register(U"IdentifyPhoto{}"_fmt(i), path) ;
 	}
 
-	// ratio
-	double x = 0.03;
-	double y = 0.03;
-	double w = 0.43;
-	double h = 0.31;
-
-	double w_margin = 0.03;
-	double h_margin = 0.03;
-	double w_ratio = (1 - 2 * w_margin)  / photo_number_per_col_;
-	double h_ratio = (1 - 2 * h_margin)  / photo_number_per_row_;
+	const double w_margin = 0.03;
+	const double h_margin = 0.03;
+	const double w_ratio = (1 - 2 * w_margin)  / photo_number_per_col_;
+	const double h_ratio = (1 - 2 * h_margin)  / photo_number_per_row_;
 
 
 	OneLineTextReader reader(U"texts/takeshi_identify_texts.txt");
