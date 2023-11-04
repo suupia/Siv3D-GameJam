@@ -3,11 +3,47 @@
 #include "../MessageBox/MessageContentContainerBuilder.h"
 #include "../GameManager/GameManager.h"
 
+#include "../MessageBox/MessageContentPictureAttacher.h"
+#include "../MessageBox/MessageReader.h"
+
+namespace
+{
+	MessageContentContainer build_message_content_container(GameManager& gm, const Font& font)
+	{
+		// This function must be in the MessageContentContainerBuilder.cpp !!!!!
+		MessageContentContainer message_content_container(gm, font);
+
+		// U"texts/sc_Takeshi_3.txt"
+		const auto message_structs = MessageReader(U"texts/sc_Takeshi_3.txt").readMessageAll();
+		const auto message_content_structs = MessageContentPictureAttacher().create_message_content_struct(message_structs);
+		Array<MessageContent> message_contents;
+		for (auto content_struct : message_content_structs)
+		{
+			message_contents.push_back(MessageContent(font, content_struct));
+		}
+		message_content_container.add_message_contents(message_contents);
+
+		// U"texts/sc_Takeshi_4.txt"
+		const auto message_structs2 = MessageReader(U"texts/sc_Takeshi_4.txt").readMessageAll();
+		const auto message_content_structs2 = MessageContentPictureAttacher().create_message_content_struct(message_structs2);
+		Array<MessageContent> message_contents2;
+		for (auto content_struct : message_content_structs2)
+		{
+			message_contents2.push_back(MessageContent(font, content_struct));
+		}
+		message_content_container.add_message_contents(message_contents2);
+
+
+		return message_content_container;
+	}
+
+}
+
 Episode1MultiEndScene::Episode1MultiEndScene(const InitData& init):
 	IScene(init),
 	gm_(GameManager()),
 	font_{FontMethod::MSDF, 48},
-	message_content_container_(MessageContentContainerBuilder(U"texts/sc_Takeshi_3.txt" ).build_message_content_container(gm_, font_))
+	message_content_container_(build_message_content_container(gm_, font_))
 {
 	TextureAsset::Register(U"PhotoStudio", U"images/back_photoStudio.png") ;
 
