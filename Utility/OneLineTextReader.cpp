@@ -8,7 +8,7 @@ OneLineTextReader::OneLineTextReader(const String& path) : reader_(path)
 	if (not reader_)
 	{
 		// throw an error
-		throw Error{ U"Failed to open `sc_prologue.txt`" };
+		throw Error{ U"Failed to open `{}`"_fmt(path) };
 	}
 
 	// Read it just once to prevent the mistakes that come from reading it multiple times !!
@@ -38,6 +38,8 @@ Optional<String> OneLineTextReader::PopOneChunk()
 {
 	String chunk;
 
+	if(lines_.empty()) return none;
+
 	while (true)
 	{
 		if(lines_.front() != U"") break;
@@ -48,8 +50,12 @@ Optional<String> OneLineTextReader::PopOneChunk()
 
 	while (true)
 	{
-		if(lines_.empty()) return none;
-		if(lines_.front() == U"") break;
+		if(lines_.empty()) return chunk;
+		if(lines_.front() == U"")
+		{
+			lines_.pop_front();
+			break;
+		}
 		chunk += lines_.front() + U"\n";
 		lines_.pop_front();
 	}

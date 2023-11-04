@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "../GameManager/GameManager.h"
 #include "../Button/Button.h"
+#include "../GameObject//MessageContent.h"
 #include "SceneSetting.h"
 
 class Episode1FinalPhotoScene: public SceneManager<SceneState, SceneData>::Scene
@@ -16,7 +17,9 @@ private:
 	Button next_page_button_;
 	Button back_page_button_;
 	Array<Button> final_photo_buttons_;
+	Array<String> final_photo_captions_;
 	const int final_photo_number_ = 2;
+	int current_photo_index_ = 0;
 
 	void detect_button();
 	void turn_page(bool is_next);

@@ -8,16 +8,22 @@ Episode1FinalPhotoScene::Episode1FinalPhotoScene(const InitData& init):
 	IScene(init),
 	gm_(GameManager()),
 	font_{FontMethod::MSDF, 48},
-	next_page_button_(  RectFUtility::calc_relative_rect(0.88, 0.5, 0.1,0.08), font_, U"次のページ"),
-	back_page_button_( RectFUtility::calc_relative_rect(0.02, 0.5, 0.1,0.08), font_, U"前のページ")
-
+	next_page_button_(  RectFUtility::calc_relative_rect(0.88, 0.4, 0.1,0.08), font_, U"次のページ"),
+	back_page_button_( RectFUtility::calc_relative_rect(0.02, 0.4, 0.1,0.08), font_, U"前のページ")
 {
 	TextureAsset::Register(U"PhotoStudio", U"images/back_photoStudio.png") ;
 
-	const double w_margin = 0.15;
+	const double w_margin = 0.2;
 	const double h_margin = 0.05;
 	const double w_ratio = (1 - 2 * w_margin);
-	const double h_ratio = 0.7;
+	const double h_ratio = 0.6;
+
+	OneLineTextReader reader(U"texts/final_photo_captions_tmp.txt");
+	final_photo_captions_ = reader.readOneLineAll();
+	for(auto caption: final_photo_captions_)
+	{
+		Print << caption;
+	}
 
 	for(int i = 0; i< final_photo_number_; i++)
 	{
@@ -39,10 +45,17 @@ void Episode1FinalPhotoScene::draw() const {
 	(void)TextureAsset(U"PhotoStudio").resized(Scene::Width(),Scene::Height()).draw(0, 0);
 
 	// draw final photo
-	for(auto final_photo : final_photo_buttons_)
-	{
-		final_photo.draw();
-	}
+	final_photo_buttons_.at(current_photo_index_).draw();
+
+	// draw description
+	// back ground box
+	const auto back_ground_rect = RectFUtility::calc_relative_rect(0, 3.0/5.0, 1, 2.0/5.0).draw(Palette::Lightslategray);
+
+	// message box
+	const auto message_rect= RectFUtility::to_horizontal_center( RectF{back_ground_rect.x, back_ground_rect.y, back_ground_rect.w * 0.8, back_ground_rect.h} );
+	(void)message_rect.draw(Palette::Lightblue);
+	font_(final_photo_captions_.at(current_photo_index_)).draw(Arg::topLeft(message_rect.x + message_rect.w * 0.1, message_rect.y + message_rect.h * 0.2), Palette::Black);  // message_rectをそのまま使って場所を決めているわけではないことに注意
+
 
 	// draw next & back button
 	next_page_button_.draw();
@@ -72,16 +85,15 @@ void Episode1FinalPhotoScene::detect_button()
 
 void Episode1FinalPhotoScene::turn_page(const bool is_next)
 {
-	// const auto all_page_number = identify_photo_data_.size() / all_photo_number_ + 1;
-	// if (is_next)
-	// {
-	// 	if (current_page_ + 1 < all_page_number)
-	// 		current_page_++;
-	// }
-	// else
-	// {
-	// 	if (0 <= current_page_ - 1)
-	// 		current_page_--;
-	// }
-	// Print << U"current_page_ = " << current_page_;
+	if (is_next)
+	{
+		if (current_photo_index_ + 1 < final_photo_number_)
+			current_photo_index_++;
+	}
+	else
+	{
+		if (0 <= current_photo_index_ - 1)
+			current_photo_index_--;
+	}
+	Print << U"current_photo_index_ = " << current_photo_index_;
 }
