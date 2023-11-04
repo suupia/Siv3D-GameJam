@@ -1622,6 +1622,8 @@
     <Content Include="App\images\identify_photo_tmp_7.png" />
     <Content Include="App\images\identify_photo_tmp_8.png" />
     <Content Include="App\images\identify_photo_tmp_9.png" />
+    <Content Include="App\images\final_photo_0.png" />
+    <Content Include="App\images\final_photo_1.png" />
     <Content Include="App\images\photo_studio.png" />
     <Content Include="App\images\sticky_note_tmp.png" />
     <Content Include="App\images\takeshi_tmp.png" />

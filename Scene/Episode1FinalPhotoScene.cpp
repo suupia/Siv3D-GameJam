@@ -15,7 +15,7 @@ Episode1FinalPhotoScene::Episode1FinalPhotoScene(const InitData& init):
 {
 	TextureAsset::Register(U"PhotoStudio", U"images/back_photoStudio.png") ;
 
-	const double w_margin = 0.2;
+	const double w_margin = 0.25;
 	const double h_margin = 0.05;
 	const double w_ratio = (1 - 2 * w_margin);
 	const double h_ratio = 0.6;
@@ -25,7 +25,7 @@ Episode1FinalPhotoScene::Episode1FinalPhotoScene(const InitData& init):
 
 	for(int i = 0; i< final_photo_number_; i++)
 	{
-		const auto path = U"images/final_photo_tmp_{}.png"_fmt(i);
+		const auto path = U"images/final_photo_{}.png"_fmt(i);
 		TextureAsset::Register(U"FinalPhoto{}"_fmt(i), path) ;
 		const auto button = Button( RectFUtility::calc_relative_rect(w_margin,h_margin,w_ratio,h_ratio), font_, U"{}"_fmt(i),U"FinalPhoto{}"_fmt(i));
 		final_photo_buttons_.push_back(button);
