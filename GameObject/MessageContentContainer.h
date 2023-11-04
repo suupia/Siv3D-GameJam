@@ -23,7 +23,7 @@ struct NextPageEffect : IEffect
 		{
 			mod_t -= cycle_t;
 		}
-		Print << U"mod_t: " << mod_t << U" cycle_t: " << cycle_t << U" t: " << t;
+		// Print << U"mod_t: " << mod_t << U" cycle_t: " << cycle_t << U" t: " << t;
 
 		const double e = EaseOutExpo(mod_t);
 

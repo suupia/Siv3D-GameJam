@@ -15,7 +15,6 @@ void MessageContentContainer::update_render() const
 	auto& message_content = message_contents_.at(current_message_content_index_);
 	if(message_content.is_show_all_message())
 	{
-		Print << U"Play next page effect";
 		if(next_page_effect_.isPaused()) next_page_effect_.resume();
 		next_page_effect_.update();
 	}else
