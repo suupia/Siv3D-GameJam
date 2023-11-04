@@ -11,10 +11,10 @@ struct IdentifyPhotoData {
 	bool is_selected;
 };
 
-class IdentifyPartScene : public SceneManager<SceneState, SceneData>::Scene
+class Episode1IdentifyPhotoScene : public SceneManager<SceneState, SceneData>::Scene
 {
 public:
-	IdentifyPartScene(const InitData& init);
+	Episode1IdentifyPhotoScene(const InitData& init);
 	void update() override;
 	void draw() const override;
 private:
@@ -35,5 +35,5 @@ private:
 
 	void detect_button();
 	void turn_page(bool is_next);
-	int all_page_number() {return identify_photo_data_.size() / all_photo_number_ + 1;}
+	int all_page_number() const {return identify_photo_data_.size() / all_photo_number_ + 1;}
 };

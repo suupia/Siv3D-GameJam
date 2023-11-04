@@ -819,6 +819,8 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Scene\Episode1AnswerScene.cpp" />
+    <ClCompile Include="Scene\Episode1FinalPhotoScene.cpp" />
+    <ClCompile Include="Scene\Episode1MultiEndScene.cpp" />
     <ClCompile Include="Scene\Episode1Scene.cpp">
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -897,7 +899,7 @@
       <AdditionalOptions>/Zc:__cplusplus </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="Scene\IdentifyPartScene.cpp" />
+    <ClCompile Include="Scene\Episode1IdentifyPhotoScene.cpp" />
     <ClCompile Include="Scene\PrologueScene.cpp">
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -1497,8 +1499,10 @@
     <ClInclude Include="MessageBox\MessageContentPictureAttacher.h" />
     <ClInclude Include="MessageBox\MessageReader.h" />
     <ClInclude Include="Scene\Episode1AnswerScene.h" />
+    <ClInclude Include="Scene\Episode1FinalPhotoScene.h" />
+    <ClInclude Include="Scene\Episode1MultiEndScene.h" />
     <ClInclude Include="Scene\Episode1Scene.h" />
-    <ClInclude Include="Scene\IdentifyPartScene.h" />
+    <ClInclude Include="Scene\Episode1IdentifyPhotoScene.h" />
     <ClInclude Include="Scene\PrologueScene.h" />
     <ClInclude Include="Scene\SceneSetting.h" />
     <ClInclude Include="Scene\TitleScene.h" />
@@ -1591,7 +1595,21 @@
   <ItemGroup>
     <Content Include="App\images\back_photoStudio.png" />
     <Content Include="App\images\book_tmp.png" />
+    <Content Include="App\images\final_photo_tmp_0.png" />
+    <Content Include="App\images\final_photo_tmp_1.png" />
     <Content Include="App\images\founder_tmp.png" />
+    <Content Include="App\images\identify_photo_0.png" />
+    <Content Include="App\images\identify_photo_1.png" />
+    <Content Include="App\images\identify_photo_10.png" />
+    <Content Include="App\images\identify_photo_11.png" />
+    <Content Include="App\images\identify_photo_2.png" />
+    <Content Include="App\images\identify_photo_3.png" />
+    <Content Include="App\images\identify_photo_4.png" />
+    <Content Include="App\images\identify_photo_5.png" />
+    <Content Include="App\images\identify_photo_6.png" />
+    <Content Include="App\images\identify_photo_7.png" />
+    <Content Include="App\images\identify_photo_8.png" />
+    <Content Include="App\images\identify_photo_9.png" />
     <Content Include="App\images\identify_photo_tmp_0.png" />
     <Content Include="App\images\identify_photo_tmp_1.png" />
     <Content Include="App\images\identify_photo_tmp_10.png" />
@@ -1604,9 +1622,12 @@
     <Content Include="App\images\identify_photo_tmp_7.png" />
     <Content Include="App\images\identify_photo_tmp_8.png" />
     <Content Include="App\images\identify_photo_tmp_9.png" />
+    <Content Include="App\images\final_photo_0.png" />
+    <Content Include="App\images\final_photo_1.png" />
     <Content Include="App\images\photo_studio.png" />
     <Content Include="App\images\sticky_note_tmp.png" />
     <Content Include="App\images\takeshi_tmp.png" />
+    <Content Include="App\texts\final_photo_captions_tmp.txt" />
     <Content Include="App\texts\sc_prologue.txt" />
     <Content Include="App\texts\sc_Takeshi_1.txt" />
     <Content Include="App\texts\sc_Takeshi_2.txt" />

@@ -1,9 +1,11 @@
 ﻿# include <Siv3D.hpp> // OpenSiv3D v0.6.11
 
 #include "Scene/Episode1AnswerScene.h"
+#include "Scene/Episode1FinalPhotoScene.h"
+#include "Scene/Episode1MultiEndScene.h"
 #include "Scene/SceneSetting.h"
 #include "Scene/Episode1Scene.h"
-#include "Scene/IdentifyPartScene.h"
+#include "Scene/Episode1IdentifyPhotoScene.h"
 #include "Scene/PrologueScene.h"
 #include "Scene/TitleScene.h"
 
@@ -32,10 +34,12 @@ namespace
 		scene_manager.add<TitleScene>(SceneState::Title);
 		scene_manager.add<PrologueScene>(SceneState::Prologue);
 		scene_manager.add<Episode1Scene>(SceneState::Episode1);
-		scene_manager.add<IdentifyPartScene>(SceneState::IdentifyPart);
+		scene_manager.add<Episode1IdentifyPhotoScene>(SceneState::Episode1IdentifyPhoto);
 		scene_manager.add<Episode1AnswerScene>(SceneState::Episode1Answer);
+		scene_manager.add<Episode1FinalPhotoScene>(SceneState::Episode1FinalPhoto);
+		scene_manager.add<Episode1MultiEndScene>(SceneState::Episode1MultiEnd);
 
-		scene_manager.init(SceneState::IdentifyPart);
+		scene_manager.init(SceneState::Episode1FinalPhoto);
 		return  scene_manager;
 	}
 }
@@ -71,11 +75,19 @@ void Main()
 		}
 		if(Key4.pressed())
 		{
-			scene_manager.changeScene(SceneState::IdentifyPart);
+			scene_manager.changeScene(SceneState::Episode1IdentifyPhoto);
 		}
 		if(Key5.pressed())
 		{
 			scene_manager.changeScene(SceneState::Episode1Answer);
+		}
+		if(Key6.pressed())
+		{
+			scene_manager.changeScene(SceneState::Episode1FinalPhoto);
+		}
+		if(Key7.pressed())
+		{
+			scene_manager.changeScene(SceneState::Episode1MultiEnd);
 		}
 	}
 }

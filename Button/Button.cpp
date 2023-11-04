@@ -1,13 +1,18 @@
 #include "../stdafx.h"
 #include "Button.h"
 
-Button::Button(RectF rect, const Font& font, const String& text)
+Button::Button(const RectF& rect, const Font& font, const String& text)
 	: rect_(rect), font_(font), text_(text)
 {
 }
 
-Button::Button(RectF rect, const Font& font, const String& text, const String& texture_path)
+Button::Button(const RectF& rect, const Font& font, const String& text, const String& texture_path)
 	: rect_(rect), font_(font), text_(text), texture_key_(texture_path)
+{
+}
+
+Button::Button(const RectF& rect,const String& texture_path)
+	: rect_(rect),texture_key_(texture_path)
 {
 }
 
