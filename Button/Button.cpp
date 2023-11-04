@@ -16,6 +16,13 @@ Button::Button(const RectF& rect,const String& texture_path)
 {
 }
 
+Button::Button(const RectF& rect, const double angle, const String& texture_path)
+	: rect_(rect), angle_(angle), texture_key_(texture_path)
+{
+
+}
+
+
 bool Button::is_down() const
 {
 	return (rect_.leftClicked());
@@ -29,11 +36,11 @@ void Button::draw() const
 	}
 	if(texture_key_ == none)
 	{
-		rect_.draw(ColorF{ 0.3, 0.7, 1.0 });
+		rect_.rotated(angle_).draw(ColorF{ 0.3, 0.7, 1.0 });
 		(void)font_(text_).drawAt(40, (rect_.x + rect_.w / 2), (rect_.y + rect_.h / 2));
 	}else
 	{
-		(void)TextureAsset(*texture_key_).resized(rect_.w, rect_.h).draw(rect_.x, rect_.y);
+		(void)TextureAsset(*texture_key_).resized(rect_.w, rect_.h).rotated(angle_).draw(rect_.x, rect_.y);
 		(void)font_(text_).drawAt(40, (rect_.x + rect_.w / 2), (rect_.y + rect_.h / 2));
 	}
 }

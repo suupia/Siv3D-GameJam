@@ -39,16 +39,18 @@ namespace
 		double sticky_y = y + h/3;
 		const auto sticky_pos = RectFUtility::calc_relative_rect(sticky_x,sticky_y,sticky_w,sticky_h);
 
+		auto rand_angle =  Random(-12_deg, 12_deg);
+
 		if(photo_index % 2 == 0)
 		{
 			// even -> left : texture, right : text
-			const auto button = Button( RectFUtility::calc_relative_rect(x,y,w/2,h), U"IdentifyPhoto{}"_fmt(index));
+			const auto button = Button( RectFUtility::calc_relative_rect(x,y,w/2,h), rand_angle,U"IdentifyPhoto{}"_fmt(index));
 			const auto caption_pos = RectFUtility::calc_relative_rect(x+ w/2,y,w/2,h);
 			return {button, sticky_pos,  captions.at(index),caption_pos, false};
 		}else
 		{
 			// odd -> left : text, right : texture
-			const auto button = Button( RectFUtility::calc_relative_rect(x+ w/2,y,w/2,h), U"IdentifyPhoto{}"_fmt(index));
+			const auto button = Button( RectFUtility::calc_relative_rect(x+ w/2,y,w/2,h), rand_angle,U"IdentifyPhoto{}"_fmt(index));
 			const auto caption_pos = RectFUtility::calc_relative_rect(x,y,w/2,h);
 			return {button, sticky_pos,  captions.at(index),caption_pos,false};
 		}
@@ -137,10 +139,11 @@ Episode1IdentifyPhotoScene::Episode1IdentifyPhotoScene(const InitData& init):
 		TextureAsset::Register(U"IdentifyPhoto{}"_fmt(i), path) ;
 	}
 
-	const double w_margin = 0.03;
-	const double h_margin = 0.03;
+	const double w_margin = 0.05;
+	const double h_up_margin = 0.08;
+	const double h_down_margin = 0.15;
 	const double w_ratio = (1 - 2 * w_margin)  / photo_number_per_col_;
-	const double h_ratio = (1 - 2 * h_margin)  / photo_number_per_row_;
+	const double h_ratio = (1 - (h_up_margin + h_down_margin))  / photo_number_per_row_;
 
 
 	OneLineTextReader reader(U"texts/takeshi_identify_texts.txt");
@@ -148,7 +151,7 @@ Episode1IdentifyPhotoScene::Episode1IdentifyPhotoScene(const InitData& init):
 
 	for(int i = 0; i < all_photo_number_; i++)
 	{
-		identify_photo_data_.push_back( create_identify_photo_data(i, w_margin, h_margin, w_ratio, h_ratio,captions, font_, photo_number_per_row_, photo_number_per_page_));
+		identify_photo_data_.push_back( create_identify_photo_data(i, w_margin, h_up_margin, w_ratio, h_ratio,captions, font_, photo_number_per_row_, photo_number_per_page_));
 	}
 
 	effects_.resize(all_page_number());
