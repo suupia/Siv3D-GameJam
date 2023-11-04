@@ -31,6 +31,8 @@ private:
 	const int photo_number_per_col_ = 2;
 	const int photo_number_per_page_ = photo_number_per_row_ * photo_number_per_col_;
 
+	Effect effect_;
+
 	void detect_button();
 	void turn_page(bool is_next);
 };

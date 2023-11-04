@@ -32,8 +32,8 @@ namespace
 		scene_manager.add<TitleScene>(SceneState::Title);
 		scene_manager.add<PrologueScene>(SceneState::Prologue);
 		scene_manager.add<Episode1Scene>(SceneState::Episode1);
-		scene_manager.add<Episode1AnswerScene>(SceneState::Episode1Answer);
 		scene_manager.add<IdentifyPartScene>(SceneState::IdentifyPart);
+		scene_manager.add<Episode1AnswerScene>(SceneState::Episode1Answer);
 
 		scene_manager.init(SceneState::IdentifyPart);
 		return  scene_manager;
@@ -72,6 +72,10 @@ void Main()
 		if(Key4.pressed())
 		{
 			scene_manager.changeScene(SceneState::IdentifyPart);
+		}
+		if(Key5.pressed())
+		{
+			scene_manager.changeScene(SceneState::Episode1Answer);
 		}
 	}
 }
