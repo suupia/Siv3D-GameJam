@@ -157,15 +157,15 @@ void IdentifyPartScene:: draw() const
 	for (int i = start_index; i < end_index; i++)
 	{
 		identify_photo_data_.at(i).button.draw();
+
+		auto caption = identify_photo_data_.at(i).caption_text;
+		const auto caption_rect = identify_photo_data_.at(i).caption_rect;
+		(void)font_(caption).drawAt(30, caption_rect.x + caption_rect.w / 2 , caption_rect.y + caption_rect.h / 2, Palette::Black);
 		if (identify_photo_data_.at(i).is_selected)
 		{
 			const auto sticky_note_pos = identify_photo_data_.at(i).sticky_note_pos;
 			(void)TextureAsset(U"StickyNote").resized(sticky_note_pos.w, sticky_note_pos.h).draw(sticky_note_pos.x, sticky_note_pos.y);
 		}
-
-		auto caption = identify_photo_data_.at(i).caption_text;
-		const auto caption_rect = identify_photo_data_.at(i).caption_rect;
-		(void)font_(caption).drawAt(30, caption_rect.x + caption_rect.w / 2 , caption_rect.y + caption_rect.h / 2, Palette::Black);
 
 	}
 
