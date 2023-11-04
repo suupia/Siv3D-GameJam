@@ -6,7 +6,7 @@
 Episode1Scene::Episode1Scene(const InitData& init):
 	IScene(init),
 	gm_(GameManager()),
-	font_{FontMethod::MSDF, 48},
+	font_{FontMethod::MSDF, 48, U"fonts/ZenAntiqueSoft.ttf" },
 	message_content_container_(MessageContentContainerBuilder(U"texts/sc_Takeshi_1.txt" ).build_message_content_container(gm_, font_))
 {
 	TextureAsset::Register(U"PhotoStudio", U"images/back_photoStudio.png") ;

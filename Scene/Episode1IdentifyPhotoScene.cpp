@@ -59,7 +59,7 @@ namespace
 
 	Array<int> calc_wrong_selected_photos(Array<IdentifyPhotoData> identify_photo_data)
 	{
-		Array should_be_selected = {0,2,3,5,8,10};
+		Array should_be_selected = {0,2,3,5,7,10};
 		Array<int> actual_selected;
 		for(int i = 0; i< identify_photo_data.size(); i++)
 		{
@@ -80,7 +80,7 @@ namespace
 
 	Array<int> not_selected_photos(Array<IdentifyPhotoData> identify_photo_data)
 	{
-		Array should_be_selected = {0,2,3,5,8,10};
+		Array should_be_selected = {0,2,3,5,7,10};
 		Array<int> actual_selected;
 		for(int i = 0; i< identify_photo_data.size(); i++)
 		{
@@ -126,7 +126,7 @@ namespace
 Episode1IdentifyPhotoScene::Episode1IdentifyPhotoScene(const InitData& init):
 	IScene(init),
 	gm_(GameManager()),
-	font_{FontMethod::MSDF, 48},
+	font_{FontMethod::MSDF, 48, U"fonts/ZenAntiqueSoft.ttf" },
 	next_page_button_(  RectFUtility::calc_relative_rect(0.85, 0.9, 0.1,0.08), font_, U"次のページ"),
 	back_page_button_( RectFUtility::calc_relative_rect(0.05, 0.9, 0.1,0.08), font_, U"前のページ"),
 	confirm_button_(RectFUtility::calc_relative_rect(0.45, 0.9, 0.1,0.08), font_, U"確定")

@@ -5,7 +5,7 @@
 TitleScene::TitleScene(const InitData& init):
 	IScene(init),
 	gm_(GameManager()),
-	font_{FontMethod::MSDF, 48},
+	font_{FontMethod::MSDF, 48, U"fonts/ZenAntiqueSoft.ttf" },
 	start_button_( RectFUtility::to_horizontal_center( RectFUtility::calc_relative_rect(0.5, 0.7, 0.1,0.08)), font_, U"はじめる")
 {
 	TextureAsset::Register(U"Title", U"images/title.png") ;
