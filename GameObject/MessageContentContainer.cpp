@@ -35,3 +35,10 @@ void MessageContentContainer::go_to_next_message()
 	}
 }
 
+bool MessageContentContainer::is_message_finished() const
+{
+	auto& message_content = message_contents_.at(current_message_content_index_);
+	Print << message_content.is_show_all_message() << U" " << current_message_content_index_ << U" " << message_contents_.size();
+	return message_content.is_show_all_message()  && current_message_content_index_ >= message_contents_.size() - 1;
+}
+

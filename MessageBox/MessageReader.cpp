@@ -17,6 +17,8 @@ MessageReader::MessageReader(const String& path) : reader_{path}
 
 Optional<MessageStruct> MessageReader::PopOneChunk()
 {
+	if(lines_.empty()) return none;
+
 	while (true)
 	{
 		if(lines_.front().starts_with(U"$")) break;
@@ -32,7 +34,7 @@ Optional<MessageStruct> MessageReader::PopOneChunk()
 	String messages;
 	while (true)
 	{
-		if(lines_.empty()) return none;
+		if(lines_.empty()) return MessageStruct{name, messages};
 		if(lines_.front().starts_with(U"$")) break;
 		auto message_line = lines_.front();
 		lines_.pop_front();

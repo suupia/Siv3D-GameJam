@@ -11,10 +11,9 @@ enum class SceneState {
 	Episode1MultiEnd,
 	Episode2,
 	Episode3,
-	SelectPhotoPart,
 	Epilogue,
 };
 
 struct SceneData {
-
+	int32 chosen_final_photo_index;
 };

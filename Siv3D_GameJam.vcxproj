@@ -1593,10 +1593,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\images\album.png" />
     <Content Include="App\images\back_photoStudio.png" />
     <Content Include="App\images\book_tmp.png" />
     <Content Include="App\images\final_photo_tmp_0.png" />
     <Content Include="App\images\final_photo_tmp_1.png" />
+    <Content Include="App\images\founder.png" />
     <Content Include="App\images\founder_tmp.png" />
     <Content Include="App\images\identify_photo_0.png" />
     <Content Include="App\images\identify_photo_1.png" />
@@ -1626,11 +1628,18 @@
     <Content Include="App\images\final_photo_1.png" />
     <Content Include="App\images\photo_studio.png" />
     <Content Include="App\images\sticky_note_tmp.png" />
+    <Content Include="App\images\Takeshi_0.png" />
+    <Content Include="App\images\Takeshi_1.png" />
+    <Content Include="App\images\Takeshi_2.png" />
     <Content Include="App\images\takeshi_tmp.png" />
     <Content Include="App\texts\final_photo_captions_tmp.txt" />
     <Content Include="App\texts\sc_prologue.txt" />
     <Content Include="App\texts\sc_Takeshi_1.txt" />
     <Content Include="App\texts\sc_Takeshi_2.txt" />
+    <Content Include="App\texts\sc_Takeshi_3.txt" />
+    <Content Include="App\texts\sc_Takeshi_4.txt" />
+    <Content Include="App\texts\sc_Takeshi_End_0.txt" />
+    <Content Include="App\texts\sc_Takeshi_End_1.txt" />
     <Content Include="App\texts\takeshi_identify_texts.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
