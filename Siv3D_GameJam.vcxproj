@@ -1632,6 +1632,7 @@
     <Content Include="App\images\Takeshi_1.png" />
     <Content Include="App\images\Takeshi_2.png" />
     <Content Include="App\images\takeshi_tmp.png" />
+    <Content Include="App\images\title.png" />
     <Content Include="App\texts\final_photo_captions_tmp.txt" />
     <Content Include="App\texts\sc_prologue.txt" />
     <Content Include="App\texts\sc_Takeshi_1.txt" />
