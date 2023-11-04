@@ -42,13 +42,13 @@ namespace
 		if(photo_index % 2 == 0)
 		{
 			// even -> left : texture, right : text
-			const auto button = Button( RectFUtility::calc_relative_rect(x,y,w/2,h), font_,U"IdentifyPhoto{}"_fmt(index));
+			const auto button = Button( RectFUtility::calc_relative_rect(x,y,w/2,h), U"IdentifyPhoto{}"_fmt(index));
 			const auto caption_pos = RectFUtility::calc_relative_rect(x+ w/2,y,w/2,h);
 			return {button, sticky_pos,  captions.at(index),caption_pos, false};
 		}else
 		{
 			// odd -> left : text, right : texture
-			const auto button = Button( RectFUtility::calc_relative_rect(x+ w/2,y,w/2,h), font_,U"IdentifyPhoto{}"_fmt(index));
+			const auto button = Button( RectFUtility::calc_relative_rect(x+ w/2,y,w/2,h), U"IdentifyPhoto{}"_fmt(index));
 			const auto caption_pos = RectFUtility::calc_relative_rect(x,y,w/2,h);
 			return {button, sticky_pos,  captions.at(index),caption_pos,false};
 		}
@@ -129,7 +129,7 @@ Episode1IdentifyPhotoScene::Episode1IdentifyPhotoScene(const InitData& init):
 	back_page_button_( RectFUtility::calc_relative_rect(0.05, 0.9, 0.1,0.08), font_, U"前のページ"),
 	confirm_button_(RectFUtility::calc_relative_rect(0.45, 0.9, 0.1,0.08), font_, U"確定")
 {
-	TextureAsset::Register(U"Book", U"images/book_tmp.png") ;
+	TextureAsset::Register(U"Book", U"images/album.png") ;
 	TextureAsset::Register(U"StickyNote", U"images/sticky_note_tmp.png") ;
 	for(int i = 0; i< all_photo_number_; i++)
 	{
