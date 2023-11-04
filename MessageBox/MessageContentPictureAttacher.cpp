@@ -7,8 +7,8 @@ struct MessageContentStruct;
 
 MessageContentPictureAttacher::MessageContentPictureAttacher()
 {
-	TextureAsset::Register(U"Takeshi", U"images/takeshi_tmp.png");
-	TextureAsset::Register(U"Founder", U"images/founder_tmp.png");
+	TextureAsset::Register(U"Takeshi_0", U"images/Takeshi_0.png");
+	TextureAsset::Register(U"Founder", U"images/founder.png");
 	TextureAsset::Register(U"PhotoStudio", U"images/back_photoStudio.png") ;
 	TextureAsset::Register(U"I", U"images/siv3d-kun.png");
 
@@ -27,7 +27,7 @@ Array<MessageContentStruct> MessageContentPictureAttacher::create_message_conten
 		else if (content.name == U"創設者")
 			person_picture = TextureAsset(U"Founder");
 		else if (content.name == U"たけし")
-			person_picture = TextureAsset(U"Takeshi");
+			person_picture = TextureAsset(U"Takeshi_0");
 		else if (content.name == U"none")
 			person_picture = TextureAsset(U"I");
 		else

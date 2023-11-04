@@ -1598,6 +1598,7 @@
     <Content Include="App\images\book_tmp.png" />
     <Content Include="App\images\final_photo_tmp_0.png" />
     <Content Include="App\images\final_photo_tmp_1.png" />
+    <Content Include="App\images\founder.png" />
     <Content Include="App\images\founder_tmp.png" />
     <Content Include="App\images\identify_photo_0.png" />
     <Content Include="App\images\identify_photo_1.png" />
@@ -1627,6 +1628,9 @@
     <Content Include="App\images\final_photo_1.png" />
     <Content Include="App\images\photo_studio.png" />
     <Content Include="App\images\sticky_note_tmp.png" />
+    <Content Include="App\images\Takeshi_0.png" />
+    <Content Include="App\images\Takeshi_1.png" />
+    <Content Include="App\images\Takeshi_2.png" />
     <Content Include="App\images\takeshi_tmp.png" />
     <Content Include="App\texts\final_photo_captions_tmp.txt" />
     <Content Include="App\texts\sc_prologue.txt" />
