@@ -3,10 +3,10 @@
 #include "../GameObject//MessageContentContainer.h"
 #include "SceneSetting.h"
 
-class Episode1Scene: public SceneManager<SceneState, SceneData>::Scene
+class Episode1MultiEndScene: public SceneManager<SceneState, SceneData>::Scene
 {
 public:
-	Episode1Scene(const InitData& init);
+	Episode1MultiEndScene(const InitData& init);
 	void update() override;
 	void draw() const override;
 private:

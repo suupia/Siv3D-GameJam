@@ -7,6 +7,7 @@ enum class SceneState {
 	Episode1,
 	Episode1Answer,
 	Episode1FinalPhoto,
+	Episode1MultiEnd,
 	Episode2,
 	Episode3,
 	IdentifyPart,

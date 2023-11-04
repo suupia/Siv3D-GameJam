@@ -2,6 +2,7 @@
 
 #include "Scene/Episode1AnswerScene.h"
 #include "Scene/Episode1FinalPhotoScene.h"
+#include "Scene/Episode1MultiEndScene.h"
 #include "Scene/SceneSetting.h"
 #include "Scene/Episode1Scene.h"
 #include "Scene/IdentifyPartScene.h"
@@ -36,6 +37,7 @@ namespace
 		scene_manager.add<IdentifyPartScene>(SceneState::IdentifyPart);
 		scene_manager.add<Episode1AnswerScene>(SceneState::Episode1Answer);
 		scene_manager.add<Episode1FinalPhotoScene>(SceneState::Episode1FinalPhoto);
+		scene_manager.add<Episode1MultiEndScene>(SceneState::Episode1MultiEnd);
 
 		scene_manager.init(SceneState::Episode1FinalPhoto);
 		return  scene_manager;
@@ -78,6 +80,14 @@ void Main()
 		if(Key5.pressed())
 		{
 			scene_manager.changeScene(SceneState::Episode1Answer);
+		}
+		if(Key6.pressed())
+		{
+			scene_manager.changeScene(SceneState::Episode1FinalPhoto);
+		}
+		if(Key7.pressed())
+		{
+			scene_manager.changeScene(SceneState::Episode1MultiEnd);
 		}
 	}
 }
