@@ -1633,6 +1633,7 @@
     <Content Include="App\texts\sc_Takeshi_1.txt" />
     <Content Include="App\texts\sc_Takeshi_2.txt" />
     <Content Include="App\texts\sc_Takeshi_3.txt" />
+    <Content Include="App\texts\sc_Takeshi_4.txt" />
     <Content Include="App\texts\takeshi_identify_texts.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
