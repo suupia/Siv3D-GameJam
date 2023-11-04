@@ -36,7 +36,7 @@ void Button::draw() const
 	}
 	if(texture_key_ == none)
 	{
-		rect_.rotated(angle_).draw(ColorF{ 0.3, 0.7, 1.0 });
+		rect_.rotated(angle_).draw(ColorF{ 191/255.0, 90/255.0, 86/255.0, 1.0 });
 		(void)font_(text_).drawAt(40, (rect_.x + rect_.w / 2), (rect_.y + rect_.h / 2));
 	}else
 	{
