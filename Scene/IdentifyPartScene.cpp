@@ -54,8 +54,8 @@ namespace
 		}
 
 	}
-
-	bool judge_selected_photos_are_correct(	Array<IdentifyPhotoData> identify_photo_data)
+	
+	Array<int> calc_wrong_selected_photos(Array<IdentifyPhotoData> identify_photo_data)
 	{
 		Array should_be_selected = {0,2,3,5,8,10};
 		Array<int> actual_selected;
@@ -70,7 +70,10 @@ namespace
 		std::ranges::sort(should_be_selected);
 		std::ranges::sort(actual_selected);
 
-		return should_be_selected == actual_selected;
+		Array<int> wrong_selected;
+		std::ranges::set_difference(should_be_selected, actual_selected, std::back_inserter(wrong_selected));
+
+		return wrong_selected;
 	}
 
 }
@@ -175,13 +178,20 @@ void IdentifyPartScene::detect_button()
 	if(confirm_button_.is_down())
 	{
 		Print << U"confirm button is down";
-		if (judge_selected_photos_are_correct(identify_photo_data_))
+		const auto wrong_selected_photos = calc_wrong_selected_photos(identify_photo_data_);
+		if (wrong_selected_photos.empty())
 		{
 			changeScene(SceneState::Episode1Answer, 2.0s);
 		}
 		else
 		{
 			Print << U"wrong answer";
+			String wrong_indexes;
+			for(const auto wrong_index : wrong_selected_photos)
+			{
+				wrong_indexes += U"{}, "_fmt(wrong_index);
+			}
+			Print << U"wrong_indexes = " << wrong_indexes;
 			// show_hint();
 		}
 		return;
