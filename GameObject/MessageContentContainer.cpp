@@ -11,6 +11,17 @@ void MessageContentContainer::update_logic()
 void MessageContentContainer::update_render() const
 {
 	message_contents_.at(current_message_content_index_).update_render();
+
+	auto& message_content = message_contents_.at(current_message_content_index_);
+	if(message_content.is_show_all_message())
+	{
+		Print << U"Play next page effect";
+		if(next_page_effect_.isPaused()) next_page_effect_.resume();
+		next_page_effect_.update();
+	}else
+	{
+		next_page_effect_.pause();
+	}
 }
 
 void MessageContentContainer::add_message_contents(const Array<MessageContent>& message_content_structs)
