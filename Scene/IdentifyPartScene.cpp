@@ -54,7 +54,7 @@ namespace
 		}
 
 	}
-	
+
 	Array<int> calc_wrong_selected_photos(Array<IdentifyPhotoData> identify_photo_data)
 	{
 		Array should_be_selected = {0,2,3,5,8,10};
@@ -75,6 +75,27 @@ namespace
 
 		return wrong_selected;
 	}
+
+	struct RingEffect : IEffect
+	{
+		Vec2 m_pos;
+
+		ColorF m_color;
+
+		// このコンストラクタ引数が、Effect::add<RingEffect>() の引数になる
+		explicit RingEffect(const Vec2& pos)
+			: m_pos{ pos }
+		, m_color{ RandomColorF() } {}
+
+		bool update(double t) override
+		{
+			// 時間に応じて大きくなる輪を描く
+			Circle{ m_pos, (t * 100) }.drawFrame(4, m_color);
+
+			// 1 秒未満なら継続する
+			return (t < 1.0);
+		}
+	};
 
 }
 
@@ -153,6 +174,9 @@ void IdentifyPartScene:: draw() const
 	back_page_button_.draw();
 	confirm_button_.draw();
 
+	// update effects
+	effect_.update();
+
 }
 
 // private
@@ -192,7 +216,21 @@ void IdentifyPartScene::detect_button()
 				wrong_indexes += U"{}, "_fmt(wrong_index);
 			}
 			Print << U"wrong_indexes = " << wrong_indexes;
-			// show_hint();
+
+			// show wrong effect
+			effect_.clear();
+			for(const auto wrong_index : wrong_selected_photos)
+			{
+				const auto start_index = current_page_ * photo_number_per_page_;
+				const auto end_index = start_index + photo_number_per_page_;
+				if( start_index<= wrong_index && wrong_index < end_index)
+				{
+					const auto button = identify_photo_data_.at(wrong_index).button;
+					effect_.add<RingEffect>(button.get_rect().center());
+				}
+
+			}
+
 		}
 		return;
 	}
