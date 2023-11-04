@@ -71,10 +71,31 @@ namespace
 		std::ranges::sort(actual_selected);
 
 		Array<int> wrong_selected;
-		std::ranges::set_difference(should_be_selected, actual_selected, std::back_inserter(wrong_selected));
+		std::ranges::set_difference(actual_selected, should_be_selected, std::back_inserter(wrong_selected));
 
 		return wrong_selected;
 	}
+
+	Array<int> not_selected_photos(Array<IdentifyPhotoData> identify_photo_data)
+	{
+		Array should_be_selected = {0,2,3,5,8,10};
+		Array<int> actual_selected;
+		for(int i = 0; i< identify_photo_data.size(); i++)
+		{
+			if(identify_photo_data.at(i).is_selected)
+			{
+				actual_selected.push_back(i);
+			}
+		}
+		std::ranges::sort(should_be_selected);
+		std::ranges::sort(actual_selected);
+
+		Array<int> not_selected;
+		std::ranges::set_difference(should_be_selected, actual_selected, std::back_inserter(not_selected));
+
+		return not_selected;
+	}
+
 
 	struct RingEffect : IEffect
 	{
@@ -203,32 +224,42 @@ void IdentifyPartScene::detect_button()
 	{
 		Print << U"confirm button is down";
 		const auto wrong_selected_photos = calc_wrong_selected_photos(identify_photo_data_);
-		if (wrong_selected_photos.empty())
+		const auto not_selected_photos = ::not_selected_photos(identify_photo_data_);
+		for(int i = 0; i< wrong_selected_photos.size(); i++)
+		{
+			Print << U"wrong_selected_photos[" << i << U"] = " << wrong_selected_photos.at(i);
+		}
+		for(int i = 0; i< not_selected_photos.size(); i++)
+		{
+			Print << U"not_selected_photos[" << i << U"] = " << not_selected_photos.at(i);
+		}
+		if (wrong_selected_photos.empty() && not_selected_photos.empty())
 		{
 			changeScene(SceneState::Episode1Answer, 2.0s);
 		}
 		else
 		{
-			Print << U"wrong answer";
-			String wrong_indexes;
-			for(const auto wrong_index : wrong_selected_photos)
-			{
-				wrong_indexes += U"{}, "_fmt(wrong_index);
-			}
-			Print << U"wrong_indexes = " << wrong_indexes;
-
 			// show wrong effect
 			effect_.clear();
-			for(const auto wrong_index : wrong_selected_photos)
+			for(const auto wrong_selected_index : wrong_selected_photos)
 			{
 				const auto start_index = current_page_ * photo_number_per_page_;
 				const auto end_index = start_index + photo_number_per_page_;
-				if( start_index<= wrong_index && wrong_index < end_index)
+				if( start_index<= wrong_selected_index && wrong_selected_index < end_index)
 				{
-					const auto button = identify_photo_data_.at(wrong_index).button;
+					const auto button = identify_photo_data_.at(wrong_selected_index).button;
 					effect_.add<RingEffect>(button.get_rect().center());
 				}
-
+			}
+			for(const auto not_selected_index : not_selected_photos)
+			{
+				const auto start_index = current_page_ * photo_number_per_page_;
+				const auto end_index = start_index + photo_number_per_page_;
+				if( start_index<= not_selected_index && not_selected_index < end_index)
+				{
+					const auto button = identify_photo_data_.at(not_selected_index).button;
+					effect_.add<RingEffect>(button.get_rect().center());
+				}
 			}
 
 		}
