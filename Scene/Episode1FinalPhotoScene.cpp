@@ -47,16 +47,15 @@ void Episode1FinalPhotoScene::draw() const
 
 	// draw description
 	// back ground box
-	const auto back_ground_rect = RectFUtility::calc_relative_rect(0, 3.0 / 5.0, 1, 2.0 / 5.0).draw(
-		Palette::Lightslategray);
+	const auto back_ground_rect = RectFUtility::calc_relative_rect(0, 3.0 / 5.0, 1, 2.0 / 5.0).draw(ColorF{Palette::Lightslategray, 0.0});
 
 	// message box
 	const auto message_rect = RectFUtility::to_horizontal_center(RectF{
 		back_ground_rect.x, back_ground_rect.y, back_ground_rect.w * 0.8, back_ground_rect.h
 	});
-	(void)message_rect.draw(Palette::Lightblue);
+	(void)message_rect.draw(ColorF{54/255.0, 59/255.0, 62/255.0,1.0});
 	font_(final_photo_captions_.at(current_photo_index_)).draw(
-		Arg::topLeft(message_rect.x + message_rect.w * 0.1, message_rect.y + message_rect.h * 0.2), Palette::Black);
+		Arg::topLeft(message_rect.x + message_rect.w * 0.1, message_rect.y + message_rect.h * 0.2), Palette::White);
 	// message_rectをそのまま使って場所を決めているわけではないことに注意
 
 
