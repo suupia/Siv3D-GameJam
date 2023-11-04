@@ -7,7 +7,7 @@ Episode1MultiEndScene::Episode1MultiEndScene(const InitData& init):
 	IScene(init),
 	gm_(GameManager()),
 	font_{FontMethod::MSDF, 48},
-	message_content_container_(MessageContentContainerBuilder(U"texts/sc_Takeshi_1.txt" ).build_message_content_container(gm_, font_))
+	message_content_container_(MessageContentContainerBuilder(U"texts/sc_Takeshi_3.txt" ).build_message_content_container(gm_, font_))
 {
 	TextureAsset::Register(U"PhotoStudio", U"images/back_photoStudio.png") ;
 
