@@ -59,7 +59,7 @@ namespace
 
 	Array<int> calc_wrong_selected_photos(Array<IdentifyPhotoData> identify_photo_data)
 	{
-		Array should_be_selected = {0,2,3,5,8,10};
+		Array should_be_selected = {0,2,3,5,7,10};
 		Array<int> actual_selected;
 		for(int i = 0; i< identify_photo_data.size(); i++)
 		{
@@ -80,7 +80,7 @@ namespace
 
 	Array<int> not_selected_photos(Array<IdentifyPhotoData> identify_photo_data)
 	{
-		Array should_be_selected = {0,2,3,5,8,10};
+		Array should_be_selected = {0,2,3,5,7,10};
 		Array<int> actual_selected;
 		for(int i = 0; i< identify_photo_data.size(); i++)
 		{
