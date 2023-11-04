@@ -73,19 +73,19 @@ void Episode1FinalPhotoScene::detect_button()
 	// detect is_down() on next & back button
 	if (next_page_button_.is_down())
 	{
-		Print << U"next page button is down";
+		Logger << U"next page button is down";
 		turn_page(true);
 		return;
 	}
 	if (back_page_button_.is_down())
 	{
-		Print << U"back page button is down";
+		Logger << U"back page button is down";
 		turn_page(false);
 		return;
 	}
 	if (confirm_button_.is_down())
 	{
-		Print << U"confirm button is down";
+		Logger << U"confirm button is down";
 		getData().chosen_final_photo_index = current_photo_index_;
 		changeScene(SceneState::Episode1MultiEnd);
 		return;

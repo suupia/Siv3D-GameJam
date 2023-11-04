@@ -9,7 +9,7 @@ PrologueScene::PrologueScene(const InitData& init) :
 	font_{FontMethod::MSDF, 48, U"fonts/ZenAntiqueSoft.ttf" },
 	message_content_container_(MessageContentContainerBuilder(U"texts/sc_prologue.txt" ).build_message_content_container(gm_, font_))
 {
-	Print << U"Constructed PrologueScene";
+	Logger << U"Constructed PrologueScene";
 }
 
 void PrologueScene::update()
