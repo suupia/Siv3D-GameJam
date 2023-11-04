@@ -1593,6 +1593,8 @@
   <ItemGroup>
     <Content Include="App\images\back_photoStudio.png" />
     <Content Include="App\images\book_tmp.png" />
+    <Content Include="App\images\final_photo_tmp_0.png" />
+    <Content Include="App\images\final_photo_tmp_1.png" />
     <Content Include="App\images\founder_tmp.png" />
     <Content Include="App\images\identify_photo_tmp_0.png" />
     <Content Include="App\images\identify_photo_tmp_1.png" />
