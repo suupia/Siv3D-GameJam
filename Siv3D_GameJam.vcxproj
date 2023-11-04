@@ -819,6 +819,7 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Scene\Episode1AnswerScene.cpp" />
+    <ClCompile Include="Scene\Episode1FinalPhotoScene.cpp" />
     <ClCompile Include="Scene\Episode1Scene.cpp">
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -1497,6 +1498,7 @@
     <ClInclude Include="MessageBox\MessageContentPictureAttacher.h" />
     <ClInclude Include="MessageBox\MessageReader.h" />
     <ClInclude Include="Scene\Episode1AnswerScene.h" />
+    <ClInclude Include="Scene\Episode1FinalPhotoScene.h" />
     <ClInclude Include="Scene\Episode1Scene.h" />
     <ClInclude Include="Scene\IdentifyPartScene.h" />
     <ClInclude Include="Scene\PrologueScene.h" />
