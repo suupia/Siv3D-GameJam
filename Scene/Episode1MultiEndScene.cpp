@@ -8,7 +8,7 @@
 
 namespace
 {
-	MessageContentContainer build_message_content_container(GameManager& gm, const Font& font)
+	MessageContentContainer build_message_content_container(GameManager& gm, const Font& font, const int chosen_final_photo_index)
 	{
 		// This function must be in the MessageContentContainerBuilder.cpp !!!!!
 		MessageContentContainer message_content_container(gm, font);
@@ -22,6 +22,16 @@ namespace
 			message_contents.push_back(MessageContent(font, content_struct));
 		}
 		message_content_container.add_message_contents(message_contents);
+
+		// U"texts/sc_Takeshi_End_x.txt"
+		const auto message_structs1 = MessageReader(U"texts/sc_Takeshi_End_{}.txt"_fmt(chosen_final_photo_index)).readMessageAll();
+		const auto message_content_structs1 = MessageContentPictureAttacher().create_message_content_struct(message_structs1);
+		Array<MessageContent> message_contents1;
+		for (auto content_struct : message_content_structs1)
+		{
+			message_contents1.push_back(MessageContent(font, content_struct));
+		}
+		message_content_container.add_message_contents(message_contents1);
 
 		// U"texts/sc_Takeshi_4.txt"
 		const auto message_structs2 = MessageReader(U"texts/sc_Takeshi_4.txt").readMessageAll();
@@ -43,7 +53,7 @@ Episode1MultiEndScene::Episode1MultiEndScene(const InitData& init):
 	IScene(init),
 	gm_(GameManager()),
 	font_{FontMethod::MSDF, 48},
-	message_content_container_(build_message_content_container(gm_, font_))
+	message_content_container_(build_message_content_container(gm_, font_, getData().chosen_final_photo_index))
 {
 	TextureAsset::Register(U"PhotoStudio", U"images/back_photoStudio.png") ;
 
