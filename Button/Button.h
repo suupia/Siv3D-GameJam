@@ -3,8 +3,9 @@
 class Button
 {
 public:
-	Button(RectF rect, const Font& font, const String& text);
-	Button(RectF rect, const Font& font, const String& text, const String& texture_path);
+	Button(const RectF& rect, const Font& font, const String& text);
+	Button(const RectF& rect, const Font& font, const String& text, const String& texture_path);
+	Button(const RectF& rect, const String& texture_path);
 
 	bool is_down() const;
 	void draw() const ;

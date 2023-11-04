@@ -27,7 +27,7 @@ Episode1FinalPhotoScene::Episode1FinalPhotoScene(const InitData& init):
 	{
 		const auto path = U"images/final_photo_{}.png"_fmt(i);
 		TextureAsset::Register(U"FinalPhoto{}"_fmt(i), path) ;
-		const auto button = Button( RectFUtility::calc_relative_rect(w_margin,h_margin,w_ratio,h_ratio), font_, U"{}"_fmt(i),U"FinalPhoto{}"_fmt(i));
+		const auto button = Button( RectFUtility::calc_relative_rect(w_margin,h_margin,w_ratio,h_ratio),U"FinalPhoto{}"_fmt(i));
 		final_photo_buttons_.push_back(button);
 	}
 

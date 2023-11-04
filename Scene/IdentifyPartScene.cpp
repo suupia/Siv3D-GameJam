@@ -42,13 +42,13 @@ namespace
 		if(photo_index % 2 == 0)
 		{
 			// even -> left : texture, right : text
-			const auto button = Button( RectFUtility::calc_relative_rect(x,y,w/2,h), font_, U"{}"_fmt(index),U"IdentifyPhoto{}"_fmt(index));
+			const auto button = Button( RectFUtility::calc_relative_rect(x,y,w/2,h), font_,U"IdentifyPhoto{}"_fmt(index));
 			const auto caption_pos = RectFUtility::calc_relative_rect(x+ w/2,y,w/2,h);
 			return {button, sticky_pos,  captions.at(index),caption_pos, false};
 		}else
 		{
 			// odd -> left : text, right : texture
-			const auto button = Button( RectFUtility::calc_relative_rect(x+ w/2,y,w/2,h), font_, U"{}"_fmt(index),U"IdentifyPhoto{}"_fmt(index));
+			const auto button = Button( RectFUtility::calc_relative_rect(x+ w/2,y,w/2,h), font_,U"IdentifyPhoto{}"_fmt(index));
 			const auto caption_pos = RectFUtility::calc_relative_rect(x,y,w/2,h);
 			return {button, sticky_pos,  captions.at(index),caption_pos,false};
 		}
