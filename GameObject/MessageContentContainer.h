@@ -34,5 +34,6 @@ public:
 
 	void add_message_contents(const Array<MessageContent>& message_content_structs);
 	void go_to_next_message();
+	bool is_message_finished() const ;
 
 };

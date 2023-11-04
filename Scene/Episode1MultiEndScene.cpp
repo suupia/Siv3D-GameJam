@@ -65,7 +65,17 @@ void Episode1MultiEndScene::update(){
 
 	message_content_container_.update_logic();
 
-	if(KeySpace.down()) message_content_container_.go_to_next_message();
+	if(KeySpace.down() || MouseL.down())
+	{
+		if (message_content_container_.is_message_finished())
+		{
+			changeScene(SceneState::Title);
+		}
+		else
+		{
+			message_content_container_.go_to_next_message();
+		}
+	}
 }
 
 void Episode1MultiEndScene::draw() const {
