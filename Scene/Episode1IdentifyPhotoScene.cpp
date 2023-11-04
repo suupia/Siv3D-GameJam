@@ -1,5 +1,5 @@
 ﻿#include "../stdafx.h"
-#include "IdentifyPartScene.h"
+#include "Episode1IdentifyPhotoScene.h"
 #include "../Utility/RectFUtility.h"
 #include "../Utility/OneLineTextReader.h"
 
@@ -121,7 +121,7 @@ namespace
 }
 
 // public
-IdentifyPartScene::IdentifyPartScene(const InitData& init):
+Episode1IdentifyPhotoScene::Episode1IdentifyPhotoScene(const InitData& init):
 	IScene(init),
 	gm_(GameManager()),
 	font_{FontMethod::MSDF, 48},
@@ -155,7 +155,7 @@ IdentifyPartScene::IdentifyPartScene(const InitData& init):
 
 }
 
-void IdentifyPartScene:: update()
+void Episode1IdentifyPhotoScene:: update()
 {
 	detect_button();
 
@@ -169,7 +169,7 @@ void IdentifyPartScene:: update()
 	}
 }
 
-void IdentifyPartScene:: draw() const
+void Episode1IdentifyPhotoScene:: draw() const
 {
 	// draw background
 	(void)TextureAsset(U"Book").resized(Scene::Width(),Scene::Height()).draw(0, 0);
@@ -207,7 +207,7 @@ void IdentifyPartScene:: draw() const
 /// <summary>
 /// In this method, we detect is_down() on buttons and then "return" to avoid duplicate detection.
 /// </summary>
-void IdentifyPartScene::detect_button()
+void Episode1IdentifyPhotoScene::detect_button()
 {
 	// detect is_down() on next & back button
 	if(next_page_button_.is_down())
@@ -282,7 +282,7 @@ void IdentifyPartScene::detect_button()
 	}
 }
 
-void IdentifyPartScene::turn_page(const bool is_next)
+void Episode1IdentifyPhotoScene::turn_page(const bool is_next)
 {
 	const auto all_page_number = identify_photo_data_.size() / all_photo_number_ + 1;
 	if(is_next)

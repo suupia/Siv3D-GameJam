@@ -11,10 +11,10 @@ struct IdentifyPhotoData {
 	bool is_selected;
 };
 
-class IdentifyPartScene : public SceneManager<SceneState, SceneData>::Scene
+class Episode1IdentifyPhotoScene : public SceneManager<SceneState, SceneData>::Scene
 {
 public:
-	IdentifyPartScene(const InitData& init);
+	Episode1IdentifyPhotoScene(const InitData& init);
 	void update() override;
 	void draw() const override;
 private:

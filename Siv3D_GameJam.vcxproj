@@ -899,7 +899,7 @@
       <AdditionalOptions>/Zc:__cplusplus </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
-    <ClCompile Include="Scene\IdentifyPartScene.cpp" />
+    <ClCompile Include="Scene\Episode1IdentifyPhotoScene.cpp" />
     <ClCompile Include="Scene\PrologueScene.cpp">
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -1502,7 +1502,7 @@
     <ClInclude Include="Scene\Episode1FinalPhotoScene.h" />
     <ClInclude Include="Scene\Episode1MultiEndScene.h" />
     <ClInclude Include="Scene\Episode1Scene.h" />
-    <ClInclude Include="Scene\IdentifyPartScene.h" />
+    <ClInclude Include="Scene\Episode1IdentifyPhotoScene.h" />
     <ClInclude Include="Scene\PrologueScene.h" />
     <ClInclude Include="Scene\SceneSetting.h" />
     <ClInclude Include="Scene\TitleScene.h" />
