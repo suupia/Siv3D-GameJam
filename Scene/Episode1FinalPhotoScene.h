@@ -16,6 +16,7 @@ private:
 
 	Button next_page_button_;
 	Button back_page_button_;
+	Button confirm_button_;
 	Array<Button> final_photo_buttons_;
 	Array<String> final_photo_captions_;
 	const int final_photo_number_ = 2;

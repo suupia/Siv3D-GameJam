@@ -35,5 +35,5 @@ private:
 
 	void detect_button();
 	void turn_page(bool is_next);
-	int all_page_number() {return identify_photo_data_.size() / all_photo_number_ + 1;}
+	int all_page_number() const {return identify_photo_data_.size() / all_photo_number_ + 1;}
 };
