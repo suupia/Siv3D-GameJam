@@ -83,6 +83,8 @@ void Episode1FinalPhotoScene::detect_button()
 	if(confirm_button_.is_down())
 	{
 		Print << U"confirm button is down";
+		getData().chosen_final_photo_index = current_photo_index_;
+		changeScene(SceneState::Episode1MultiEnd);
 		return;
 	}
 
