@@ -133,7 +133,7 @@ IdentifyPartScene::IdentifyPartScene(const InitData& init):
 	TextureAsset::Register(U"StickyNote", U"images/sticky_note_tmp.png") ;
 	for(int i = 0; i< all_photo_number_; i++)
 	{
-		const auto path = U"images/identify_photo_tmp_{}.png"_fmt(i);
+		const auto path = U"images/identify_photo_{}.png"_fmt(i);
 		TextureAsset::Register(U"IdentifyPhoto{}"_fmt(i), path) ;
 	}
 
