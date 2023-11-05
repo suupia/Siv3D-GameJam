@@ -57,7 +57,7 @@ Episode1MultiEndScene::Episode1MultiEndScene(const InitData& init):
 {
 	TextureAsset::Register(U"PhotoStudio", U"images/back_photoStudio.png") ;
 
-	Print << U"chosen final photo index = " << getData().chosen_final_photo_index;
+	// Print << U"chosen final photo index = " << getData().chosen_final_photo_index;
 
 }
 

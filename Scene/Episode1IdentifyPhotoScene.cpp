@@ -26,7 +26,7 @@ namespace
 		const int col_index = photo_index / photo_number_per_row ;
 
 		String caption = captions.at(index);
-		Print << U"caption = " << caption;
+		// Print << U"caption = " << caption;
 
 		// calculate the position of the photo
 		const auto x = w_margin + col_index * w;
@@ -167,7 +167,7 @@ void Episode1IdentifyPhotoScene:: update()
 	{
 		for (int i = 0; i < identify_photo_data_.size(); i++)
 		{
-			Print << U"is_selected_array[" << i << U"] = " << identify_photo_data_.at(i).is_selected;
+			// Print << U"is_selected_array[" << i << U"] = " << identify_photo_data_.at(i).is_selected;
 		}
 	}
 }
@@ -215,28 +215,28 @@ void Episode1IdentifyPhotoScene::detect_button()
 	// detect is_down() on next & back button
 	if(next_page_button_.is_down())
 	{
-		Print << U"next page button is down";
+		// Print << U"next page button is down";
 		turn_page(true);
 		return;
 	}
 	if(back_page_button_.is_down())
 	{
-		Print << U"back page button is down";
+		// Print << U"back page button is down";
 		turn_page(false);
 		return;
 	}
 	if(confirm_button_.is_down())
 	{
-		Print << U"confirm button is down";
+		// Print << U"confirm button is down";
 		const auto wrong_selected_photos = calc_wrong_selected_photos(identify_photo_data_);
 		const auto not_selected_photos = ::not_selected_photos(identify_photo_data_);
 		for(int i = 0; i< wrong_selected_photos.size(); i++)
 		{
-			Print << U"wrong_selected_photos[" << i << U"] = " << wrong_selected_photos.at(i);
+			// Print << U"wrong_selected_photos[" << i << U"] = " << wrong_selected_photos.at(i);
 		}
 		for(int i = 0; i< not_selected_photos.size(); i++)
 		{
-			Print << U"not_selected_photos[" << i << U"] = " << not_selected_photos.at(i);
+			// Print << U"not_selected_photos[" << i << U"] = " << not_selected_photos.at(i);
 		}
 		if (wrong_selected_photos.empty() && not_selected_photos.empty())
 		{
@@ -278,7 +278,7 @@ void Episode1IdentifyPhotoScene::detect_button()
 	{
 		if(identify_photo_data_.at(i).button.is_down())
 		{
-			Print << U"button" << i << U" is down";
+			// Print << U"button" << i << U" is down";
 			identify_photo_data_.at(i).is_selected = !identify_photo_data_.at(i).is_selected;
 			return;
 		}
@@ -297,7 +297,7 @@ void Episode1IdentifyPhotoScene::turn_page(const bool is_next)
 		if(0 <= current_page_ - 1)
 		current_page_--;
 	}
-	Print << U"current_page_ = " << current_page_;
+	// Print << U"current_page_ = " << current_page_;
 }
 
 

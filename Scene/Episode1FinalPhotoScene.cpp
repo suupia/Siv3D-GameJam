@@ -104,5 +104,5 @@ void Episode1FinalPhotoScene::turn_page(const bool is_next)
 		if (0 <= current_photo_index_ - 1)
 			current_photo_index_--;
 	}
-	Print << U"current_photo_index_ = " << current_photo_index_;
+	// Print << U"current_photo_index_ = " << current_photo_index_;
 }
