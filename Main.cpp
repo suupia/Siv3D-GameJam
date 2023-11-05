@@ -39,7 +39,7 @@ namespace
 		scene_manager.add<Episode1FinalPhotoScene>(SceneState::Episode1FinalPhoto);
 		scene_manager.add<Episode1MultiEndScene>(SceneState::Episode1MultiEnd);
 
-		scene_manager.init(SceneState::Episode1FinalPhoto);
+		scene_manager.init(SceneState::Title);
 		return  scene_manager;
 	}
 }
