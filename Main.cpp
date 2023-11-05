@@ -61,34 +61,34 @@ void Main()
 		if(not scene_manager.update()) break;
 
 		// for debug
-		if(Key1.pressed())
-		{
-			scene_manager.changeScene(SceneState::Title);
-		}
-		if(Key2.pressed())
-		{
-			scene_manager.changeScene(SceneState::Prologue);
-		}
-		if(Key3.pressed())
-		{
-			scene_manager.changeScene(SceneState::Episode1);
-		}
-		if(Key4.pressed())
-		{
-			scene_manager.changeScene(SceneState::Episode1IdentifyPhoto);
-		}
-		if(Key5.pressed())
-		{
-			scene_manager.changeScene(SceneState::Episode1Answer);
-		}
-		if(Key6.pressed())
-		{
-			scene_manager.changeScene(SceneState::Episode1FinalPhoto);
-		}
-		if(Key7.pressed())
-		{
-			scene_manager.changeScene(SceneState::Episode1MultiEnd);
-		}
+		//if(Key1.pressed())
+		//{
+		//	scene_manager.changeScene(SceneState::Title);
+		//}
+		//if(Key2.pressed())
+		//{
+		//	scene_manager.changeScene(SceneState::Prologue);
+		//}
+		//if(Key3.pressed())
+		//{
+		//	scene_manager.changeScene(SceneState::Episode1);
+		//}
+		//if(Key4.pressed())
+		//{
+		//	scene_manager.changeScene(SceneState::Episode1IdentifyPhoto);
+		//}
+		//if(Key5.pressed())
+		//{
+		//	scene_manager.changeScene(SceneState::Episode1Answer);
+		//}
+		//if(Key6.pressed())
+		//{
+		//	scene_manager.changeScene(SceneState::Episode1FinalPhoto);
+		//}
+		//if(Key7.pressed())
+		//{
+		//	scene_manager.changeScene(SceneState::Episode1MultiEnd);
+		//}
 	}
 }
 
