@@ -19,7 +19,11 @@ void MessageContentContainer::update_render() const
 		next_page_effect_.update();
 	}else
 	{
-		next_page_effect_.pause();
+		next_page_effect_.clear();
+
+		// set next effect (CAUTION: this code is duplicated from constructor)
+		const auto rect = RectFUtility::calc_relative_rect(0, 0, 0.85, 0.9);
+		next_page_effect_.add<NextPageEffect>(Vec2{rect.w, rect.h});
 	}
 }
 

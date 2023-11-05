@@ -16,7 +16,7 @@ void TitleScene::update(){
 
 	if(start_button_.is_down())
 	{
-		Print << U"start";
+		Logger << U"start";
 		changeScene(SceneState::Prologue, 2.0s);
 	}
 
