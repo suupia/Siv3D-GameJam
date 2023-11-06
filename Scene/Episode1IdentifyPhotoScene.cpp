@@ -57,48 +57,6 @@ namespace
 
 	}
 
-	Array<int> calc_wrong_selected_photos(Array<IdentifyPhotoData> identify_photo_data)
-	{
-		Array should_be_selected = {0,2,3,5,7,10};
-		Array<int> actual_selected;
-		for(int i = 0; i< identify_photo_data.size(); i++)
-		{
-			if(identify_photo_data.at(i).is_selected)
-			{
-				actual_selected.push_back(i);
-			}
-		}
-
-		std::ranges::sort(should_be_selected);
-		std::ranges::sort(actual_selected);
-
-		Array<int> wrong_selected;
-		std::ranges::set_difference(actual_selected, should_be_selected, std::back_inserter(wrong_selected));
-
-		return wrong_selected;
-	}
-
-	Array<int> not_selected_photos(Array<IdentifyPhotoData> identify_photo_data)
-	{
-		Array should_be_selected = {0,2,3,5,7,10};
-		Array<int> actual_selected;
-		for(int i = 0; i< identify_photo_data.size(); i++)
-		{
-			if(identify_photo_data.at(i).is_selected)
-			{
-				actual_selected.push_back(i);
-			}
-		}
-		std::ranges::sort(should_be_selected);
-		std::ranges::sort(actual_selected);
-
-		Array<int> not_selected;
-		std::ranges::set_difference(should_be_selected, actual_selected, std::back_inserter(not_selected));
-
-		return not_selected;
-	}
-
-
 	struct RingEffect : IEffect
 	{
 		Vec2 m_pos;
@@ -129,7 +87,8 @@ Episode1IdentifyPhotoScene::Episode1IdentifyPhotoScene(const InitData& init):
 	font_{FontMethod::MSDF, 48, U"fonts/ZenAntiqueSoft.ttf" },
 	next_page_button_(  RectFUtility::calc_relative_rect(0.85, 0.9, 0.1,0.08), font_, U"次のページ"),
 	back_page_button_( RectFUtility::calc_relative_rect(0.05, 0.9, 0.1,0.08), font_, U"前のページ"),
-	confirm_button_(RectFUtility::calc_relative_rect(0.45, 0.9, 0.1,0.08), font_, U"確定")
+	confirm_button_(RectFUtility::calc_relative_rect(0.45, 0.9, 0.1,0.08), font_, U"確定"),
+	identify_photo_calculator_({0,2,3,5,7,10})
 {
 	TextureAsset::Register(U"Book", U"images/album.png") ;
 	TextureAsset::Register(U"StickyNote", U"images/sticky_note_tmp.png") ;
@@ -228,8 +187,8 @@ void Episode1IdentifyPhotoScene::detect_button()
 	if(confirm_button_.is_down())
 	{
 		// Print << U"confirm button is down";
-		const auto wrong_selected_photos = calc_wrong_selected_photos(identify_photo_data_);
-		const auto not_selected_photos = ::not_selected_photos(identify_photo_data_);
+		const auto wrong_selected_photos = identify_photo_calculator_.calc_wrong_selected_photos(identify_photo_data_);
+		const auto not_selected_photos = identify_photo_calculator_.not_selected_photos(identify_photo_data_);
 		for(int i = 0; i< wrong_selected_photos.size(); i++)
 		{
 			// Print << U"wrong_selected_photos[" << i << U"] = " << wrong_selected_photos.at(i);

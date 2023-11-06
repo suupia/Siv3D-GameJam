@@ -2,6 +2,7 @@
 #include "../GameManager/GameManager.h"
 #include "../Button/Button.h"
 #include "SceneSetting.h"
+#include "../IdentifyPhoto/IdentifyPhotoCalculator.h"
 
 struct IdentifyPhotoData {
 	const Button button;
@@ -25,6 +26,7 @@ private:
 	Button back_page_button_;
 	Button confirm_button_;
 	Array<IdentifyPhotoData> identify_photo_data_;
+	IdentifyPhotoCalculator identify_photo_calculator_;
 	int current_page_ = 0;
 	const int all_photo_number_ = 12;
 	const int photo_number_per_row_ = 3;
