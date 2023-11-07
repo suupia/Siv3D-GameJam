@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../Scene/Episode1IdentifyPhotoScene.h"
+#include "../IdentifyPhoto/IdentifyPhotoData.h"
 
 class IdentifyPhotoCalculator
 {
