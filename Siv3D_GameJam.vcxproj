@@ -68,7 +68,7 @@
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;_ENABLE_EXTENDED_ALIGNED_STORAGE;_SILENCE_CXX20_CISO646_REMOVED_WARNING;_SILENCE_ALL_CXX23_DEPRECATION_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <DisableSpecificWarnings>26451;26812;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
@@ -342,6 +342,7 @@
     <ClInclude Include="GameObject\MessageContentContainer.h" />
     <ClInclude Include="GameObject\PastPhotoButton.h" />
     <ClInclude Include="IdentifyPhoto\IdentifyPhotoCalculator.h" />
+    <ClInclude Include="IdentifyPhoto\IdentifyPhotoData.h" />
     <ClInclude Include="MessageBox\MessageContentContainerBuilder.h" />
     <ClInclude Include="MessageBox\MessageContentPictureAttacher.h" />
     <ClInclude Include="MessageBox\MessageReader.h" />

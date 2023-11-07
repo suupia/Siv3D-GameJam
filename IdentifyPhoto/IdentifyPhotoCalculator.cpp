@@ -1,6 +1,5 @@
 ﻿#include "../stdafx.h"
 #include "IdentifyPhotoCalculator.h"
-#include "../Scene/Episode1IdentifyPhotoScene.h"
 
 IdentifyPhotoCalculator::IdentifyPhotoCalculator(const Array<int>& should_be_selected):
 	should_be_selected_(should_be_selected)
