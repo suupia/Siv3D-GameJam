@@ -129,7 +129,8 @@ Episode1IdentifyPhotoScene::Episode1IdentifyPhotoScene(const InitData& init):
 	font_{FontMethod::MSDF, 48, U"fonts/ZenAntiqueSoft.ttf" },
 	next_page_button_(  RectFUtility::calc_relative_rect(0.85, 0.9, 0.1,0.08), font_, U"次のページ"),
 	back_page_button_( RectFUtility::calc_relative_rect(0.05, 0.9, 0.1,0.08), font_, U"前のページ"),
-	confirm_button_(RectFUtility::calc_relative_rect(0.45, 0.9, 0.1,0.08), font_, U"確定")
+	confirm_button_(RectFUtility::calc_relative_rect(0.45, 0.9, 0.1,0.08), font_, U"確定"),
+	message_content_container_(MessageContentContainerBuilder(U"texts/sc_feedback_1.txt" ).build_message_content_container(gm_, font_))
 {
 	TextureAsset::Register(U"Book", U"images/album.png") ;
 	TextureAsset::Register(U"StickyNote", U"images/sticky_note_tmp.png") ;
@@ -161,6 +162,8 @@ Episode1IdentifyPhotoScene::Episode1IdentifyPhotoScene(const InitData& init):
 void Episode1IdentifyPhotoScene:: update()
 {
 	detect_button();
+
+	message_content_container_.update_logic();
 
 	// debug is_selected_array
 	if (KeyD.down())
@@ -202,6 +205,8 @@ void Episode1IdentifyPhotoScene:: draw() const
 
 	// update effects
 	effects_.at(current_page_).update();
+
+    message_content_container_.update_render();
 
 }
 
@@ -278,8 +283,11 @@ void Episode1IdentifyPhotoScene::detect_button()
 	{
 		if(identify_photo_data_.at(i).button.is_down())
 		{
-			// Print << U"button" << i << U" is down";
+			Print << U"button" << i << U" is down";
+			Logger << U"button" << i << U" is down";
 			identify_photo_data_.at(i).is_selected = !identify_photo_data_.at(i).is_selected;
+			// todo : フィードバックメッセージを表示する
+ 			message_content_container_.go_to_next_message();
 			return;
 		}
 	}

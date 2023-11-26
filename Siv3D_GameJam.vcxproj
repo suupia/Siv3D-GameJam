@@ -115,30 +115,30 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Button\Button.cpp"/>
-    <ClCompile Include="GameManager\GameManager.cpp"/>
-    <ClCompile Include="GameObject\GameObject.cpp"/>
-    <ClCompile Include="GameObject\MessageContent.cpp"/>
-    <ClCompile Include="GameObject\MessageContentContainer.cpp"/>
-    <ClCompile Include="GameObject\PastPhotoButton.cpp"/>
+    <ClCompile Include="Button\Button.cpp" />
+    <ClCompile Include="GameManager\GameManager.cpp" />
+    <ClCompile Include="GameObject\GameObject.cpp" />
+    <ClCompile Include="GameObject\MessageContent.cpp" />
+    <ClCompile Include="GameObject\MessageContentContainer.cpp" />
+    <ClCompile Include="GameObject\PastPhotoButton.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="MessageBox\MessageContentContainerBuilder.cpp"/>
-    <ClCompile Include="MessageBox\MessageContentPictureAttacher.cpp"/>
-    <ClCompile Include="MessageBox\MessageReader.cpp"/>
+    <ClCompile Include="MessageBox\MessageContentContainerBuilder.cpp" />
+    <ClCompile Include="MessageBox\MessageContentPictureAttacher.cpp" />
+    <ClCompile Include="MessageBox\MessageReader.cpp" />
     <ClCompile Include="Scene\Episode1AnswerScene.cpp" />
     <ClCompile Include="Scene\Episode1FinalPhotoScene.cpp" />
     <ClCompile Include="Scene\Episode1MultiEndScene.cpp" />
-    <ClCompile Include="Scene\Episode1Scene.cpp"/>
+    <ClCompile Include="Scene\Episode1Scene.cpp" />
     <ClCompile Include="Scene\Episode1IdentifyPhotoScene.cpp" />
-    <ClCompile Include="Scene\PrologueScene.cpp"/>
-    <ClCompile Include="Scene\SceneSetting.cpp"/>
-    <ClCompile Include="Scene\TitleScene.cpp"/>
+    <ClCompile Include="Scene\PrologueScene.cpp" />
+    <ClCompile Include="Scene\SceneSetting.cpp" />
+    <ClCompile Include="Scene\TitleScene.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Utility\OneLineTextReader.cpp"/>
-    <ClCompile Include="Utility\RectFUtility.cpp"/>
+    <ClCompile Include="Utility\OneLineTextReader.cpp" />
+    <ClCompile Include="Utility\RectFUtility.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="App\engine\texture\box-shadow\128.png" />
@@ -480,6 +480,7 @@
     <Content Include="App\images\takeshi_tmp.png" />
     <Content Include="App\images\title.png" />
     <Content Include="App\texts\final_photo_captions_tmp.txt" />
+    <Content Include="App\texts\sc_feedback_1.txt" />
     <Content Include="App\texts\sc_prologue.txt" />
     <Content Include="App\texts\sc_Takeshi_1.txt" />
     <Content Include="App\texts\sc_Takeshi_2.txt" />
