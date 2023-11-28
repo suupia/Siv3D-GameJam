@@ -31,6 +31,7 @@ public:
 		if (context.shouldExit()) // important - query flags (and --exit) rely on the user doing this
 			return res; // propagate the result of the tests
 
+		// メモ : client stuffの処理はよくわからないのでコメントアウト
 		int client_stuff_return_code = 0;
 		// your program - if the testing framework is integrated in your production code
 
@@ -43,7 +44,7 @@ public:
 			// テスト失敗時
 
 			// 失敗に気づきやすいようにキー入力を待つようにする
-			static_cast<void>(std::getchar());
+			// static_cast<void>(std::getchar());
 		}
 
 		return testSuccess;

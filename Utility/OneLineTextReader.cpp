@@ -56,11 +56,9 @@ Optional<String> OneLineTextReader::PopOneChunk()
 			lines_.pop_front();
 			break;
 		}
-		chunk += lines_.front() + U"\n";
+		chunk += lines_.front() ;
 		lines_.pop_front();
 	}
-	// erase the last "\n"
-	chunk.pop_back();
 
 	return chunk;
 
