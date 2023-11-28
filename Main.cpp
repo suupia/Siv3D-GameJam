@@ -26,7 +26,7 @@ public:
 		// overrides
 		context.setOption("no-breaks", true); // don't break in the debugger when assertions fail
 
-		int res = context.run(); // run
+		const int res = context.run(); // run
 
 		if (context.shouldExit()) // important - query flags (and --exit) rely on the user doing this
 			return res; // propagate the result of the tests
@@ -38,7 +38,7 @@ public:
 		// return res + client_stuff_return_code; // the result from doctest is propagated here as well
 
 		// テスト実行
-		bool testSuccess = res == 0;
+		const bool testSuccess = res == 0;
 		if (!testSuccess)
 		{
 			// テスト失敗時
