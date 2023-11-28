@@ -9,6 +9,9 @@
 #include "Scene/PrologueScene.h"
 #include "Scene/TitleScene.h"
 
+#include "Tests/AddTest.h"
+
+
 namespace
 {
 	void set_up_window()
@@ -44,9 +47,43 @@ namespace
 	}
 }
 
+int test_runner() {
+
+	// コンソールを出す必要がある
+	Console.open();
+
+	doctest::Context context;
+
+	// overrides
+	context.setOption("no-breaks", true);  // don't break in the debugger when assertions fail
+
+	int res = context.run(); // run
+
+	if(context.shouldExit()) // important - query flags (and --exit) rely on the user doing this
+		return res;          // propagate the result of the tests
+
+	int client_stuff_return_code = 0;
+	// your program - if the testing framework is integrated in your production code
+
+	// return res + client_stuff_return_code; // the result from doctest is propagated here as well
+
+	// テスト実行
+	bool testSuccess = res == 0;
+	if (!testSuccess) {
+		// テスト失敗時
+
+		// 失敗に気づきやすいようにキー入力を待つようにする
+		static_cast<void>(std::getchar());
+	}
+
+	return testSuccess;
+}
 
 void Main()
 {
+	test_runner();
+
+
 	const Font font{ FontMethod::MSDF, 48 };
 	GameManager gm;
 
