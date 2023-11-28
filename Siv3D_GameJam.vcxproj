@@ -353,6 +353,7 @@
     <ClInclude Include="Scene\SceneSetting.h" />
     <ClInclude Include="Scene\TitleScene.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Tests\AddTest.h" />
     <ClInclude Include="Utility\OneLineTextReader.h" />
     <ClInclude Include="Utility\RectFUtility.h" />
   </ItemGroup>

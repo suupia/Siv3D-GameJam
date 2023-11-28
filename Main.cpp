@@ -9,15 +9,7 @@
 #include "Scene/PrologueScene.h"
 #include "Scene/TitleScene.h"
 
-// clang++ lib.cpp -std=c++20
- #define DOCTEST_CONFIG_IMPLEMENT
- #include "doctest.h"
-
-int my_add(int a, int b) { return a + b; }
-
-TEST_CASE("testing the add function") { CHECK(my_add(1, 2) == 3); }
-
-TEST_CASE("will fail") { CHECK(my_add(1, 2) == 3); }
+#include "Tests/AddTest.h"
 
 
 namespace
@@ -63,7 +55,7 @@ int test_runner() {
 	doctest::Context context;
 
 	// overrides
-	context.setOption("no-breaks", true);             // don't break in the debugger when assertions fail
+	context.setOption("no-breaks", true);  // don't break in the debugger when assertions fail
 
 	int res = context.run(); // run
 
