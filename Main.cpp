@@ -11,6 +11,7 @@
 
 #if USE_TEST
 #include "Tests/AddTest.h"
+#include "Tests/OneLineTextReaderTest.h"
 
 class TestRunner
 {
