@@ -1,0 +1,11 @@
+$Taro
+Hello! I'm Taro.
+
+$Hanako
+Hello! I'm Hanako.
+
+$Taro
+This is a test message.
+
+$Hanako
+This is a test message. I'm Hanako.
