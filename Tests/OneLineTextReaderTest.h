@@ -19,7 +19,7 @@ TEST_CASE("readOneLineAll should return words with line breaks separated by")
 	auto result = reader.readOneLineAll();
 
 	CHECK(result.size() == 3);
-	CHECK(result.at(0) == U"Appple");
+	CHECK(result.at(0) == U"Apple");
 	CHECK(result.at(1) == U"Banana");
 	CHECK(result.at(2) == U"Blueberry");
 
