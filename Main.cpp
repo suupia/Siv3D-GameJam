@@ -11,6 +11,7 @@
 
 #if USE_TEST
 #include "Tests/AddTest.h"
+#include "Tests/OneLineTextReaderTest.h"
 
 class TestRunner
 {
@@ -25,24 +26,25 @@ public:
 		// overrides
 		context.setOption("no-breaks", true); // don't break in the debugger when assertions fail
 
-		int res = context.run(); // run
+		const int res = context.run(); // run
 
 		if (context.shouldExit()) // important - query flags (and --exit) rely on the user doing this
 			return res; // propagate the result of the tests
 
+		// メモ : client stuffの処理はよくわからないのでコメントアウト
 		int client_stuff_return_code = 0;
 		// your program - if the testing framework is integrated in your production code
 
 		// return res + client_stuff_return_code; // the result from doctest is propagated here as well
 
 		// テスト実行
-		bool testSuccess = res == 0;
+		const bool testSuccess = res == 0;
 		if (!testSuccess)
 		{
 			// テスト失敗時
 
 			// 失敗に気づきやすいようにキー入力を待つようにする
-			static_cast<void>(std::getchar());
+			// static_cast<void>(std::getchar());
 		}
 
 		return testSuccess;
@@ -107,34 +109,34 @@ void Main()
 		if(not scene_manager.update()) break;
 
 		// for debug
-		//if(Key1.pressed())
-		//{
-		//	scene_manager.changeScene(SceneState::Title);
-		//}
-		//if(Key2.pressed())
-		//{
-		//	scene_manager.changeScene(SceneState::Prologue);
-		//}
-		//if(Key3.pressed())
-		//{
-		//	scene_manager.changeScene(SceneState::Episode1);
-		//}
-		//if(Key4.pressed())
-		//{
-		//	scene_manager.changeScene(SceneState::Episode1IdentifyPhoto);
-		//}
-		//if(Key5.pressed())
-		//{
-		//	scene_manager.changeScene(SceneState::Episode1Answer);
-		//}
-		//if(Key6.pressed())
-		//{
-		//	scene_manager.changeScene(SceneState::Episode1FinalPhoto);
-		//}
-		//if(Key7.pressed())
-		//{
-		//	scene_manager.changeScene(SceneState::Episode1MultiEnd);
-		//}
+		if(Key1.pressed())
+		{
+			scene_manager.changeScene(SceneState::Title);
+		}
+		if(Key2.pressed())
+		{
+			scene_manager.changeScene(SceneState::Prologue);
+		}
+		if(Key3.pressed())
+		{
+			scene_manager.changeScene(SceneState::Episode1);
+		}
+		if(Key4.pressed())
+		{
+			scene_manager.changeScene(SceneState::Episode1IdentifyPhoto);
+		}
+		if(Key5.pressed())
+		{
+			scene_manager.changeScene(SceneState::Episode1Answer);
+		}
+		if(Key6.pressed())
+		{
+			scene_manager.changeScene(SceneState::Episode1FinalPhoto);
+		}
+		if(Key7.pressed())
+		{
+			scene_manager.changeScene(SceneState::Episode1MultiEnd);
+		}
 	}
 }
 

@@ -354,6 +354,7 @@
     <ClInclude Include="Scene\TitleScene.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Tests\AddTest.h" />
+    <ClInclude Include="Tests\OneLineTextReaderTest.h" />
     <ClInclude Include="Utility\OneLineTextReader.h" />
     <ClInclude Include="Utility\RectFUtility.h" />
   </ItemGroup>
@@ -490,6 +491,7 @@
     <Content Include="App\texts\sc_Takeshi_End_0.txt" />
     <Content Include="App\texts\sc_Takeshi_End_1.txt" />
     <Content Include="App\texts\takeshi_identify_texts.txt" />
+    <Content Include="App\texts\test\test_0.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
