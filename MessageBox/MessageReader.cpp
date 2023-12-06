@@ -34,8 +34,7 @@ Optional<MessageStruct> MessageReader::PopOneChunk()
 	// if there is no message
 	if(lines_.empty()) return none;
 
-	String messages = U"";
-	int counter = 0;
+	String messages;
 	while (true)
 	{
 		// reach the end of the file
@@ -46,7 +45,6 @@ Optional<MessageStruct> MessageReader::PopOneChunk()
 		lines_.pop_front();
 
 		messages += message_line+ U"\n";
-		counter ++ ;
 	}
 	// remove the last line break
 	messages.pop_back();

@@ -12,6 +12,7 @@ TEST_CASE("MessageReader should return words with line breaks separated by")
 	const auto message_structs = message_reader.readMessageAll();
 
 
+
 	CHECK(message_structs.size() == 3);
 
 	CHECK(message_structs.at(0).name == U"Taro");

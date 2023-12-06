@@ -2,7 +2,7 @@
 #define DOCTEST_CONFIG_IMPLEMENT
 #include "../doctest.h"
 
-#include "../Utility/OneLineTextReader.h"
+#include "../MessageBox/OneLineTextReader.h"
 
 
 // [test_0.txt]

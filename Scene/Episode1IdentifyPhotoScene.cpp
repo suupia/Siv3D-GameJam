@@ -1,7 +1,7 @@
 ﻿#include "../stdafx.h"
 #include "Episode1IdentifyPhotoScene.h"
 #include "../Utility/RectFUtility.h"
-#include "../Utility/OneLineTextReader.h"
+#include "../MessageBox/OneLineTextReader.h"
 
 namespace
 {
