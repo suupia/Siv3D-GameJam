@@ -2,10 +2,11 @@ $Taro
 Hello! I'm Taro.
 
 $Hanako
-Hello! I'm Hanako.
+Hi!
+I'm Hanako.
+
+
 
 $Taro
-This is a test message.
+Nice to meet you.
 
-$Hanako
-This is a test message. I'm Hanako.
