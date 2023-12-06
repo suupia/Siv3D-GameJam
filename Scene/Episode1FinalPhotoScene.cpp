@@ -1,7 +1,7 @@
 ﻿#include "../stdafx.h"
 #include "Episode1FinalPhotoScene.h"
 #include "../Utility/RectFUtility.h"
-#include "../Utility/OneLineTextReader.h"
+#include "../MessageBox/OneLineTextReader.h"
 
 // public
 Episode1FinalPhotoScene::Episode1FinalPhotoScene(const InitData& init):

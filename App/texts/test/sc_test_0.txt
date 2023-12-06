@@ -1,0 +1,12 @@
+$Taro
+Hello! I'm Taro.
+
+$Hanako
+Hi!
+I'm Hanako.
+
+
+
+$Taro
+Nice to meet you.
+

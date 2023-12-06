@@ -31,17 +31,22 @@ Optional<MessageStruct> MessageReader::PopOneChunk()
 	const String name = lines_.front().substr(1);
 	lines_.pop_front();
 
+	// if there is no message
+	if(lines_.empty()) return none;
+
 	String messages;
 	while (true)
 	{
-		if(lines_.empty()) return MessageStruct{name, messages};
+		// reach the end of the file
+		if(lines_.empty())break;
+		if(lines_.front() == U"" ) break;
 		if(lines_.front().starts_with(U"$")) break;
-		auto message_line = lines_.front();
+		const auto message_line = lines_.front();
 		lines_.pop_front();
 
-		messages += message_line + U"\n";
+		messages += message_line+ U"\n";
 	}
-	// erase the last "\n"
+	// remove the last line break
 	messages.pop_back();
 	return MessageStruct{name, messages};
 
