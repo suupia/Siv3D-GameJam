@@ -7,7 +7,7 @@ class MultipleDialogueReader
 public:
 	MultipleDialogueReader(const String& path);
 	[[nodiscard]]
-	Array<MessageString> readMessageAll();
+	DialogueString readMessageAll();
 private:
 	TextReader reader_;
 	Array<String> lines_; // Destination of read strings

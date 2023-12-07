@@ -1,15 +1,15 @@
-﻿#pragma once
-
+#pragma once
 #define DOCTEST_CONFIG_IMPLEMENT
 #include "../doctest.h"
 
-#include "../MessageBox/SingleDialogueReader.h"
+#include "../MessageBox/MultipleDialogueReader.h"
 
 
-TEST_CASE("DialogueReader should return words with line breaks separated by")
+TEST_CASE("MultipleDialogue should return words with line breaks separated by")
 {
-	auto message_reader = SingleDialogueReader(U"texts/test/sc_test_0.txt");
-	const auto dialogue_string = message_reader.readMessageAll();
+	auto multiple_dialogue_reader = SingleDialogueReader(U"texts/test/sc_test_0.txt");
+	// auto multiple_dialogue_reader = MultipleDialogueReader(U"texts/test/MultipleDialogueReaderTest_0.txt");
+	const auto dialogue_string = multiple_dialogue_reader.readMessageAll();
 	const auto message_structs = dialogue_string.messages;
 
 
@@ -25,4 +25,3 @@ TEST_CASE("DialogueReader should return words with line breaks separated by")
 	CHECK(message_structs.at(2).messages == U"Nice to meet you.");
 
 }
-
