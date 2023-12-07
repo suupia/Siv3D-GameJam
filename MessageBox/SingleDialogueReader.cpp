@@ -2,6 +2,9 @@
 #include "../stdafx.h"
 #include "SingleDialogueReader.h"
 
+#include "DialogueString.h"
+
+// public
 SingleDialogueReader::SingleDialogueReader(const String& path) : reader_{path}
 {
 	// If the file cannot be opened
@@ -15,6 +18,26 @@ SingleDialogueReader::SingleDialogueReader(const String& path) : reader_{path}
 	reader_.readLines(lines_);
 }
 
+DialogueString SingleDialogueReader::readMessageAll()
+{
+	Array<MessageString> message_strings;
+
+	MessageString message_string;
+	while (true)
+	{
+		if(auto chunk = PopOneChunk(); chunk)
+		{
+			message_strings.push_back(*chunk);
+		}else
+		{
+			break;
+		}
+	}
+
+	return DialogueString(message_strings);
+}
+
+// private
 Optional<MessageString> SingleDialogueReader::PopOneChunk()
 {
 	if(lines_.empty()) return none;
@@ -53,22 +76,5 @@ Optional<MessageString> SingleDialogueReader::PopOneChunk()
 }
 
 
-Array<MessageString> SingleDialogueReader::readMessageAll()
-{
-	Array<MessageString> result;
 
-	MessageString message_struct;
-	while (true)
-	{
-		if(auto chunk = PopOneChunk(); chunk)
-		{
-			result.push_back(*chunk);
-		}else
-		{
-			break;
-		}
-	}
-
-	return result;
-}
 

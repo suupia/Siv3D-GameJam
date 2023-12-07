@@ -13,8 +13,8 @@ MessageContentContainer MessageContentContainerBuilder::build_message_content_co
 {
 	MessageContentContainer message_content_container(gm, font);
 
-	const auto message_structs = SingleDialogueReader(path_).readMessageAll();
-	const auto message_content_structs = MessageContentPictureAttacher().create_message_content_struct(message_structs);
+	const auto dialogue_string = SingleDialogueReader(path_).readMessageAll();
+	const auto message_content_structs = MessageContentPictureAttacher().create_message_content_struct(dialogue_string);
 
 	Array<MessageContent> message_contents;
 	for (auto content_struct : message_content_structs)

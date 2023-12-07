@@ -9,8 +9,8 @@
 TEST_CASE("DialogueReader should return words with line breaks separated by")
 {
 	auto message_reader = SingleDialogueReader(U"texts/test/sc_test_0.txt");
-	const auto message_structs = message_reader.readMessageAll();
-
+	const auto dialogue_string = message_reader.readMessageAll();
+	const auto message_structs = dialogue_string.messages;
 
 
 	CHECK(message_structs.size() == 3);
