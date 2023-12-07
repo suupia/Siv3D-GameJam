@@ -424,6 +424,7 @@
     <ClInclude Include="MessageBox\MessageContentContainerBuilder.h" />
     <ClInclude Include="MessageBox\MessageContentPictureAttacher.h" />
     <ClInclude Include="MessageBox\MessageString.h" />
+    <ClInclude Include="MessageBox\MessageWithTexture.h" />
     <ClInclude Include="MessageBox\MultipleDialogueReader.h" />
     <ClInclude Include="MessageBox\SingleDialogueReader.h" />
     <ClInclude Include="MessageBox\OneLineTextReader.h" />

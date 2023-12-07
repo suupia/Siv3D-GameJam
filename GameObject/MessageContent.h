@@ -1,17 +1,13 @@
 ﻿#pragma once
 #include "GameObject.h"
+#include "../MessageBox/MessageWithTexture.h"
 
-struct MessageContentStruct {
-	const String name;
-	const String messages;
-	const TextureAsset standing_picture;
-};
 
 class MessageContent : public GameObject
 {
 public:
 	MessageContent(const Font& font,
-		const MessageContentStruct& message_window_struct
+		const MessageWithTexture& message_window_struct
 		) : font_(font),
 	name_(message_window_struct.name),
 	messages_(message_window_struct.messages),

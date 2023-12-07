@@ -3,7 +3,7 @@
 #include "SingleDialogueReader.h"
 
 
-struct MessageContentStruct;
+struct MessageWithTexture;
 
 MessageContentPictureAttacher::MessageContentPictureAttacher()
 {
@@ -14,12 +14,12 @@ MessageContentPictureAttacher::MessageContentPictureAttacher()
 
 }
 
-Array<MessageContentStruct> MessageContentPictureAttacher::create_message_content_struct(const DialogueString& dialogue_string)
+Array<MessageWithTexture> MessageContentPictureAttacher::create_message_content_struct(const DialogueString& dialogue_string)
 {
 	Logger << U"create_message_content_struct";
 	auto message_strings = dialogue_string.messages;
 
-	Array<MessageContentStruct> result;
+	Array<MessageWithTexture> result;
 
 	for(auto content : message_strings)
 	{
