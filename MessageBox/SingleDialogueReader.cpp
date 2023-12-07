@@ -15,7 +15,7 @@ SingleDialogueReader::SingleDialogueReader(const String& path) : reader_{path}
 	reader_.readLines(lines_);
 }
 
-Optional<MessageStruct> SingleDialogueReader::PopOneChunk()
+Optional<MessageString> SingleDialogueReader::PopOneChunk()
 {
 	if(lines_.empty()) return none;
 
@@ -48,16 +48,16 @@ Optional<MessageStruct> SingleDialogueReader::PopOneChunk()
 	}
 	// remove the last line break
 	messages.pop_back();
-	return MessageStruct{name, messages};
+	return MessageString{name, messages};
 
 }
 
 
-Array<MessageStruct> SingleDialogueReader::readMessageAll()
+Array<MessageString> SingleDialogueReader::readMessageAll()
 {
-	Array<MessageStruct> result;
+	Array<MessageString> result;
 
-	MessageStruct message_struct;
+	MessageString message_struct;
 	while (true)
 	{
 		if(auto chunk = PopOneChunk(); chunk)

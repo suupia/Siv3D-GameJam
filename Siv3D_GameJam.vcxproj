@@ -420,9 +420,10 @@
     <ClInclude Include="GameObject\MessageContent.h" />
     <ClInclude Include="GameObject\MessageContentContainer.h" />
     <ClInclude Include="GameObject\PastPhotoButton.h" />
+    <ClInclude Include="MessageBox\DialogueString.h" />
     <ClInclude Include="MessageBox\MessageContentContainerBuilder.h" />
     <ClInclude Include="MessageBox\MessageContentPictureAttacher.h" />
-    <ClInclude Include="MessageBox\MessageStruct.h" />
+    <ClInclude Include="MessageBox\MessageString.h" />
     <ClInclude Include="MessageBox\MultipleDialogueReader.h" />
     <ClInclude Include="MessageBox\SingleDialogueReader.h" />
     <ClInclude Include="MessageBox\OneLineTextReader.h" />

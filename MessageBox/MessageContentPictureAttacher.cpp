@@ -14,7 +14,7 @@ MessageContentPictureAttacher::MessageContentPictureAttacher()
 
 }
 
-Array<MessageContentStruct> MessageContentPictureAttacher::create_message_content_struct(Array<MessageStruct> message_structs)
+Array<MessageContentStruct> MessageContentPictureAttacher::create_message_content_struct(Array<MessageString> message_structs)
 {
 	Logger << U"create_message_content_struct";
 	Array<MessageContentStruct> result;

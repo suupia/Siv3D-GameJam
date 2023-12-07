@@ -7,11 +7,9 @@ class MultipleDialogueReader
 public:
 	MultipleDialogueReader(const String& path);
 	[[nodiscard]]
-	MessageStruct readMessageOne();
-	[[nodiscard]]
-	Array<MessageStruct> readMessageAll();
+	Array<MessageString> readMessageAll();
 private:
 	TextReader reader_;
 	Array<String> lines_; // Destination of read strings
-	Optional<MessageStruct>  PopOneChunk();
+	Optional<MessageString>  PopOneChunk();
 };
