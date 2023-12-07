@@ -421,6 +421,7 @@
     <ClInclude Include="GameObject\MessageContentContainer.h" />
     <ClInclude Include="GameObject\PastPhotoButton.h" />
     <ClInclude Include="MessageBox\DialogueString.h" />
+    <ClInclude Include="MessageBox\DialogueWithTexture.h" />
     <ClInclude Include="MessageBox\MessageContentContainerBuilder.h" />
     <ClInclude Include="MessageBox\MessageContentPictureAttacher.h" />
     <ClInclude Include="MessageBox\MessageString.h" />
