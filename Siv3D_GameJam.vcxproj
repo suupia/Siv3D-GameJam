@@ -124,6 +124,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MessageBox\MessageContentContainerBuilder.cpp" />
     <ClCompile Include="MessageBox\MessageContentPictureAttacher.cpp" />
+    <ClCompile Include="MessageBox\MultipleDialogueReader.cpp" />
     <ClCompile Include="MessageBox\SingleDialogueReader.cpp" />
     <ClCompile Include="MessageBox\OneLineTextReader.cpp">
       <AssemblerOutput>NoListing</AssemblerOutput>
@@ -421,6 +422,8 @@
     <ClInclude Include="GameObject\PastPhotoButton.h" />
     <ClInclude Include="MessageBox\MessageContentContainerBuilder.h" />
     <ClInclude Include="MessageBox\MessageContentPictureAttacher.h" />
+    <ClInclude Include="MessageBox\MessageStruct.h" />
+    <ClInclude Include="MessageBox\MultipleDialogueReader.h" />
     <ClInclude Include="MessageBox\SingleDialogueReader.h" />
     <ClInclude Include="MessageBox\OneLineTextReader.h" />
     <ClInclude Include="Scene\Episode1AnswerScene.h" />

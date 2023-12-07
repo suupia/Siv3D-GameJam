@@ -1,11 +1,11 @@
-#pragma once
-#include "MessageStruct.h"
+﻿#pragma once
+#include "SingleDialogueReader.h"
 
-// 1つのファイルから1つの対話を読み込む
-class SingleDialogueReader
+// 1つのファイルから複数の対話を読み込む
+class MultipleDialogueReader
 {
 public:
-	SingleDialogueReader(const String& path);
+	MultipleDialogueReader(const String& path);
 	[[nodiscard]]
 	MessageStruct readMessageOne();
 	[[nodiscard]]
@@ -14,5 +14,4 @@ private:
 	TextReader reader_;
 	Array<String> lines_; // Destination of read strings
 	Optional<MessageStruct>  PopOneChunk();
-
 };
