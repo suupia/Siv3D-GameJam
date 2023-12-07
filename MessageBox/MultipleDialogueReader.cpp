@@ -20,14 +20,46 @@ MultipleDialogueReader::MultipleDialogueReader(const String& path) : reader_{pat
 	reader_.readLines(lines_);
 }
 
-DialogueString MultipleDialogueReader::readMessageAll()
+
+
+Array<DialogueString> MultipleDialogueReader::readMessageAll()
 {
-	Array<MessageString> message_strings;
+	Array<DialogueString> dialogue_strings;
 
 	MessageString message_string;
 	while (true)
 	{
-		if(auto chunk = PopOneChunk(); chunk)
+		if(auto chunk = read_dialogue_string(); chunk)
+		{
+			dialogue_strings.push_back(*chunk);
+		}else
+		{
+			break;
+		}
+	}
+	return dialogue_strings;
+}
+
+// private
+Optional<DialogueString> MultipleDialogueReader::read_dialogue_string()
+{
+	if(lines_.empty()) return none;
+
+	while (true)
+	{
+		if(lines_.front().starts_with(U"#")) break;
+		lines_.pop_front();
+		if(lines_.size() <= 0) return  none;
+	}
+
+	assert(lines_.front().starts_with(U"#"));
+
+	lines_.pop_front(); // remove # line
+
+	Array<MessageString> message_strings;
+	while (true)
+	{
+		if(auto chunk = read_message_string(); chunk)
 		{
 			message_strings.push_back(*chunk);
 		}else
@@ -39,14 +71,14 @@ DialogueString MultipleDialogueReader::readMessageAll()
 	return DialogueString(message_strings);
 }
 
-// private
-Optional<MessageString> MultipleDialogueReader::PopOneChunk()
+Optional<MessageString> MultipleDialogueReader::read_message_string()
 {
 	if(lines_.empty()) return none;
 
 	while (true)
 	{
 		if(lines_.front().starts_with(U"$")) break;
+		if(lines_.front().starts_with(U"#")) return none;
 		lines_.pop_front();
 		if(lines_.size() <= 0) return  none;
 	}

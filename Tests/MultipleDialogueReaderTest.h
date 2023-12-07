@@ -7,21 +7,22 @@
 
 TEST_CASE("MultipleDialogue should return words with line breaks separated by")
 {
-	auto multiple_dialogue_reader = SingleDialogueReader(U"texts/test/sc_test_0.txt");
-	// auto multiple_dialogue_reader = MultipleDialogueReader(U"texts/test/MultipleDialogueReaderTest_0.txt");
+	// auto multiple_dialogue_reader = SingleDialogueReader(U"texts/test/sc_test_0.txt");
+	auto multiple_dialogue_reader = MultipleDialogueReader(U"texts/test/MultipleDialogueReaderTest_0.txt");
 	const auto dialogue_string = multiple_dialogue_reader.readMessageAll();
-	const auto message_structs = dialogue_string.messages;
 
+	CHECK(dialogue_string.size() == 2);
 
-	CHECK(message_structs.size() == 3);
+	CHECK(dialogue_string.at(0).messages.at(0).name == U"Taro");
+	CHECK(dialogue_string.at(0).messages.at(0).messages == U"Hi! I'm Taro.");
 
-	CHECK(message_structs.at(0).name == U"Taro");
-	CHECK(message_structs.at(0).messages == U"Hello! I'm Taro.");
+	CHECK(dialogue_string.at(0).messages.at(1).name == U"Hanako");
+	CHECK(dialogue_string.at(0).messages.at(1).messages == U"Hi! I'm Hanako.");
 
-	CHECK(message_structs.at(1).name == U"Hanako");
-	CHECK(message_structs.at(1).messages == U"Hi!\nI'm Hanako.");
+	CHECK(dialogue_string.at(1).messages.at(0).name == U"Taro");
+	CHECK(dialogue_string.at(1).messages.at(0).messages == U"I like soccer.");
 
-	CHECK(message_structs.at(2).name == U"Taro");
-	CHECK(message_structs.at(2).messages == U"Nice to meet you.");
+	CHECK(dialogue_string.at(1).messages.at(1).name == U"Hanako");
+	CHECK(dialogue_string.at(1).messages.at(1).messages == U"I like tennis.");
 
 }

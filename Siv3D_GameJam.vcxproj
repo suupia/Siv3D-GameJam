@@ -577,7 +577,7 @@
     <Content Include="App\texts\sc_Takeshi_End_0.txt" />
     <Content Include="App\texts\sc_Takeshi_End_1.txt" />
     <Content Include="App\texts\takeshi_identify_texts.txt" />
-    <Content Include="App\texts\test\MultipleDialogueReaderTest_0" />
+    <Content Include="App\texts\test\MultipleDialogueReaderTest_0.txt" />
     <Content Include="App\texts\test\sc_test_0.txt" />
     <Content Include="App\texts\test\test_0.txt" />
   </ItemGroup>
