@@ -124,7 +124,8 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MessageBox\MessageContentContainerBuilder.cpp" />
     <ClCompile Include="MessageBox\MessageContentPictureAttacher.cpp" />
-    <ClCompile Include="MessageBox\MessageReader.cpp" />
+    <ClCompile Include="MessageBox\MultipleDialogueReader.cpp" />
+    <ClCompile Include="MessageBox\SingleDialogueReader.cpp" />
     <ClCompile Include="MessageBox\OneLineTextReader.cpp">
       <AssemblerOutput>NoListing</AssemblerOutput>
       <AssemblerListingLocation>D:\Siv3D\Siv3D_GameJam\Intermediate\Siv3D_GameJam\Release\Intermediate\</AssemblerListingLocation>
@@ -419,9 +420,14 @@
     <ClInclude Include="GameObject\MessageContent.h" />
     <ClInclude Include="GameObject\MessageContentContainer.h" />
     <ClInclude Include="GameObject\PastPhotoButton.h" />
+    <ClInclude Include="MessageBox\DialogueString.h" />
+    <ClInclude Include="MessageBox\DialogueWithTexture.h" />
     <ClInclude Include="MessageBox\MessageContentContainerBuilder.h" />
     <ClInclude Include="MessageBox\MessageContentPictureAttacher.h" />
-    <ClInclude Include="MessageBox\MessageReader.h" />
+    <ClInclude Include="MessageBox\MessageString.h" />
+    <ClInclude Include="MessageBox\MessageWithTexture.h" />
+    <ClInclude Include="MessageBox\MultipleDialogueReader.h" />
+    <ClInclude Include="MessageBox\SingleDialogueReader.h" />
     <ClInclude Include="MessageBox\OneLineTextReader.h" />
     <ClInclude Include="Scene\Episode1AnswerScene.h" />
     <ClInclude Include="Scene\Episode1FinalPhotoScene.h" />
@@ -433,7 +439,8 @@
     <ClInclude Include="Scene\TitleScene.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Tests\AddTest.h" />
-    <ClInclude Include="Tests\MessageReaderTest.h" />
+    <ClInclude Include="Tests\SingleDialogueReaderTest.h" />
+    <ClInclude Include="Tests\MultipleDialogueReaderTest.h" />
     <ClInclude Include="Tests\OneLineTextReaderTest.h" />
     <ClInclude Include="Utility\RectFUtility.h" />
   </ItemGroup>
@@ -570,6 +577,7 @@
     <Content Include="App\texts\sc_Takeshi_End_0.txt" />
     <Content Include="App\texts\sc_Takeshi_End_1.txt" />
     <Content Include="App\texts\takeshi_identify_texts.txt" />
+    <Content Include="App\texts\test\MultipleDialogueReaderTest_0.txt" />
     <Content Include="App\texts\test\sc_test_0.txt" />
     <Content Include="App\texts\test\test_0.txt" />
   </ItemGroup>

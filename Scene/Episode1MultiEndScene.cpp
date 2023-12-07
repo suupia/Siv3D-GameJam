@@ -4,7 +4,7 @@
 #include "../GameManager/GameManager.h"
 
 #include "../MessageBox/MessageContentPictureAttacher.h"
-#include "../MessageBox/MessageReader.h"
+#include "../MessageBox/SingleDialogueReader.h"
 
 namespace
 {
@@ -14,30 +14,30 @@ namespace
 		MessageContentContainer message_content_container(gm, font);
 
 		// U"texts/sc_Takeshi_3.txt"
-		const auto message_structs = MessageReader(U"texts/sc_Takeshi_3.txt").readMessageAll();
-		const auto message_content_structs = MessageContentPictureAttacher().create_message_content_struct(message_structs);
+		const auto message_structs = SingleDialogueReader(U"texts/sc_Takeshi_3.txt").readMessageAll();
+		const auto dialogue_with_texture = MessageContentPictureAttacher().create_message_content_struct(message_structs);
 		Array<MessageContent> message_contents;
-		for (auto content_struct : message_content_structs)
+		for (auto content_struct : dialogue_with_texture.message_with_textures)
 		{
 			message_contents.push_back(MessageContent(font, content_struct));
 		}
 		message_content_container.add_message_contents(message_contents);
 
 		// U"texts/sc_Takeshi_End_x.txt"
-		const auto message_structs1 = MessageReader(U"texts/sc_Takeshi_End_{}.txt"_fmt(chosen_final_photo_index)).readMessageAll();
-		const auto message_content_structs1 = MessageContentPictureAttacher().create_message_content_struct(message_structs1);
+		const auto message_structs1 = SingleDialogueReader(U"texts/sc_Takeshi_End_{}.txt"_fmt(chosen_final_photo_index)).readMessageAll();
+		const auto dialogue_with_texture1 = MessageContentPictureAttacher().create_message_content_struct(message_structs1);
 		Array<MessageContent> message_contents1;
-		for (auto content_struct : message_content_structs1)
+		for (auto content_struct : dialogue_with_texture1.message_with_textures)
 		{
 			message_contents1.push_back(MessageContent(font, content_struct));
 		}
 		message_content_container.add_message_contents(message_contents1);
 
 		// U"texts/sc_Takeshi_4.txt"
-		const auto message_structs2 = MessageReader(U"texts/sc_Takeshi_4.txt").readMessageAll();
-		const auto message_content_structs2 = MessageContentPictureAttacher().create_message_content_struct(message_structs2);
+		const auto message_structs2 = SingleDialogueReader(U"texts/sc_Takeshi_4.txt").readMessageAll();
+		const auto dialogue_with_texture2 = MessageContentPictureAttacher().create_message_content_struct(message_structs2);
 		Array<MessageContent> message_contents2;
-		for (auto content_struct : message_content_structs2)
+		for (auto content_struct : dialogue_with_texture2.message_with_textures)
 		{
 			message_contents2.push_back(MessageContent(font, content_struct));
 		}

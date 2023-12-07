@@ -1,10 +1,11 @@
 #pragma once
+#include "DialogueWithTexture.h"
 #include "../GameObject//MessageContent.h"
-#include "MessageReader.h"
+#include "SingleDialogueReader.h"
 
 class MessageContentPictureAttacher
 {
 public:
 	MessageContentPictureAttacher();
-	Array<MessageContentStruct> create_message_content_struct(Array<MessageStruct> message_structs);
+	DialogueWithTexture create_message_content_struct(const DialogueString& dialogue_string);
 };

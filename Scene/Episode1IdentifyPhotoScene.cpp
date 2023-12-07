@@ -139,9 +139,9 @@ Episode1IdentifyPhotoScene::Episode1IdentifyPhotoScene(const InitData& init):
 		TextureAsset::Register(U"IdentifyPhoto{}"_fmt(i), path) ;
 	}
 
-	const double w_margin = 0.05;
-	const double h_up_margin = 0.08;
-	const double h_down_margin = 0.15;
+	constexpr double w_margin = 0.05;
+	constexpr double h_up_margin = 0.08;
+	constexpr double h_down_margin = 0.15;
 	const double w_ratio = (1 - 2 * w_margin)  / photo_number_per_col_;
 	const double h_ratio = (1 - (h_up_margin + h_down_margin))  / photo_number_per_row_;
 

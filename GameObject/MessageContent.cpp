@@ -6,7 +6,7 @@
 void  MessageContent::show_message_window(const String& name, const String& message) const
 {
 	// texture
-	(void)standing_picture_.draw(  Arg::center( Scene::Width() / 2, Scene::Height() / 2));
+	if(is_show_texture_) (void)standing_picture_.draw(  Arg::center( Scene::Width() / 2, Scene::Height() / 2));
 
 	// back ground box
 	const auto back_ground_rect = RectFUtility::calc_relative_rect(0, 3.0/5.0, 1, 2.0/5.0).draw(ColorF{Palette::Lightslategray, 0.0});

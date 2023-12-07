@@ -1,8 +1,11 @@
 # include <Siv3D.hpp> // OpenSiv3D v0.6.11
 #include "../stdafx.h"
-#include "MessageReader.h"
+#include "SingleDialogueReader.h"
 
-MessageReader::MessageReader(const String& path) : reader_{path}
+#include "DialogueString.h"
+
+// public
+SingleDialogueReader::SingleDialogueReader(const String& path) : reader_{path}
 {
 	// If the file cannot be opened
 	if (not reader_)
@@ -15,7 +18,27 @@ MessageReader::MessageReader(const String& path) : reader_{path}
 	reader_.readLines(lines_);
 }
 
-Optional<MessageStruct> MessageReader::PopOneChunk()
+DialogueString SingleDialogueReader::readMessageAll()
+{
+	Array<MessageString> message_strings;
+
+	MessageString message_string;
+	while (true)
+	{
+		if(auto chunk = PopOneChunk(); chunk)
+		{
+			message_strings.push_back(*chunk);
+		}else
+		{
+			break;
+		}
+	}
+
+	return DialogueString(message_strings);
+}
+
+// private
+Optional<MessageString> SingleDialogueReader::PopOneChunk()
 {
 	if(lines_.empty()) return none;
 
@@ -48,38 +71,10 @@ Optional<MessageStruct> MessageReader::PopOneChunk()
 	}
 	// remove the last line break
 	messages.pop_back();
-	return MessageStruct{name, messages};
+	return MessageString{name, messages};
 
 }
 
-MessageStruct MessageReader::readMessageOne()
-{
-	if(const auto chunk= PopOneChunk(); chunk)
-	{
-		return *chunk;
-	}
-	else
-	{
-		throw Error{ U"Failed to read a message" };
-	}
-}
 
-Array<MessageStruct> MessageReader::readMessageAll()
-{
-	Array<MessageStruct> result;
 
-	MessageStruct message_struct;
-	while (true)
-	{
-		if(auto chunk = PopOneChunk(); chunk)
-		{
-			result.push_back(*chunk);
-		}else
-		{
-			break;
-		}
-	}
-
-	return result;
-}
 

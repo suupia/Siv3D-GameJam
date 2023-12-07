@@ -1,9 +1,11 @@
 ﻿#include "../stdafx.h"
 #include "MessageContentPictureAttacher.h"
-#include "MessageReader.h"
+
+#include "DialogueWithTexture.h"
+#include "SingleDialogueReader.h"
 
 
-struct MessageContentStruct;
+struct MessageWithTexture;
 
 MessageContentPictureAttacher::MessageContentPictureAttacher()
 {
@@ -14,12 +16,14 @@ MessageContentPictureAttacher::MessageContentPictureAttacher()
 
 }
 
-Array<MessageContentStruct> MessageContentPictureAttacher::create_message_content_struct(Array<MessageStruct> message_structs)
+DialogueWithTexture MessageContentPictureAttacher::create_message_content_struct(const DialogueString& dialogue_string)
 {
 	Logger << U"create_message_content_struct";
-	Array<MessageContentStruct> result;
+	auto message_strings = dialogue_string.messages;
 
-	for(auto content : message_structs)
+	Array<MessageWithTexture> result;
+
+	for(auto content : message_strings)
 	{
 		TextureAsset person_picture = TextureAsset(U"Me");
 		if(content.name == U"ワタシ")
@@ -35,5 +39,6 @@ Array<MessageContentStruct> MessageContentPictureAttacher::create_message_conten
 
 		result.push_back({content.name, content.messages, person_picture});
 	}
-	return result;
+
+	return DialogueWithTexture(result);
 }

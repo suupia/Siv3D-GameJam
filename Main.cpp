@@ -12,7 +12,8 @@
 #if USE_TEST
 #include "Tests/AddTest.h"
 #include "Tests/OneLineTextReaderTest.h"
-#include "Tests/MessageReaderTest.h"
+#include "Tests\SingleDialogueReaderTest.h"
+#include "Tests\MultipleDialogueReaderTest.h"
 
 class TestRunner
 {
