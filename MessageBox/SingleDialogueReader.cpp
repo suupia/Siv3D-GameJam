@@ -1,8 +1,8 @@
 # include <Siv3D.hpp> // OpenSiv3D v0.6.11
 #include "../stdafx.h"
-#include "MessageReader.h"
+#include "SingleDialogueReader.h"
 
-MessageReader::MessageReader(const String& path) : reader_{path}
+SingleDialogueReader::SingleDialogueReader(const String& path) : reader_{path}
 {
 	// If the file cannot be opened
 	if (not reader_)
@@ -15,7 +15,7 @@ MessageReader::MessageReader(const String& path) : reader_{path}
 	reader_.readLines(lines_);
 }
 
-Optional<MessageStruct> MessageReader::PopOneChunk()
+Optional<MessageStruct> SingleDialogueReader::PopOneChunk()
 {
 	if(lines_.empty()) return none;
 
@@ -52,7 +52,7 @@ Optional<MessageStruct> MessageReader::PopOneChunk()
 
 }
 
-MessageStruct MessageReader::readMessageOne()
+MessageStruct SingleDialogueReader::readMessageOne()
 {
 	if(const auto chunk= PopOneChunk(); chunk)
 	{
@@ -64,7 +64,7 @@ MessageStruct MessageReader::readMessageOne()
 	}
 }
 
-Array<MessageStruct> MessageReader::readMessageAll()
+Array<MessageStruct> SingleDialogueReader::readMessageAll()
 {
 	Array<MessageStruct> result;
 

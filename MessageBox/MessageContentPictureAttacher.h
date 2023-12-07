@@ -1,6 +1,6 @@
 #pragma once
 #include "../GameObject//MessageContent.h"
-#include "MessageReader.h"
+#include "SingleDialogueReader.h"
 
 class MessageContentPictureAttacher
 {

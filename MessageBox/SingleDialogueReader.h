@@ -5,10 +5,11 @@ struct MessageStruct {
 	const String messages;
 };
 
-class MessageReader
+// 1つのファイルから1つの対話を読み込む
+class SingleDialogueReader
 {
 public:
-	MessageReader(const String& path);
+	SingleDialogueReader(const String& path);
 	[[nodiscard]]
 	MessageStruct readMessageOne();
 	[[nodiscard]]

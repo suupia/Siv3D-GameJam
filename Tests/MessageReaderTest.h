@@ -3,12 +3,12 @@
 #define DOCTEST_CONFIG_IMPLEMENT
 #include "../doctest.h"
 
-#include "../MessageBox/MessageReader.h"
+#include "../MessageBox/SingleDialogueReader.h"
 
 
-TEST_CASE("MessageReader should return words with line breaks separated by")
+TEST_CASE("DialogueReader should return words with line breaks separated by")
 {
-	auto message_reader = MessageReader(U"texts/test/sc_test_0.txt");
+	auto message_reader = SingleDialogueReader(U"texts/test/sc_test_0.txt");
 	const auto message_structs = message_reader.readMessageAll();
 
 

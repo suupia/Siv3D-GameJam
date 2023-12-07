@@ -1,6 +1,6 @@
 ﻿#include "../stdafx.h"
 #include "MessageContentPictureAttacher.h"
-#include "MessageReader.h"
+#include "SingleDialogueReader.h"
 
 
 struct MessageContentStruct;

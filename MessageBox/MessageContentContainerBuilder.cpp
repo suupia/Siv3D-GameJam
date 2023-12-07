@@ -2,7 +2,7 @@
 #include "MessageContentContainerBuilder.h"
 
 #include "MessageContentPictureAttacher.h"
-#include "MessageReader.h"
+#include "SingleDialogueReader.h"
 
 MessageContentContainerBuilder::MessageContentContainerBuilder(const String& path) :
 	path_(path)
@@ -13,7 +13,7 @@ MessageContentContainer MessageContentContainerBuilder::build_message_content_co
 {
 	MessageContentContainer message_content_container(gm, font);
 
-	const auto message_structs = MessageReader(path_).readMessageAll();
+	const auto message_structs = SingleDialogueReader(path_).readMessageAll();
 	const auto message_content_structs = MessageContentPictureAttacher().create_message_content_struct(message_structs);
 
 	Array<MessageContent> message_contents;

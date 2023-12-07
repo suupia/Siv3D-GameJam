@@ -124,7 +124,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MessageBox\MessageContentContainerBuilder.cpp" />
     <ClCompile Include="MessageBox\MessageContentPictureAttacher.cpp" />
-    <ClCompile Include="MessageBox\MessageReader.cpp" />
+    <ClCompile Include="MessageBox\SingleDialogueReader.cpp" />
     <ClCompile Include="MessageBox\OneLineTextReader.cpp">
       <AssemblerOutput>NoListing</AssemblerOutput>
       <AssemblerListingLocation>D:\Siv3D\Siv3D_GameJam\Intermediate\Siv3D_GameJam\Release\Intermediate\</AssemblerListingLocation>
@@ -421,7 +421,7 @@
     <ClInclude Include="GameObject\PastPhotoButton.h" />
     <ClInclude Include="MessageBox\MessageContentContainerBuilder.h" />
     <ClInclude Include="MessageBox\MessageContentPictureAttacher.h" />
-    <ClInclude Include="MessageBox\MessageReader.h" />
+    <ClInclude Include="MessageBox\SingleDialogueReader.h" />
     <ClInclude Include="MessageBox\OneLineTextReader.h" />
     <ClInclude Include="Scene\Episode1AnswerScene.h" />
     <ClInclude Include="Scene\Episode1FinalPhotoScene.h" />
