@@ -7,8 +7,6 @@ class SingleDialogueReader
 public:
 	SingleDialogueReader(const String& path);
 	[[nodiscard]]
-	MessageStruct readMessageOne();
-	[[nodiscard]]
 	Array<MessageStruct> readMessageAll();
 private:
 	TextReader reader_;

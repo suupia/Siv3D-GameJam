@@ -52,17 +52,6 @@ Optional<MessageStruct> SingleDialogueReader::PopOneChunk()
 
 }
 
-MessageStruct SingleDialogueReader::readMessageOne()
-{
-	if(const auto chunk= PopOneChunk(); chunk)
-	{
-		return *chunk;
-	}
-	else
-	{
-		throw Error{ U"Failed to read a message" };
-	}
-}
 
 Array<MessageStruct> SingleDialogueReader::readMessageAll()
 {
