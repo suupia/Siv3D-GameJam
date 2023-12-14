@@ -37,7 +37,7 @@ DialogueWithTexture MessageContentPictureAttacher::create_message_content_struct
 		else
 			throw Error(U"Unexpected name name:{}\nThe name of the text file may be incorrect."_fmt(content.name));
 
-		result.push_back({content.name, content.messages, person_picture});
+		result.push_back({content.name, content.message, person_picture});
 	}
 
 	return DialogueWithTexture(result);

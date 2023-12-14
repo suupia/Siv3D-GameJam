@@ -2,5 +2,5 @@
 
 struct MessageString {
 	const String name;
-	const String messages;
+	const String message;
 };

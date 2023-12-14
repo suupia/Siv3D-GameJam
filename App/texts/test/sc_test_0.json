@@ -1,0 +1,16 @@
+{
+  "Dialogue": [
+    {
+      "Name": "Taro",
+      "Message": "Hello! I'm Taro."
+    },
+    {
+      "Name": "Hanako",
+      "Message": "Hi! I'm Hanako."
+    },
+    {
+      "Name": "Taro",
+      "Message": "Nice to meet you."
+    }
+  ]
+}

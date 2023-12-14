@@ -16,13 +16,13 @@ TEST_CASE("SingleDialogueReader should return words with line breaks separated b
 	CHECK(message_structs.size() == 3);
 
 	CHECK(message_structs.at(0).name == U"Taro");
-	CHECK(message_structs.at(0).messages == U"Hello! I'm Taro.");
+	CHECK(message_structs.at(0).message == U"Hello! I'm Taro.");
 
 	CHECK(message_structs.at(1).name == U"Hanako");
-	CHECK(message_structs.at(1).messages == U"Hi!\nI'm Hanako.");
+	CHECK(message_structs.at(1).message == U"Hi!\nI'm Hanako.");
 
 	CHECK(message_structs.at(2).name == U"Taro");
-	CHECK(message_structs.at(2).messages == U"Nice to meet you.");
+	CHECK(message_structs.at(2).message == U"Nice to meet you.");
 
 }
 

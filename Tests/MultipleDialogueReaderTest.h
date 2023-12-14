@@ -14,15 +14,15 @@ TEST_CASE("MultipleDialogue should return words with line breaks separated by")
 	CHECK(dialogue_string.size() == 2);
 
 	CHECK(dialogue_string.at(0).messages.at(0).name == U"Taro");
-	CHECK(dialogue_string.at(0).messages.at(0).messages == U"Hi! I'm Taro.");
+	CHECK(dialogue_string.at(0).messages.at(0).message == U"Hi! I'm Taro.");
 
 	CHECK(dialogue_string.at(0).messages.at(1).name == U"Hanako");
-	CHECK(dialogue_string.at(0).messages.at(1).messages == U"Hi! I'm Hanako.");
+	CHECK(dialogue_string.at(0).messages.at(1).message == U"Hi! I'm Hanako.");
 
 	CHECK(dialogue_string.at(1).messages.at(0).name == U"Taro");
-	CHECK(dialogue_string.at(1).messages.at(0).messages == U"I like soccer.");
+	CHECK(dialogue_string.at(1).messages.at(0).message == U"I like soccer.");
 
 	CHECK(dialogue_string.at(1).messages.at(1).name == U"Hanako");
-	CHECK(dialogue_string.at(1).messages.at(1).messages == U"I like tennis.");
+	CHECK(dialogue_string.at(1).messages.at(1).message == U"I like tennis.");
 
 }
