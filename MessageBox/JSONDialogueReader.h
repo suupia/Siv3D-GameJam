@@ -4,7 +4,9 @@
 class JSONDialogueReader
 {
 public:
-	JSONDialogueReader(const String& path);
+	JSONDialogueReader(String path);
 	[[nodiscard]]
-	Array<DialogueInfo> readDialogueAll();
+	Array<DialogueInfo> read_dialogues();
+private:
+	String path_;
 };

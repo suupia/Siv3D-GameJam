@@ -441,6 +441,7 @@
     <ClInclude Include="Scene\TitleScene.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Tests\AddTest.h" />
+    <ClInclude Include="Tests\JSONDialogueReaderTest.h" />
     <ClInclude Include="Tests\SingleDialogueReaderTest.h" />
     <ClInclude Include="Tests\MultipleDialogueReaderTest.h" />
     <ClInclude Include="Tests\OneLineTextReaderTest.h" />

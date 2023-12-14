@@ -8,6 +8,7 @@
 #include "Scene/Episode1IdentifyPhotoScene.h"
 #include "Scene/PrologueScene.h"
 #include "Scene/TitleScene.h"
+#include "MessageBox/JSONDialogueReader.h"
 
 #if USE_TEST
 #include "Tests/AddTest.h"
@@ -96,6 +97,9 @@ void Main()
 #if USE_TEST
 	TestRunner::run();
 #endif
+
+	auto jsonReader = JSONDialogueReader(U"texts/test/sc_test_0.json");
+	auto a = jsonReader.read_dialogues();
 
 	const Font font{ FontMethod::MSDF, 48 };
 	GameManager gm;
