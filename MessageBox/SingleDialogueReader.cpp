@@ -2,7 +2,7 @@
 #include "../stdafx.h"
 #include "SingleDialogueReader.h"
 
-#include "DialogueString.h"
+#include "DialogueInfo.h"
 
 // public
 SingleDialogueReader::SingleDialogueReader(const String& path) : reader_{path}
@@ -18,11 +18,11 @@ SingleDialogueReader::SingleDialogueReader(const String& path) : reader_{path}
 	reader_.readLines(lines_);
 }
 
-DialogueString SingleDialogueReader::readMessageAll()
+DialogueInfo SingleDialogueReader::readMessageAll()
 {
-	Array<MessageString> message_strings;
+	Array<MessageInfo> message_strings;
 
-	MessageString message_string;
+	MessageInfo message_string;
 	while (true)
 	{
 		if(auto chunk = PopOneChunk(); chunk)
@@ -34,11 +34,11 @@ DialogueString SingleDialogueReader::readMessageAll()
 		}
 	}
 
-	return DialogueString(message_strings);
+	return DialogueInfo(message_strings);
 }
 
 // private
-Optional<MessageString> SingleDialogueReader::PopOneChunk()
+Optional<MessageInfo> SingleDialogueReader::PopOneChunk()
 {
 	if(lines_.empty()) return none;
 
@@ -71,7 +71,7 @@ Optional<MessageString> SingleDialogueReader::PopOneChunk()
 	}
 	// remove the last line break
 	messages.pop_back();
-	return MessageString{name, messages};
+	return MessageInfo{name, messages};
 
 }
 

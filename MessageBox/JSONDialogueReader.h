@@ -1,10 +1,10 @@
 #pragma once
-#include "DialogueString.h"
+#include "DialogueInfo.h"
 
 class JSONDialogueReader
 {
 public:
 	JSONDialogueReader(const String& path);
 	[[nodiscard]]
-	Array<DialogueString> readDialogueAll();
+	Array<DialogueInfo> readDialogueAll();
 };

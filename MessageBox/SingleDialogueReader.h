@@ -1,6 +1,6 @@
 #pragma once
-#include "DialogueString.h"
-#include "MessageString.h"
+#include "DialogueInfo.h"
+#include "MessageInfo.h"
 
 // 1つのファイルから1つの対話を読み込む
 class SingleDialogueReader
@@ -8,10 +8,10 @@ class SingleDialogueReader
 public:
 	SingleDialogueReader(const String& path);
 	[[nodiscard]]
-	DialogueString readMessageAll();
+	DialogueInfo readMessageAll();
 private:
 	TextReader reader_;
 	Array<String> lines_; // Destination of read strings
-	Optional<MessageString>  PopOneChunk();
+	Optional<MessageInfo>  PopOneChunk();
 
 };

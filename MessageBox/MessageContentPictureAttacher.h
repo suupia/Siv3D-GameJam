@@ -7,5 +7,5 @@ class MessageContentPictureAttacher
 {
 public:
 	MessageContentPictureAttacher();
-	DialogueWithTexture create_message_content_struct(const DialogueString& dialogue_string);
+	DialogueWithTexture create_message_content_struct(const DialogueInfo& dialogue_string);
 };

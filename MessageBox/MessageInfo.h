@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-struct MessageString {
+struct MessageInfo {
 	const String name;
 	const String message;
 };

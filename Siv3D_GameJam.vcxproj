@@ -421,12 +421,12 @@
     <ClInclude Include="GameObject\MessageContent.h" />
     <ClInclude Include="GameObject\MessageContentContainer.h" />
     <ClInclude Include="GameObject\PastPhotoButton.h" />
-    <ClInclude Include="MessageBox\DialogueString.h" />
+    <ClInclude Include="MessageBox\DialogueInfo.h" />
     <ClInclude Include="MessageBox\DialogueWithTexture.h" />
     <ClInclude Include="MessageBox\JSONDialogueReader.h" />
     <ClInclude Include="MessageBox\MessageContentContainerBuilder.h" />
     <ClInclude Include="MessageBox\MessageContentPictureAttacher.h" />
-    <ClInclude Include="MessageBox\MessageString.h" />
+    <ClInclude Include="MessageBox\MessageInfo.h" />
     <ClInclude Include="MessageBox\MessageWithTexture.h" />
     <ClInclude Include="MessageBox\MultipleDialogueReader.h" />
     <ClInclude Include="MessageBox\SingleDialogueReader.h" />

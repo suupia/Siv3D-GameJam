@@ -16,7 +16,7 @@ MessageContentPictureAttacher::MessageContentPictureAttacher()
 
 }
 
-DialogueWithTexture MessageContentPictureAttacher::create_message_content_struct(const DialogueString& dialogue_string)
+DialogueWithTexture MessageContentPictureAttacher::create_message_content_struct(const DialogueInfo& dialogue_string)
 {
 	Logger << U"create_message_content_struct";
 	auto message_strings = dialogue_string.messages;
