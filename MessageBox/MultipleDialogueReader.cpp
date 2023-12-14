@@ -4,7 +4,7 @@
 #include "../stdafx.h"
 #include "SingleDialogueReader.h"
 
-#include "DialogueString.h"
+#include "DialogueInfo.h"
 
 // public
 MultipleDialogueReader::MultipleDialogueReader(const String& path) : reader_{path}
@@ -22,11 +22,11 @@ MultipleDialogueReader::MultipleDialogueReader(const String& path) : reader_{pat
 
 
 
-Array<DialogueString> MultipleDialogueReader::readMessageAll()
+Array<DialogueInfo> MultipleDialogueReader::readMessageAll()
 {
-	Array<DialogueString> dialogue_strings;
+	Array<DialogueInfo> dialogue_strings;
 
-	MessageString message_string;
+	MessageInfo message_string;
 	while (true)
 	{
 		if(auto chunk = read_dialogue_string(); chunk)
@@ -41,7 +41,7 @@ Array<DialogueString> MultipleDialogueReader::readMessageAll()
 }
 
 // private
-Optional<DialogueString> MultipleDialogueReader::read_dialogue_string()
+Optional<DialogueInfo> MultipleDialogueReader::read_dialogue_string()
 {
 	if(lines_.empty()) return none;
 
@@ -56,7 +56,7 @@ Optional<DialogueString> MultipleDialogueReader::read_dialogue_string()
 
 	lines_.pop_front(); // remove # line
 
-	Array<MessageString> message_strings;
+	Array<MessageInfo> message_strings;
 	while (true)
 	{
 		if(auto chunk = read_message_string(); chunk)
@@ -68,10 +68,10 @@ Optional<DialogueString> MultipleDialogueReader::read_dialogue_string()
 		}
 	}
 
-	return DialogueString(message_strings);
+	return DialogueInfo(message_strings);
 }
 
-Optional<MessageString> MultipleDialogueReader::read_message_string()
+Optional<MessageInfo> MultipleDialogueReader::read_message_string()
 {
 	if(lines_.empty()) return none;
 
@@ -105,7 +105,7 @@ Optional<MessageString> MultipleDialogueReader::read_message_string()
 	}
 	// remove the last line break
 	messages.pop_back();
-	return MessageString{name, messages};
+	return MessageInfo{name, messages};
 
 }
 

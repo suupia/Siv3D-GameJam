@@ -122,6 +122,7 @@
     <ClCompile Include="GameObject\MessageContentContainer.cpp" />
     <ClCompile Include="GameObject\PastPhotoButton.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MessageBox\JSONDialogueReader.cpp" />
     <ClCompile Include="MessageBox\MessageContentContainerBuilder.cpp" />
     <ClCompile Include="MessageBox\MessageContentPictureAttacher.cpp" />
     <ClCompile Include="MessageBox\MultipleDialogueReader.cpp" />
@@ -420,11 +421,12 @@
     <ClInclude Include="GameObject\MessageContent.h" />
     <ClInclude Include="GameObject\MessageContentContainer.h" />
     <ClInclude Include="GameObject\PastPhotoButton.h" />
-    <ClInclude Include="MessageBox\DialogueString.h" />
+    <ClInclude Include="MessageBox\DialogueInfo.h" />
     <ClInclude Include="MessageBox\DialogueWithTexture.h" />
+    <ClInclude Include="MessageBox\JSONDialogueReader.h" />
     <ClInclude Include="MessageBox\MessageContentContainerBuilder.h" />
     <ClInclude Include="MessageBox\MessageContentPictureAttacher.h" />
-    <ClInclude Include="MessageBox\MessageString.h" />
+    <ClInclude Include="MessageBox\MessageInfo.h" />
     <ClInclude Include="MessageBox\MessageWithTexture.h" />
     <ClInclude Include="MessageBox\MultipleDialogueReader.h" />
     <ClInclude Include="MessageBox\SingleDialogueReader.h" />
@@ -439,6 +441,7 @@
     <ClInclude Include="Scene\TitleScene.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Tests\AddTest.h" />
+    <ClInclude Include="Tests\JSONDialogueReaderTest.h" />
     <ClInclude Include="Tests\SingleDialogueReaderTest.h" />
     <ClInclude Include="Tests\MultipleDialogueReaderTest.h" />
     <ClInclude Include="Tests\OneLineTextReaderTest.h" />
@@ -578,6 +581,7 @@
     <Content Include="App\texts\sc_Takeshi_End_1.txt" />
     <Content Include="App\texts\takeshi_identify_texts.txt" />
     <Content Include="App\texts\test\MultipleDialogueReaderTest_0.txt" />
+    <Content Include="App\texts\test\sc_test_0.json" />
     <Content Include="App\texts\test\sc_test_0.txt" />
     <Content Include="App\texts\test\test_0.txt" />
   </ItemGroup>
