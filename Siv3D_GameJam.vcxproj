@@ -575,6 +575,7 @@
     <Content Include="App\texts\sc_prologue.txt" />
     <Content Include="App\texts\sc_Takeshi_1.json" />
     <Content Include="App\texts\sc_Takeshi_1.txt" />
+    <Content Include="App\texts\sc_Takeshi_2.json" />
     <Content Include="App\texts\sc_Takeshi_2.txt" />
     <Content Include="App\texts\sc_Takeshi_3.json" />
     <Content Include="App\texts\sc_Takeshi_3.txt" />
