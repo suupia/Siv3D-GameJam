@@ -2,6 +2,7 @@
 #include "Episode1MultiEndScene.h"
 #include "../MessageBox/MessageContentContainerBuilder.h"
 #include "../GameManager/GameManager.h"
+#include "../MessageBox/JSONDialogueReader.h"
 
 #include "../MessageBox/MessageContentPictureAttacher.h"
 #include "../MessageBox/SingleDialogueReader.h"
@@ -14,8 +15,8 @@ namespace
 		MessageContentContainer message_content_container(gm, font);
 
 		// U"texts/sc_Takeshi_3.txt"
-		const auto message_structs = SingleDialogueReader(U"texts/sc_Takeshi_3.txt").readMessageAll();
-		const auto dialogue_with_texture = MessageContentPictureAttacher().create_message_content_struct(message_structs);
+		const auto message_structs = JSONDialogueReader(U"texts/sc_Takeshi_3.json").read_dialogues();
+		const auto dialogue_with_texture = MessageContentPictureAttacher().create_message_content_struct(message_structs.at(0));
 		Array<MessageContent> message_contents;
 		for (auto content_struct : dialogue_with_texture.message_with_textures)
 		{
@@ -34,8 +35,8 @@ namespace
 		message_content_container.add_message_contents(message_contents1);
 
 		// U"texts/sc_Takeshi_4.txt"
-		const auto message_structs2 = SingleDialogueReader(U"texts/sc_Takeshi_4.txt").readMessageAll();
-		const auto dialogue_with_texture2 = MessageContentPictureAttacher().create_message_content_struct(message_structs2);
+		const auto message_structs2 = JSONDialogueReader(U"texts/sc_Takeshi_4.json").read_dialogues();
+		const auto dialogue_with_texture2 = MessageContentPictureAttacher().create_message_content_struct(message_structs2.at(0));
 		Array<MessageContent> message_contents2;
 		for (auto content_struct : dialogue_with_texture2.message_with_textures)
 		{

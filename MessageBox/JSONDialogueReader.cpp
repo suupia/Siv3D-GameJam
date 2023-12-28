@@ -67,6 +67,6 @@ Array<DialogueInfo> JSONDialogueReader::read_dialogues()
 
 	}
 
-	return  Array<DialogueInfo>{DialogueInfo(message_infos)};  // TODO: とりあえず、1つの対話しか読み込まない
+	return  Array<DialogueInfo>{DialogueInfo(message_infos)};
 }
 
