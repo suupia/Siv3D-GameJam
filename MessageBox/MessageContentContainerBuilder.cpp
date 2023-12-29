@@ -1,6 +1,7 @@
 ﻿#include "../stdafx.h"
 #include "MessageContentContainerBuilder.h"
 
+#include "JSONDialogueReader.h"
 #include "MessageContentPictureAttacher.h"
 #include "SingleDialogueReader.h"
 
@@ -13,8 +14,8 @@ MessageContentContainer MessageContentContainerBuilder::build_message_content_co
 {
 	MessageContentContainer message_content_container(gm, font);
 
-	const auto dialogue_string = SingleDialogueReader(path_).readMessageAll();
-	const auto dialogue_with_texture = MessageContentPictureAttacher().create_message_content_struct(dialogue_string);
+	const auto dialogue_string = JSONDialogueReader(path_).read_dialogues();
+	const auto dialogue_with_texture = MessageContentPictureAttacher().create_message_content_struct(dialogue_string.at(0));
 
 	Array<MessageContent> message_contents;
 	for (auto content_struct : dialogue_with_texture.message_with_textures)
