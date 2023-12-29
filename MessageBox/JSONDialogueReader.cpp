@@ -67,14 +67,6 @@ Array<DialogueInfo> JSONDialogueReader::read_dialogues()
 
 	}
 
-	// debug
-	// for(int i = 0; i < message_infos.size(); ++i)
-	// {
-	// 	Console << U"[" << i << U"]";
-	// 	Console << U"name: " << message_infos.at(i).name;
-	// 	Console << U"message: " << message_infos.at(i).message;
-	// }
-
-	return  Array<DialogueInfo>{DialogueInfo(message_infos)};  // TODO: とりあえず、1つの対話しか読み込まない
+	return  Array<DialogueInfo>{DialogueInfo(message_infos)};
 }
 
