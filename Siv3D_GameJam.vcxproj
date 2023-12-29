@@ -570,15 +570,10 @@
     <Content Include="App\images\title.png" />
     <Content Include="App\texts\final_photo_captions_tmp.txt" />
     <Content Include="App\texts\sc_prologue.json" />
-    <Content Include="App\texts\sc_prologue.txt" />
     <Content Include="App\texts\sc_Takeshi_1.json" />
-    <Content Include="App\texts\sc_Takeshi_1.txt" />
     <Content Include="App\texts\sc_Takeshi_2.json" />
-    <Content Include="App\texts\sc_Takeshi_2.txt" />
     <Content Include="App\texts\sc_Takeshi_3.json" />
-    <Content Include="App\texts\sc_Takeshi_3.txt" />
     <Content Include="App\texts\sc_Takeshi_4.json" />
-    <Content Include="App\texts\sc_Takeshi_4.txt" />
     <Content Include="App\texts\sc_Takeshi_End_0.txt" />
     <Content Include="App\texts\sc_Takeshi_End_1.txt" />
     <Content Include="App\texts\takeshi_identify_texts.txt" />
